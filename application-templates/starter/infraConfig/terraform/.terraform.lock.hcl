@@ -1,0 +1,60 @@
+# This file is maintained automatically by "terraform init".
+# Manual edits may be lost in future updates.
+
+provider "registry.terraform.io/hashicorp/archive" {
+  version = "2.2.0"
+  hashes = [
+    "h1:62mVchC1L6vOo5QS9uUf52uu0emsMM+LsPQJ1BEaTms=",
+    "zh:06bd875932288f235c16e2237142b493c2c2b6aba0e82e8c85068332a8d2a29e",
+    "zh:0c681b481372afcaefddacc7ccdf1d3bb3a0c0d4678a526bc8b02d0c331479bc",
+    "zh:100fc5b3fc01ea463533d7bbfb01cb7113947a969a4ec12e27f5b2be49884d6c",
+    "zh:55c0d7ddddbd0a46d57c51fcfa9b91f14eed081a45101dbfc7fd9d2278aa1403",
+    "zh:73a5dd68379119167934c48afa1101b09abad2deb436cd5c446733e705869d6b",
+    "zh:841fc4ac6dc3479981330974d44ad2341deada8a5ff9e3b1b4510702dfbdbed9",
+    "zh:91be62c9b41edb137f7f835491183628d484e9d6efa82fcb75cfa538c92791c5",
+    "zh:acd5f442bd88d67eb948b18dc2ed421c6c3faee62d3a12200e442bfff0aa7d8b",
+    "zh:ad5720da5524641ad718a565694821be5f61f68f1c3c5d2cfa24426b8e774bef",
+    "zh:e63f12ea938520b3f83634fc29da28d92eed5cfbc5cc8ca08281a6a9c36cca65",
+    "zh:f6542918faa115df46474a36aabb4c3899650bea036b5f8a5e296be6f8f25767",
+  ]
+}
+
+provider "registry.terraform.io/hashicorp/google" {
+  version = "4.31.0"
+  hashes = [
+    "h1:p6GUUYG9PQ4XODXBgsHpWTygziRtY61z07slBKYbiCQ=",
+    "zh:02a19ed46c2007f6aadfb6ff90aa6063be063194d1f0dd02dc839adc212f7cae",
+    "zh:1046de7e13e81a8f86461f99e9d5ff25d5dabe8465f51efe72084ded426ba771",
+    "zh:209b054685f7364f3f5e8b570ceb62701e5b466d37cce8b7108385fc1feb3683",
+    "zh:717773619a1102748204699974c30aba39dc727baf389b874afcab6e17b63ffa",
+    "zh:7d5f4885cda2ca0ec8cb8bac36ea156aeca7787c01c17e65f7226742b60369d8",
+    "zh:82df57f2df5708441c57045b3e1a9a91ed55abe67d0d2f00705c7a1f512ec6ec",
+    "zh:a0191b194e68dd3c0ac5a26712f95d435839ff20d2b2ad53670374c64946042d",
+    "zh:a95b8358469d6347a5bcf4462ad18efaf80014f07f36bd26019ca039c523ff48",
+    "zh:b62c968f50d3afa8300c9267388d273a90a5be1a4e9a218205a358e6954e7844",
+    "zh:bc11cc9b8defec24831bbd6a73a2fa940659c7c610ea7aa0d8b38c2b1af6689b",
+    "zh:e6ac4c46c3e5a32635fcd27784c189b6cbc6aa9cbf7a3b09e999ec3aa3e2004a",
+    "zh:f569b65999264a9416862bca5cd2a6177d94ccb0424f3a4ef424428912b9cb3c",
+  ]
+}
+
+provider "registry.terraform.io/labd/commercetools" {
+  version = "1.2.1"
+  hashes = [
+    "h1:jTIorFIhPTZ4QJ9ktWNmR1CrWri78ObPyqSssZJ42aA=",
+    "zh:038843776770dde9951ff777d12e46858f722d71135a807d5dcfb96b006a677f",
+    "zh:06b8d6e95ab8b631168cf2ba275edeea5d6e5677fc744b2ae41255a6c10e42a2",
+    "zh:1e5a259cac8e8935f74ba27594e95213af9d74ffdb022b5c5244cad2e75e8150",
+    "zh:3ee858775d7a2ab6c72fe79659d6c56ba8c0ce5e6850aec96c4a85096ddd462b",
+    "zh:76c2e0cc226304379f71486a3f0c9d2d9348cdf898a1adbe7ebb9456dcb018e8",
+    "zh:7b2c7b29426a978dca007f78fc140331dc3d1a13628a7cbc31a680d18b332450",
+    "zh:7c9f53185d25eac4d2a8f65a69bd94861d4e1c27577728edf0eb69a8fa620bba",
+    "zh:939ad81f932847b92b538eb2a3564a9949431f4c46f33b6159f9699ffcbd1e87",
+    "zh:9c0796f21ddfe87c0c03de99560517c008351d63f6bd1a33696f2990da021377",
+    "zh:a90eb746519d506519be932d767ec52782ed1b574602f38687dc69b8d9596495",
+    "zh:c0215ca4d08230354e522a1d2fa09a619315bccc6c224855cce07d0f75dfe4fe",
+    "zh:d9948d6d38db75f2d067de51b20284e33321c17e4399b70d4f9436e3fbf9c892",
+    "zh:db4514db9ec49239032aed4f1c1bec8b0bfd4072c05332dcf0e3aa48d9ae6746",
+    "zh:e4bbba3c747ac1fd897e7f67c467cfe5d3fda88ee3e16aafe0da24d75f1e5af0",
+  ]
+}
