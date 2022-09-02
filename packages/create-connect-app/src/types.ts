@@ -7,8 +7,6 @@ export type TCliCommandOptions = {
   templateVersion: string;
   skipInstall: boolean;
   yes: boolean;
-  entryPointUriPath?: string;
-  initialProjectKey?: string;
 };
 
 export type TCliTaskOptions = {
@@ -16,6 +14,4 @@ export type TCliTaskOptions = {
   projectDirectoryPath: string;
   templateName: TCliCommandOptions['template'];
   tagOrBranchVersion: string;
-  entryPointUriPath: string;
-  initialProjectKey: string;
 };

@@ -59,12 +59,6 @@ const throwIfTemplateVersionDoesNotExist = (
   }
 };
 
-const throwIfInitialProjectKeyIsMissing = (initialProjectKey?: string) => {
-  if (!initialProjectKey) {
-    throw new Error(`Provide a valid project key that you have access to.`);
-  }
-};
-
 const throwIfNodeVersionIsNotSupported = (
   currentNodeVersion: string,
   expectedVersionRange: string
@@ -85,6 +79,5 @@ export {
   throwIfTemplateIsNotSupported,
   throwIfProjectDirectoryExists,
   throwIfTemplateVersionDoesNotExist,
-  throwIfInitialProjectKeyIsMissing,
   throwIfNodeVersionIsNotSupported,
 };
