@@ -6,13 +6,13 @@
 <!-- Bried description and context for the task. What's the motivation for it? -->
 
 ## Type of change
-<!-- Please delete not relevan options -->
+<!-- Please delete not relevant options -->
 - [ ] Bug fix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] This change requires a documentation update
 
-## Brief description or the solution
+## Brief description of the solution
 <!-- Describe your code changes in detail for reviewers -->
 <!-- Explain the technical solution that you have provided and how it implements/fixes the referenced issue -->
 
@@ -23,7 +23,7 @@
 - [ ] <!-- Please identify your test with a brief description and name -->
 
 ## Instructions to build/test locally
-<!-- Please include all necessary instruction for the reviewer to build, run and test your solution locally without any issues -->
+<!-- Please include all necessary instructions for the reviewer to build, run and test your solution locally without any issues -->
 
 ## Depends on another PR/branch?
 <!-- Yes or no question. If so, identify the other PR/branch and what it depends on -->
