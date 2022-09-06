@@ -46,14 +46,6 @@ const run = () => {
       '(optional) If set, the prompt options with default values will be skipped.',
       { default: false }
     )
-    .option(
-      '--entry-point-uri-path <value>',
-      '(optional) The version of the template to install. (default: starter-<hash>)'
-    )
-    .option(
-      '--initial-project-key <value>',
-      '(optional) A commercetools project key used for the initial login in development. By default, the value is prompted in the terminal.'
-    )
     .action(async (projectDirectory, options: TCliCommandOptions) => {
       if (!projectDirectory) {
         cli.outputHelp();
@@ -65,7 +57,7 @@ const run = () => {
 
       console.log('');
       console.log(
-        `Documentation available at https://docs.commercetools.com/custom-applications`
+        `Documentation available at https://docs.commercetools.com/`
       );
       console.log('');
 
@@ -74,9 +66,7 @@ const run = () => {
       const taskList = new Listr(
         [
           tasks.downloadTemplate(taskOptions),
-          tasks.updatePackageJson(taskOptions),
-          tasks.updateCustomApplicationConfig(taskOptions),
-          tasks.updateApplicationConstants(taskOptions),
+          //tasks.updatePackageJson(taskOptions),
           !options.skipInstall && tasks.installDependencies(taskOptions),
         ].filter(Boolean) as ListrTask[]
       );
@@ -97,7 +87,7 @@ const run = () => {
       console.log(`$ ${useYarn ? 'yarn' : 'npm'} start`);
       console.log('');
       console.log(
-        `Visit https://docs.commercetools.com/custom-applications for more info about developing Connect Applications. Enjoy 🚀`
+        `Visit https://docs.commercetools.com/connect for more info about developing Connect Applications. Enjoy 🚀`
       );
     });
 
