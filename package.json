@@ -8,7 +8,7 @@
     "build": "./scripts/build_packages.sh",
     "lint": "",
     "clean": "",
-    "test": "jest",
+    "test": "jest --config jest.config.js",
     "prepare": "husky install"
   },
   "workspaces": {
