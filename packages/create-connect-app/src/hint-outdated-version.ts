@@ -4,7 +4,7 @@ import execa from 'execa';
 async function hintOutdatedVersion(currentVersion: string) {
   try {
     const commandResult = await execa.command(
-      'npm view @commercetools-frontend/create-mc-app --json',
+      'npm view @commercetools-connect/create-connect-app --json',
       { encoding: 'utf-8' }
     );
 

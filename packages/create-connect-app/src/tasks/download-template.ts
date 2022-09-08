@@ -84,15 +84,6 @@ function downloadTemplate(options: TCliTaskOptions): ListrTask {
             if (result.failed) {
               throw new Error(result.stderr);
             }
-            const templatePackageJsonPath = path.join(
-              options.projectDirectoryPath,
-              'package.json'
-            );
-            if (!fs.existsSync(templatePackageJsonPath)) {
-              throw new Error(
-                `Unable to verify that the template application has a package.json at "${templatePackageJsonPath}"`
-              );
-            }
             return result.stdout;
           },
         },
