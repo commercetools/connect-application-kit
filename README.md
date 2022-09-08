@@ -37,13 +37,13 @@ $ yarn test
 $ yarn test:watch
 ```
 
-Build the application bundles
+Build the application
 
 ```bash
 $ yarn build
 
 # or
-$ yarn build:bundles:watch
+$ yarn build:watch
 ```
 
 # Certification
