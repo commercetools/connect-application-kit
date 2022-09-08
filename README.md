@@ -21,7 +21,7 @@ $ create-connect-app first-connect-application --template starter
 $ npx @commercetools-connect/create-connect-app@latest first-connect-application --template starter
 ```
 
-# Developing application-kit packages
+# Developing connect applications
 Install the dependencies (uses yarn workspaces):
 
 ```bash
