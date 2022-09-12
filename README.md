@@ -57,10 +57,12 @@ A default starter pack has a directory structure as shown below
 │   └── readme.md
 ├── <app1>
 │   ├── src
+│   ├── tests
 │   ├── Dockerfile
 │   └── package.json
 ├── <app2>
 │   ├── src
+│   ├── tests
 │   ├── Dockerfile
 │   └── package.json
 └── connect.yaml
