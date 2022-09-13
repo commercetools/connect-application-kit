@@ -52,13 +52,10 @@ const run = () => {
         return;
       }
 
-     await hintOutdatedVersion(pkgJson.version);
-
+      await hintOutdatedVersion(pkgJson.version);
 
       console.log('');
-      console.log(
-        `Documentation available at https://docs.commercetools.com/`
-      );
+      console.log(`Documentation available at https://docs.commercetools.com/`);
       console.log('');
 
       const taskOptions = await processOptions(projectDirectory, options);
