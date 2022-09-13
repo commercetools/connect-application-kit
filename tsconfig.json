@@ -1,0 +1,8 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "rootDir": "packages/create-connect-app/",
+    "outDir": "packages/create-connect-app/build"
+  }
+}
