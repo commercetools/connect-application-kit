@@ -4,7 +4,11 @@
   "description": "Connect Application Kit",
   "private": true,
   "scripts": {
-    "build": "./scripts/build_packages.sh"
+    "start": "",
+    "build": "./scripts/build_packages.sh",
+    "lint": "",
+    "clean": "",
+    "prepare": "husky install"
   },
   "workspaces": {
     "packages": [
@@ -27,8 +31,8 @@
     "@commercetools-test-data/core": "3.1.2",
     "@commercetools-uikit/design-system": "^15.1.0",
     "@commercetools/github-labels": "1.1.0",
-    "@commitlint/cli": "16.2.4",
-    "@commitlint/config-conventional": "16.2.4",
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@faker-js/faker": "7.3.0",
     "@formatjs/cli": "4.8.4",
     "@graphql-codegen/add": "3.1.1",
@@ -60,12 +64,11 @@
     "cross-env": "7.0.3",
     "cypress": "9.6.1",
     "dotenv": "16.0.0",
-    "eslint": "8.19.0",
+    "eslint": "^8.23.0",
     "eslint-formatter-pretty": "4.1.0",
     "eslint-plugin-graphql": "^4.0.0",
     "graphql": "16.5.0",
-    "husky": "7.0.4",
-    "jest": "27.5.1",
+    "jest": "^29.0.1",
     "jest-each": "27.5.1",
     "jest-puppeteer": "6.1.0",
     "jest-runner-eslint": "1.0.1",
@@ -78,7 +81,7 @@
     "postcss": "8.4.14",
     "postcss-load-config": "3.1.4",
     "postcss-modules": "4.3.1",
-    "prettier": "2.6.2",
+    "prettier": "^2.7.1",
     "puppeteer": "14.1.0",
     "rcfile": "1.0.3",
     "replace": "1.2.1",
@@ -93,6 +96,9 @@
     "tsc-files": "1.1.3",
     "typescript": "4.7.4",
     "vfile-message": "3.1.2"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0"
   },
   "resolutions": {
     "@babel/preset-env": "^7.18.6",
