@@ -1,0 +1,24 @@
+name: build-and-test
+
+description: Shared action with basic setup for building and testing the package
+
+runs:
+  using: ubuntu-latest
+
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Setup node version with .nvmrc file
+      uses: actions/setup-node@v3
+      with:
+        node-version-file: '.nvmrc'
+    
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Run linter
+      run: yarn linter
+
+    - name: Build files
+      run: yarn build
