@@ -1,5 +1,6 @@
-module.exports = {extends: ['@commitlint/config-conventional'], 
-parserPreset: {
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  parserPreset: {
     parserOpts: {
       // Allow to write a "scope" with slashes
       // E.g. `refactor(app/my-component): something`
@@ -8,4 +9,5 @@ parserPreset: {
   },
   rules: {
     'header-max-length': [0, 'always', 100],
-  },}
+  },
+};

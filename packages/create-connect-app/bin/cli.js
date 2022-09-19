@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require('../').cli();
+require('../build/src/').cli();

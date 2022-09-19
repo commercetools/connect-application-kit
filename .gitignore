@@ -4,6 +4,7 @@ node_modules/
 # Build
 dist
 dist-tarballs
+build
 
 # Logs
 logs
@@ -15,3 +16,6 @@ yarn-error.log*
 coverage/
 
 application-templates/**/yarn.lock
+
+# Cache
+.dccache

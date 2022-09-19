@@ -1,0 +1,5 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": ["@commercetools-frontend/eslint-config-mc-app"]
+}
