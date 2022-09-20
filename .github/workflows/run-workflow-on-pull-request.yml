@@ -21,4 +21,4 @@ jobs:
         run: yarn lint
 
       - name: Run tests
-        run: yarn jest --projects --config jest.config.js
+        run: yarn jest --projects
