@@ -3,7 +3,7 @@ name: build-and-test
 description: Shared action with basic setup for building and testing the package
 
 runs:
-  using: ubuntu-latest
+  using: composite
 
   steps:
     - name: Checkout
@@ -16,9 +16,12 @@ runs:
     
     - name: Install dependencies
       run: yarn install
+      shell: bash
 
     - name: Run linter
       run: yarn linter
+      shell: bash
 
     - name: Build files
       run: yarn build
+      shell: bash
