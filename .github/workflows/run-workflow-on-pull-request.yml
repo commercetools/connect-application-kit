@@ -18,6 +18,7 @@ jobs:
         uses: ./.github/actions
   
   lint_and_test:
+    needs: build
     runs-on: ubuntu-latest
 
     timeout-minutes: 10
