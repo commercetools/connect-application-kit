@@ -1,22 +1,26 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
+import bodyParser from 'body-parser';
 
-// Define the port
-const PORT = 3000;
+// Import routes
+import HomeRoutes from './routes/home.route'
+import OrderRoutes from './routes/orders.route'
 
 // Create the express app
 const app: Express = express();
 
-// Basic route
-app.get('/', (request: Request, response: Response) => {
-  response.send({
-    status: 200,
-    body: 'Hello world from the typescript server',
-  });
-});
+// Define configurations
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Define routes
+app.use('/home', HomeRoutes);
+app.use('/orders', OrderRoutes)
+
+const PORT = 3000;
 
 // Listen the application
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
 
-export default app;
+export default server;
