@@ -1,9 +1,14 @@
+import * as dotenv from 'dotenv';
 import express, { Express } from 'express';
 import bodyParser from 'body-parser';
 
 // Import routes
-import HomeRoutes from './routes/home.route'
-import OrderRoutes from './routes/orders.route'
+import HomeRoutes from './routes/home.route';
+import OrderRoutes from './routes/orders.route';
+
+dotenv.config();
+
+const PORT = process.env.PORT;
 
 // Create the express app
 const app: Express = express();
@@ -14,9 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Define routes
 app.use('/home', HomeRoutes);
-app.use('/orders', OrderRoutes)
+app.use('/orders', OrderRoutes);
 
-const PORT = 3000;
+
 
 // Listen the application
 const server = app.listen(PORT, () => {
