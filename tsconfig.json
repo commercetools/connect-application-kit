@@ -3,6 +3,10 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "rootDir": "packages/create-connect-app/",
-    "outDir": "packages/create-connect-app/build"
-  }
+    "outDir": "packages/create-connect-app/build",
+  },
+  "exclude": [
+    "application-templates",
+    "node_modules"
+  ]
 }
