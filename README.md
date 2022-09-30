@@ -58,12 +58,10 @@ A default starter pack has a directory structure as shown below
 ├── <app1>
 │   ├── src
 │   ├── tests
-│   ├── Dockerfile
 │   └── package.json
 ├── <app2>
 │   ├── src
 │   ├── tests
-│   ├── Dockerfile
 │   └── package.json
 └── connect.yaml
 
@@ -78,7 +76,7 @@ Connect deployment details needs to be specified in `connect.yaml` which is requ
 # Deployment config
 
 Connect supports 3 types of application which needs to set as `applicationType` in the config file
-1. `service` - Standalone application which can do a specific task triggered by any HTTP method (can be used for <a href="https://docs.commercetools.com/api/projects/api-extensions">API extensions</a> ). HTTP url will be generated and exposed as result of the deployment.
+1. `service` - Standalone application which can do a specific task triggered by any HTTP method (can be used for <a href="https://docs.commercetools.com/api/projects/api-extensions">API extensions</a> or as a webhook to other systems). HTTP url will be generated and exposed as result of the deployment.
 2. `event` - Event topics & related consumer services to be able to receive events and perform any task asynchronously (can be used for <a href="https://docs.commercetools.com/api/projects/subscriptions">Subscriptions</a>). A topic will be generated and exposed as result of the deployment
 3. `job` - Task which needs to be performed at regular basis with defined intervals, these tasks can be scheduled using <a href="https://en.wikipedia.org/wiki/Cron">cron</a> expression
 
@@ -87,20 +85,17 @@ A sample deployment config looks like this
 
 ```
 deployAs:
-  - applicationType: service
-    dockerFilePath: app1/
-    name: app1
-  - applicationType: job
-    dockerFilePath: app2/
-    name: app2
+  - name: app1
+    applicationType: service
+  - name: app2
+    applicationType: job
     properties:
       schedule: */5 * * * *
-  - applicationType: event
-    subscriber: app1
-    name: app1Event
+  - name: app3
+    applicationType: event
 
 ```
 
-- Dockerfile path is a mandatory information needed to be able to build & deploy images
+- Multiple applications of same type can be setup
 - A schedule property is additional mandatory information needed to be able to schedule the job
 - Event type of application needs to be defined together with a service type of application with mandatory subscriber information to process the received event
