@@ -90,7 +90,7 @@ deployAs:
   - name: app2
     applicationType: job
     properties:
-      schedule: */5 * * * *
+      schedule: "*/5 * * * *"
   - name: app3
     applicationType: event
 
