@@ -1,6 +1,0 @@
-{
-  "watch": ["packages/create-connect-app/src"],
-  "ext": ".ts,.js",
-  "ignore": [],
-  "exec": "ts-node ./packages/create-connect-app/src/index.ts"
-}
