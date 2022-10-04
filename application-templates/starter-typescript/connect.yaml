@@ -1,12 +1,10 @@
 deployAs:
   - applicationType: service
-    dockerFilePath: app1/
-    name: app1
+    name: service
   - applicationType: job
-    dockerFilePath: app2/
-    name: app2
+    name: job
     properties:
       schedule: */5 * * * *
   - applicationType: event
-    subscriber: app1
-    name: app1Event
+    subscriber: event-subscriber
+    name: event

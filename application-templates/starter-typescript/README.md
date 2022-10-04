@@ -5,7 +5,7 @@
   <b>Integration Starter</b>
 </p>
 
-This is the `starter` template to develop [integrations](https://marketplace.commercetools.com/).
+This is the `starter-typescript` template to develop [integrations](https://marketplace.commercetools.com/).
 
 ## Instructions
 
