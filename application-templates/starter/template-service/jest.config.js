@@ -7,5 +7,5 @@ module.exports = {
   displayName: 'Tests Javascript Application - Service',
   moduleDirectories: ['node_modules', 'src'],
   testEnvironment: 'node',
-  testMatch: ['**/tests/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)']
+  testMatch: ['**/tests/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
 };
