@@ -4,12 +4,8 @@
  */
 
 module.exports = {
-  clearMocks: true,
-  coverageProvider: 'v8',
-  moduleFileExtensions: ['js', 'node'],
-  notify: false,
+  displayName: 'Tests Javascript Application - Service',
+  moduleDirectories: ['node_modules', 'src'],
   testEnvironment: 'node',
   testMatch: ['**/tests/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
-  testPathIgnorePatterns: ['/node_modules/'],
-  verbose: true,
 };

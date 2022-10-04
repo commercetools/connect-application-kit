@@ -1,0 +1,10 @@
+deployAs:
+  - applicationType: service
+    name: service
+  - applicationType: job
+    name: job
+    properties:
+      schedule: */5 * * * *
+  - applicationType: event
+    subscriber: event-subscriber
+    name: event
