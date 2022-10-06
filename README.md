@@ -10,6 +10,7 @@
 
 ## Getting started
 
+Testing that only squash and merge option is available for PRs.
 If you are developing a connect application, you can start by installing one of our [templates](./application-templates) using the `create-connect-app` CLI.
 
 ```bash
