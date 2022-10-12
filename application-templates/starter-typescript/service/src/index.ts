@@ -3,7 +3,7 @@ import express, { Express } from 'express';
 import bodyParser from 'body-parser';
 
 // Import routes
-import HomeRoutes from './routes/home.route';
+import ServiceRoutes from './routes/service.route';
 import OrderRoutes from './routes/orders.route';
 
 dotenv.config();
@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Define routes
-app.use('/home', HomeRoutes);
+app.use('/service', ServiceRoutes);
 app.use('/orders', OrderRoutes);
 
 // Listen the application
