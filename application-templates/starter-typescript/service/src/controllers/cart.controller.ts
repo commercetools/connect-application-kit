@@ -4,7 +4,8 @@ import { apiRoot } from '../client/create.client';
 import { Resourse } from '../interfaces/resource.interface';
 
 const get = () => {
-  return apiRoot.carts().get();
+  const response = apiRoot.carts().get().execute();
+  return;
 };
 
 const post = (resource: Resourse) => {
@@ -15,7 +16,8 @@ const post = (resource: Resourse) => {
 
     console.log('CART DRAFT');
     console.log(cartDraft);
-    return apiRoot.carts().post({ body: cartDraft }).execute();
+    const response = apiRoot.carts().post({ body: cartDraft }).execute();
+    response.then(console.log);
   } catch (error) {
     console.log(error);
   }
@@ -28,6 +30,7 @@ export const cartController = (action: string, resource: Resourse) => {
       data = get();
       return data;
     case 'Create':
+      console.log('CREATE SWITCH');
       data = post(resource);
       return data;
   }

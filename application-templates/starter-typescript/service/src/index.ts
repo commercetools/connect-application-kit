@@ -2,13 +2,20 @@ import * as dotenv from 'dotenv';
 import express, { Express } from 'express';
 import bodyParser from 'body-parser';
 
-// Import routes
-import ServiceRoutes from './routes/service.route';
-import OrderRoutes from './routes/orders.route';
-
+// require('dotenv').config();
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+// Import routes
+// eslint-disable-next-line import/first
+import ServiceRoutes from './routes/service.route';
+// eslint-disable-next-line import/first
+import OrderRoutes from './routes/orders.route';
+// eslint-disable-next-line import/first
+import { getProject } from './client/create.client';
+
+getProject().then(console.log).catch(console.error);
+
+const PORT = process.env.PORT;
 
 // Create the express app
 const app: Express = express();
