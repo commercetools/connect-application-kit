@@ -1,37 +1,56 @@
-import { CartDraft } from '@commercetools/platform-sdk';
+import { UpdateAction } from '@commercetools/sdk-client-v2';
 
 import { apiRoot } from '../client/create.client';
 import { Resourse } from '../interfaces/resource.interface';
 
-const get = () => {
-  const response = apiRoot.carts().get().execute();
-  return;
-};
-
-const post = (resource: Resourse) => {
-  // Deserialize the resource to a CartDraft
-
+const create = async (resource: Resourse) => {
   try {
-    const cartDraft: CartDraft = JSON.parse(JSON.stringify(resource));
+    let updateActions: Array<UpdateAction> = [];
 
-    console.log('CART DRAFT');
-    console.log(cartDraft);
-    const response = apiRoot.carts().post({ body: cartDraft }).execute();
-    response.then(console.log);
+    // Deserialize the resource to a CartDraft
+    const cartDraft = JSON.parse(JSON.stringify(resource));
+
+    // Fetch the cart with the ID
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const cart = await apiRoot
+      .carts()
+      .withId({ ID: cartDraft.id! })
+      .get()
+      .execute();
+
+    // Work with the cart
+
+    // Create the UpdateActions Object to return it to the client
+    const updateAction: UpdateAction = {
+      action: 'recalculate',
+      updateProductData: false,
+    };
+
+    updateActions.push(updateAction);
+
+    return { statusCode: 200, actions: updateActions };
   } catch (error) {
-    console.log(error);
+    // Retry or handle the error
+    // Create an error object
+
+    throw new Error(JSON.stringify(error));
   }
 };
 
-export const cartController = (action: string, resource: Resourse) => {
-  let data;
+// Controller for update actions
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const update = (resource: Resourse) => {};
+
+export const cartController = async (action: string, resource: Resourse) => {
   switch (action) {
-    case 'Get':
-      data = get();
-      return data;
     case 'Create':
-      console.log('CREATE SWITCH');
-      data = post(resource);
+      const data = create(resource);
       return data;
+
+    case 'Update':
+      break;
+
+    case 'default':
+      break;
   }
 };

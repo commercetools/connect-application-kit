@@ -12,4 +12,5 @@ export const authMiddlewareOptions: AuthMiddlewareOptions = {
     clientId: config.clientID,
     clientSecret: config.clientSecret,
   },
+  scopes: [config.scope],
 };

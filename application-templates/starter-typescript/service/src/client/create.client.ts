@@ -6,6 +6,6 @@ export const apiRoot = createApiBuilderFromCtpClient(ctpClient).withProjectKey({
   projectKey: process.env.PROJECT_KEY!,
 });
 
-export const getProject = () => {
-  return apiRoot.get().execute();
+export const getProject = async () => {
+  return await apiRoot.get().execute();
 };

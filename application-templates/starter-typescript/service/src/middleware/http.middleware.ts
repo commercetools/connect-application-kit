@@ -5,5 +5,5 @@ const config = getConfigurationVariables();
 
 // Configure Middleware. Example only. Adapt on your own
 export const httpMiddlewareOptions: HttpMiddlewareOptions = {
-  host: `https://auth.${config.region}.commercetools.com`,
+  host: `https://api.${config.region}.commercetools.com`,
 };

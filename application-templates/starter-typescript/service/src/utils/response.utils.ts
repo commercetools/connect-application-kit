@@ -1,20 +1,20 @@
+import { UpdateAction } from '@commercetools/sdk-client-v2';
 import { Response } from 'express';
-import { ResponseInterface } from '../interfaces/response.interface';
+
+import {
+  ResponseInterfaceSuccess,
+  ResponseInterfaceError,
+} from '../interfaces/response.interface';
 
 export const sucessResponse = (
   response: Response,
   statusCode: number,
-  message: string,
-  data: Object
+  updateActions: Array<UpdateAction>
 ) => {
-  const responseBody: ResponseInterface = { status: 'success' };
+  let responseBody = {} as ResponseInterfaceSuccess;
 
-  if (message !== '') {
-    responseBody.message = message;
-  }
-
-  if (data) {
-    responseBody.data = data;
+  if (updateActions) {
+    responseBody.actions = updateActions;
   }
 
   return response.status(statusCode).json({
@@ -22,4 +22,16 @@ export const sucessResponse = (
   });
 };
 
-export const errorResponse = () => {};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const errorResponse = (response: Response, data: any) => {
+  let responseBody = {} as ResponseInterfaceError;
+
+  if (data) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    responseBody.errors = data.errors;
+  }
+
+  return response.status(400).json({
+    ...responseBody,
+  });
+};

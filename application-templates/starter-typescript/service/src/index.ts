@@ -1,19 +1,18 @@
 import * as dotenv from 'dotenv';
-import express, { Express } from 'express';
+import express, {
+  Express,
+  Request,
+  Response,
+  NextFunction,
+  ErrorRequestHandler,
+} from 'express';
 import bodyParser from 'body-parser';
 
-// require('dotenv').config();
 dotenv.config();
 
 // Import routes
 // eslint-disable-next-line import/first
 import ServiceRoutes from './routes/service.route';
-// eslint-disable-next-line import/first
-import OrderRoutes from './routes/orders.route';
-// eslint-disable-next-line import/first
-import { getProject } from './client/create.client';
-
-getProject().then(console.log).catch(console.error);
 
 const PORT = process.env.PORT;
 
@@ -24,9 +23,26 @@ const app: Express = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Global error handler
+app.use(
+  (
+    error: ErrorRequestHandler,
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    // response to user with 403 error and details
+    if (error) {
+      next(error);
+    } else {
+      next();
+    }
+  }
+);
+
 // Define routes
 app.use('/service', ServiceRoutes);
-app.use('/orders', OrderRoutes);
+// app.use('/orders', OrderRoutes);
 
 // Listen the application
 const server = app.listen(PORT, () => {
