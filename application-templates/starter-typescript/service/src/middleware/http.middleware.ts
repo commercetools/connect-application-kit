@@ -3,7 +3,9 @@ import { getConfigurationVariables } from '../utils/options.utils';
 
 const config = getConfigurationVariables();
 
-// Configure Middleware. Example only. Adapt on your own
+/**
+ * Configure Middleware. Example only. Adapt on your own
+ */
 export const httpMiddlewareOptions: HttpMiddlewareOptions = {
   host: `https://api.${config.region}.commercetools.com`,
 };

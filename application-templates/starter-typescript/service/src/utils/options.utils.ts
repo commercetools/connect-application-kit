@@ -1,5 +1,8 @@
-// Retrieve the env variables from the .env file
-
+/**
+ * Retrieve the env variables from the .env file
+ *
+ * @returns {object} the env vars
+ */
 export const getConfigurationVariables = () => {
   return {
     projectKey: process.env.PROJECT_KEY!,

@@ -3,6 +3,12 @@ import { UpdateAction } from '@commercetools/sdk-client-v2';
 import { apiRoot } from '../client/create.client';
 import { Resourse } from '../interfaces/resource.interface';
 
+/**
+ * Handle the create action
+ *
+ * @param {Resource} resource The resource from the request body
+ * @returns {object}
+ */
 const create = async (resource: Resourse) => {
   try {
     let updateActions: Array<UpdateAction> = [];
@@ -41,6 +47,13 @@ const create = async (resource: Resourse) => {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const update = (resource: Resourse) => {};
 
+/**
+ * Handle the cart controller according to the action
+ *
+ * @param {string} action The action that comes with the request. Could be `Create` or `Update`
+ * @param {Resource} resource The resource from the request body
+ * @returns {Promise<object>} The data from the method that handles the action
+ */
 export const cartController = async (action: string, resource: Resourse) => {
   switch (action) {
     case 'Create':

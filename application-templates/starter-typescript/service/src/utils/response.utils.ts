@@ -6,6 +6,14 @@ import {
   ResponseInterfaceError,
 } from '../interfaces/response.interface';
 
+/**
+ * Send a success response to the client
+ *
+ * @param {Response} response Express response
+ * @param {number} statusCode The status code of the operation
+ * @param {Array<UpdateAction>} updateActions The update actions that were made in the process
+ * @returns Success response with 200 status code and the update actions array
+ */
 export const sucessResponse = (
   response: Response,
   statusCode: number,
@@ -22,6 +30,12 @@ export const sucessResponse = (
   });
 };
 
+/**
+ * Send a error response to the client
+ * @param {Response} response Express response
+ * @param {any} data The error data
+ * @returns Error response with 400 status code and the errors array
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const errorResponse = (response: Response, data: any) => {
   let responseBody = {} as ResponseInterfaceError;

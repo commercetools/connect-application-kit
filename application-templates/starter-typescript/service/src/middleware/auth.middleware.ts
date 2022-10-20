@@ -4,7 +4,9 @@ import { getConfigurationVariables } from '../utils/options.utils';
 
 const config = getConfigurationVariables();
 
-// Configure Middleware. Example only. Adapt on your own
+/**
+ * Configure Middleware. Example only. Adapt on your own
+ */
 export const authMiddlewareOptions: AuthMiddlewareOptions = {
   host: `https://auth.${config.region}.commercetools.com`,
   projectKey: config.projectKey,
