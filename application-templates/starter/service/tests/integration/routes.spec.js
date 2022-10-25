@@ -1,6 +1,4 @@
-import { describe, expect, test } from '@jest/globals';
-
-import server from '../../src/index';
+const server = require('../../src/index');
 
 describe('Testing Cart Controller', () => {
   test('POST `/service` route', async () => {
