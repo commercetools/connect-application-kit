@@ -42,7 +42,6 @@ app.use(
 
 // Define routes
 app.use('/service', ServiceRoutes);
-// app.use('/orders', OrderRoutes);
 
 // Listen the application
 const server = app.listen(PORT, () => {
