@@ -10,6 +10,9 @@ import { apiRoot } from '../client/create.client';
  * @returns
  */
 export const post = async (request: Request, response: Response) => {
+  console.log('MESSAGE BODY');
+  console.log(request.body.message);
+
   // Check request body
   if (!request.body) {
     response.status(400).send({
