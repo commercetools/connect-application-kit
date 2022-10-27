@@ -12,7 +12,7 @@ import { apiRoot } from '../client/create.client';
 export const post = async (request: Request, response: Response) => {
   // Check request body
   if (!request.body) {
-    response.status(400).json({
+    response.status(400).send({
       error: 'Bad request: No Pub/Sub message was received',
     });
     return;
@@ -20,7 +20,7 @@ export const post = async (request: Request, response: Response) => {
 
   // Check if the body comes in a
   if (!request.body.message) {
-    response.status(400).json({
+    response.status(400).send({
       error: 'Bad request: Wrong No Pub/Sub message format',
     });
     return;
@@ -36,7 +36,7 @@ export const post = async (request: Request, response: Response) => {
     : undefined;
 
   if (!customerId) {
-    response.status(400).json({
+    response.status(400).send({
       error: 'Bad request: No customer id in the Pub/Sub message',
     });
     return;
@@ -53,7 +53,7 @@ export const post = async (request: Request, response: Response) => {
     // Execute the tasks in need
     // console.log(customer);
   } catch (error) {
-    response.status(400).json({
+    response.status(400).send({
       error: `Bad request: ${error}`,
     });
     return;
