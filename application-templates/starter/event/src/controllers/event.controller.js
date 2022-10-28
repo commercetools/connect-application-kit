@@ -9,6 +9,8 @@ const { apiRoot } = require('../client/create.client');
  * @returns
  */
 const post = async (request, response) => {
+  let customerId = undefined;
+
   // Check request body
   if (!request.body) {
     response.status(400).json({
@@ -30,9 +32,15 @@ const post = async (request, response) => {
 
   // For our example we will use the customer id as a var
   // and the query the commercetools sdk with that info
-  const customerId = pubSubMessage.data.customer.id
-    ? Buffer.from(pubSubMessage.data.customer.id)
+  const decodedData = pubSubMessage.data
+    ? Buffer.from(pubSubMessage.data, 'base64').toString().trim()
     : undefined;
+
+  if (decodedData) {
+    const jsonData = JSON.parse(decodedData);
+
+    customerId = jsonData.customer.id;
+  }
 
   if (!customerId) {
     response.status(400).json({

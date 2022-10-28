@@ -10,8 +10,7 @@ import { apiRoot } from '../client/create.client';
  * @returns
  */
 export const post = async (request: Request, response: Response) => {
-  console.log('MESSAGE BODY');
-  console.log(request.body.message);
+  let customerId = undefined;
 
   // Check request body
   if (!request.body) {
@@ -34,9 +33,15 @@ export const post = async (request: Request, response: Response) => {
 
   // For our example we will use the customer id as a var
   // and the query the commercetools sdk with that info
-  const customerId = pubSubMessage.data.customer.id
-    ? Buffer.from(pubSubMessage.data.customer.id)
+  const decodedData = pubSubMessage.data
+    ? Buffer.from(pubSubMessage.data, 'base64').toString().trim()
     : undefined;
+
+  if (decodedData) {
+    const jsonData = JSON.parse(decodedData);
+
+    customerId = jsonData.customer.id;
+  }
 
   if (!customerId) {
     response.status(400).send({
