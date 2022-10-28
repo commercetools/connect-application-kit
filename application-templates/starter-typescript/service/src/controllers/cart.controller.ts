@@ -10,21 +10,29 @@ import { Resourse } from '../interfaces/resource.interface';
  * @returns {object}
  */
 const create = async (resource: Resourse) => {
+  let productId = undefined;
+
   try {
     let updateActions: Array<UpdateAction> = [];
 
     // Deserialize the resource to a CartDraft
     const cartDraft = JSON.parse(JSON.stringify(resource));
 
-    // Fetch the cart with the ID
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const cart = await apiRoot
-      .carts()
-      .withId({ ID: cartDraft.id! })
-      .get()
-      .execute();
+    if (cartDraft.obj.lineItems.length !== 0) {
+      productId = cartDraft.obj.lineItems[0].productId;
+    }
 
-    // Work with the cart
+    // Fetch the product with the ID
+    if (productId) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const product = await apiRoot
+        .products()
+        .withId({ ID: productId })
+        .get()
+        .execute();
+
+      // Work with the product
+    }
 
     // Create the UpdateActions Object to return it to the client
     const updateAction: UpdateAction = {
