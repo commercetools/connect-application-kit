@@ -4,7 +4,10 @@
 module.exports = {
   moduleDirectories: ['node_modules'],
   testEnvironment: 'node',
-  projects: ['<rootDir>/application-templates/*/service/jest.config.js'],
+  projects: [
+    '<rootDir>/application-templates/*/service/jest.config.js',
+    '<rootDir>/application-templates/*/event/jest.config.js',
+  ],
   verbose: true,
   // Remove for console.logs
   silent: true,

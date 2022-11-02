@@ -1,0 +1,7 @@
+{
+    "root": true,
+    "extends": ["@commercetools-frontend/eslint-config-mc-app"],
+    "env": {
+      "jest": true
+    }
+  }
