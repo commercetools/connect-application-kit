@@ -11,12 +11,10 @@ import bodyParser from 'body-parser';
 import ServiceRoutes from './routes/service.route';
 
 import { readConfiguration } from './utils/config.utils';
-
 import { envVarsError } from './errors/handling.errors';
 
 // Validate our env vars
 envVarsError(readConfiguration());
-console.log();
 
 const PORT = readConfiguration().port;
 

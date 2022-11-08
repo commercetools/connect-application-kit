@@ -1,12 +1,10 @@
-import { Config } from '../interfaces/config.interface';
-
 /**
  * Helper to verify environment variables and check if they exist.
  * Throw an error if not
  *
  * @param config The configuration object containing all the env vars
  */
-export const envVarsError = (config: Config) => {
+const envVarsError = (config) => {
   if (!config.projectKey) {
     throw new Error('Provide a valid project key that you have access to.');
   }
@@ -23,3 +21,5 @@ export const envVarsError = (config: Config) => {
     throw new Error('Provide a valid port for your application to run.');
   }
 };
+
+module.exports = { envVarsError };

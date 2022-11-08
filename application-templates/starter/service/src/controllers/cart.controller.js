@@ -44,7 +44,7 @@ const create = async (resource) => {
     // Retry or handle the error
     // Create an error object
 
-    throw new Error(JSON.stringify(error));
+    throw new Error(`Internal server error on CartController: ${error.stack}`);
   }
 };
 
@@ -67,7 +67,9 @@ const cartController = async (action, resource) => {
     case 'Update':
       break;
     default:
-      break;
+      throw new Error(
+        `Internal Server Error - Resource not recognized. Allowed values are 'Create' or 'Update'.`
+      );
   }
 };
 

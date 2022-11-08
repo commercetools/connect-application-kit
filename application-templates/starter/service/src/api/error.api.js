@@ -1,5 +1,3 @@
-import { Response } from 'express';
-
 /**
  * Send an API error to the client
  *
@@ -7,10 +5,8 @@ import { Response } from 'express';
  * @param {string} errorMessage The error message
  * @param {Response} res The response object
  */
-export const apiError = (
-  statusCode: number,
-  errorMessage: string,
-  res: Response
-) => {
+const apiError = (statusCode, errorMessage, res) => {
   res.status(statusCode).send({ error: errorMessage });
 };
+
+module.exports = { apiError };
