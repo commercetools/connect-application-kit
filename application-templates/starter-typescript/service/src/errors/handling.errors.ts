@@ -4,7 +4,7 @@ import { Config } from '../interfaces/config.interface';
  *
  * @param {Config} config
  */
-export const validateEnvVars = (config: Config) => {
+export const envVarsError = (config: Config) => {
   if (!config.projectKey) {
     throw new Error('Provide a valid project key that you have access to.');
   }

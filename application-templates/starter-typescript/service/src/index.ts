@@ -12,10 +12,11 @@ import ServiceRoutes from './routes/service.route';
 
 import { readConfiguration } from './utils/config.utils';
 
-import { validateEnvVars } from './errors/handling.errors';
+import { envVarsError } from './errors/handling.errors';
 
 // Validate our env vars
-validateEnvVars(readConfiguration());
+envVarsError(readConfiguration());
+console.log();
 
 const PORT = readConfiguration().port;
 

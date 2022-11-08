@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { errorResponse, sucessResponse } from '../utils/response.utils';
+import { apiError } from '../api/error.api';
+import { apiSuccess } from '../api/success.api';
 import { cartController } from './cart.controller';
 
 /**
@@ -15,6 +16,10 @@ export const post = async (request: Request, response: Response) => {
   // Deserialize the action and resouce from the body
   const { action, resource } = request.body;
 
+  if (!action || !resource) {
+    apiError(400, 'Bad request - Missing body parameters.', response);
+  }
+
   // Identify the type of resource in order to redirect
   // to the correct controller
   switch (resource.typeId) {
@@ -22,15 +27,16 @@ export const post = async (request: Request, response: Response) => {
       try {
         const data = await cartController(action, resource);
 
-        if (data!.statusCode === 200) {
-          return sucessResponse(response, data!.statusCode, data!.actions);
+        if (data && data.statusCode === 200) {
+          apiSuccess(200, data.actions, response);
+          return;
         }
 
-        return errorResponse(response, data!);
+        apiError(data?.statusCode as number, JSON.stringify(data), response);
+        return;
       } catch (error) {
         if (error instanceof Error) {
-          const errorObject = JSON.parse(error.message);
-          errorResponse(response, errorObject.body);
+          apiError(500, error.message, response);
         }
       }
 
@@ -42,6 +48,10 @@ export const post = async (request: Request, response: Response) => {
       break;
 
     default:
-      break;
+      apiError(
+        500,
+        `Internal Server Error - Resource not recognized. Allowed values are 'cart', 'payments' or 'orders'.`,
+        response
+      );
   }
 };
