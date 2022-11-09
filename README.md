@@ -126,8 +126,8 @@ deployAs:
 - Event type of application needs to be defined together with a service type of application with mandatory subscriber information to process the received event
 
 ## Property definition
-`name` - Identifier of the application deployment. Deployment output url, topic & schedule can be fetched based on this reference <br>
-`applicationType` - Type of deployment . Can be one of `service`, `event` or `job` <br>
-`appPath` - Folder for the application in the monorepo <br>
-`configurationType` - Definiton of all environment variables key needs to be used by the application, customer will be responsible provide value to these environment variables when choose to deploy. Definition includes defining the type of variable if it needs to be secured or not . `standard` for customer provided values to be saved as plain text , `secret` for customer provided values to be secured and stored in encrypted format <br>
-`postDeployScript` - Path to script performing commercetools configuration post deployment including custom types creation/updation, extension & subscription creation/updation <br>
+- `name` - Identifier of the application deployment. Deployment output url, topic & schedule can be fetched based on this reference
+- `applicationType` - Type of deployment . Can be one of `service`, `event` or `job`
+- `appPath` - Folder for the application in the monorepo
+- `configurationType` - Definiton of all environment variables key needs to be used by the application, customer will be responsible provide value to these environment variables when choose to deploy. Definition includes defining the type of variable if it needs to be secured or not . `standard` for customer provided values to be saved as plain text , `secret` for customer provided values to be secured and stored in encrypted format
+- `postDeployScript` - Path to script performing commercetools configuration post deployment including custom types creation/updation, extension & subscription creation/updation
