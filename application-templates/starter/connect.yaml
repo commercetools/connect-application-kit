@@ -1,12 +1,34 @@
 deployAs:
-  - applicationType: service
-    dockerFilePath: app1/
-    name: app1
-  - applicationType: job
-    dockerFilePath: app2/
-    name: app2
+  - name: service
+    applicationType: service
+    appPath: /service
+    configurationType:
+      PORT: standard
+      PROJECT_KEY: secret
+      CLIENT_ID: secret
+      CLIENT_SECRET: secret
+      SCOPE: secret
+      REGION : standard
+    postDeployScript: /service/postDeploy.js
+  - name: job
+    applicationType: job
+    appPath: /job
     properties:
-      schedule: */5 * * * *
-  - applicationType: event
-    subscriber: app1
-    name: app1Event
+      schedule: "*/5 * * * *"
+    configurationType:
+      PROJECT_KEY: secret
+      CLIENT_ID: secret
+      CLIENT_SECRET: secret
+      SCOPE: secret
+      REGION : standard
+    postDeployScript: /job/postDeploy.js
+  - name: event
+    applicationType: event
+    appPath: /event
+    configurationType:
+      PROJECT_KEY: secret
+      CLIENT_ID: secret
+      CLIENT_SECRET: secret
+      SCOPE: secret
+      REGION : standard
+    postDeployScript: /event/postDeploy.js
