@@ -1121,7 +1121,7 @@
     "@commercetools/sdk-middleware-logger" "^3.0.0"
     querystring "^0.2.1"
 
-"@commercetools/sdk-client-v2@^2.0.0", "@commercetools/sdk-client-v2@^2.0.1":
+"@commercetools/sdk-client-v2@^2.0.0", "@commercetools/sdk-client-v2@^2.0.1", "@commercetools/sdk-client-v2@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@commercetools/sdk-client-v2/-/sdk-client-v2-2.0.2.tgz#d69d7af6759930aa0cac2e121dd39da935014c4d"
   integrity sha512-z0tVyL+VkDuskIJ60queFNzKJisQZpceAQGjPDBdZbyzZTzA+/CzJUSewad29Dr8haK1Sq0KzbPPWsOn2Ecg+g==
@@ -1874,6 +1874,14 @@
     expect "^29.0.0"
     pretty-format "^29.0.0"
 
+"@types/jest@^29.2.1":
+  version "29.2.1"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.2.1.tgz#31fda30bdf2861706abc5f1730be78bed54f83ee"
+  integrity sha512-nKixEdnGDqFOZkMTF74avFNr3yRqB1ZJ6sRZv5/28D5x2oLN14KApv7F9mfDT/vUic0L3tRCsh3XWpWjtJisUQ==
+  dependencies:
+    expect "^29.0.0"
+    pretty-format "^29.0.0"
+
 "@types/json-schema@^7.0.9":
   version "7.0.11"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
@@ -1903,6 +1911,11 @@
   version "14.18.33"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.33.tgz#8c29a0036771569662e4635790ffa9e057db379b"
   integrity sha512-qelS/Ra6sacc4loe/3MSjXNL1dNQ/GjxNHVzuChwMfmk7HuycRLVQN2qNY3XahK+fZc5E2szqQSKUyAF0E+2bg==
+
+"@types/node@^18.11.9":
+  version "18.11.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.9.tgz#02d013de7058cea16d36168ef2fc653464cfbad4"
+  integrity sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -4550,7 +4563,7 @@ jest-worker@^29.2.1:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jest@^29.0.1, jest@^29.1.1, jest@^29.2.1:
+jest@^29.0.1, jest@^29.1.1, jest@^29.2.1, jest@^29.2.2:
   version "29.2.2"
   resolved "https://registry.yarnpkg.com/jest/-/jest-29.2.2.tgz#24da83cbbce514718acd698926b7679109630476"
   integrity sha512-r+0zCN9kUqoON6IjDdjbrsWobXM/09Nd45kIPRD8kloaRh1z5ZCMdVsgLXGxmlL7UpAJsvCYOQNO+NjvG/gqiQ==
@@ -5954,7 +5967,7 @@ superagent@^8.0.3:
     qs "^6.11.0"
     semver "^7.3.8"
 
-supertest@^6.2.4:
+supertest@^6.2.4, supertest@^6.3.1:
   version "6.3.1"
   resolved "https://registry.yarnpkg.com/supertest/-/supertest-6.3.1.tgz#a8ad362fc6f323c88730ac191ce30427dc869088"
   integrity sha512-hRohNeIfk/cA48Cxpa/w48hktP6ZaRqXb0QV5rLvW0C7paRsBU3Q5zydzYrslOJtj/gd48qx540jKtcs6vG1fQ==

@@ -1,0 +1,27 @@
+{
+  "name": "job",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "nodemon -q src/index.js",
+    "lint": "eslint . --ext .js",
+    "prettier": "prettier --write '**/*.{js,ts}'",
+    "test": "jest --config jest.config.cjs",
+    "test:watch": "jest --watch"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@commercetools/platform-sdk": "^4.1.0",
+    "@commercetools/sdk-client-v2": "^2.0.2",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "jest": "^29.2.2",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1"
+  }
+}
