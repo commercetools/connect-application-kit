@@ -1,3 +1,4 @@
+const { apiError } = require('../api/error.api');
 const { apiRoot } = require('../client/create.client');
 
 /**
@@ -13,17 +14,13 @@ const post = async (request, response) => {
 
   // Check request body
   if (!request.body) {
-    response.status(400).json({
-      error: 'Bad request: No Pub/Sub message was received',
-    });
+    apiError(400, 'Bad request: No Pub/Sub message was received', response);
     return;
   }
 
   // Check if the body comes in a
   if (!request.body.message) {
-    response.status(400).json({
-      error: 'Bad request: Wrong No Pub/Sub message format',
-    });
+    apiError(400, 'Bad request: Wrong No Pub/Sub message format', response);
     return;
   }
 
@@ -43,9 +40,11 @@ const post = async (request, response) => {
   }
 
   if (!customerId) {
-    response.status(400).json({
-      error: 'Bad request: No customer id in the Pub/Sub message',
-    });
+    apiError(
+      400,
+      'Bad request: No customer id in the Pub/Sub message',
+      response
+    );
     return;
   }
 
@@ -60,9 +59,8 @@ const post = async (request, response) => {
     // Execute the tasks in need
     // console.log(customer);
   } catch (error) {
-    response.status(400).json({
-      error: `Bad request: ${error}`,
-    });
+    apiError(400, `Bad request: ${error}`, response);
+
     return;
   }
 

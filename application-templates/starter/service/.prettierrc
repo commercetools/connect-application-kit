@@ -2,6 +2,7 @@
     "trailingComma": "es5",
     "singleQuote": true,
     "parser": "babel",
+    "printWidth": 80,
     "overrides": [
       {
         "files": "*.json",

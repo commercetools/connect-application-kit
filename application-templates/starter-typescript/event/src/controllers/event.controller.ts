@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { apiError } from '../api/error.api';
 import { apiRoot } from '../client/create.client';
 
 /**
@@ -14,17 +15,15 @@ export const post = async (request: Request, response: Response) => {
 
   // Check request body
   if (!request.body) {
-    response.status(400).send({
-      error: 'Bad request: No Pub/Sub message was received',
-    });
+    apiError(400, 'Bad request: No Pub/Sub message was received', response);
+
     return;
   }
 
   // Check if the body comes in a
   if (!request.body.message) {
-    response.status(400).send({
-      error: 'Bad request: Wrong No Pub/Sub message format',
-    });
+    apiError(400, 'Bad request: Wrong No Pub/Sub message format', response);
+
     return;
   }
 
@@ -44,9 +43,11 @@ export const post = async (request: Request, response: Response) => {
   }
 
   if (!customerId) {
-    response.status(400).send({
-      error: 'Bad request: No customer id in the Pub/Sub message',
-    });
+    apiError(
+      400,
+      'Bad request: No customer id in the Pub/Sub message',
+      response
+    );
     return;
   }
 
@@ -61,9 +62,7 @@ export const post = async (request: Request, response: Response) => {
     // Execute the tasks in need
     // console.log(customer);
   } catch (error) {
-    response.status(400).send({
-      error: `Bad request: ${error}`,
-    });
+    apiError(400, `Bad request: ${error}`, response);
     return;
   }
 

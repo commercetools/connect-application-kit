@@ -1,4 +1,3 @@
-import * as dotenv from 'dotenv';
 import express, {
   Express,
   Request,
@@ -8,13 +7,16 @@ import express, {
 } from 'express';
 import bodyParser from 'body-parser';
 
-dotenv.config();
-
 // Import routes
-// eslint-disable-next-line import/first
 import EventRoutes from './routes/event.route';
 
-const PORT = process.env.PORT || 3000;
+import { readConfiguration } from './utils/config.utils';
+import { envVarsError } from './errors/handling.errors';
+
+// Validate our env vars
+envVarsError(readConfiguration());
+
+const PORT = readConfiguration().port;
 
 // Create the express app
 const app: Express = express();
