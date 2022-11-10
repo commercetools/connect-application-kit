@@ -90,12 +90,9 @@ deployAs:
     applicationType: service
     appPath: /app1
     configurationType:
-      PORT: standard
-      PROJECT_KEY: secret
-      CLIENT_ID: secret
-      CLIENT_SECRET: secret
-      SCOPE: secret
-      REGION : standard
+      ENVIRONMENT_VARIABLE_1: standard
+      ENVIRONMENT_VARIABLE_2: secret
+      ENVIRONMENT_VARIABLE_3: secret
     postDeployScript: /app1/postDeploy.js
   - name: app2
     applicationType: job
@@ -103,21 +100,16 @@ deployAs:
     properties:
       schedule: "*/5 * * * *"
     configurationType:
-      PROJECT_KEY: secret
-      CLIENT_ID: secret
-      CLIENT_SECRET: secret
-      SCOPE: secret
-      REGION : standard
+      ENVIRONMENT_VARIABLE_1: standard
+      ENVIRONMENT_VARIABLE_2: standard
     postDeployScript: /app2/postDeploy.js
   - name: app3
     applicationType: event
     appPath: /app3
     configurationType:
-      PROJECT_KEY: secret
-      CLIENT_ID: secret
-      CLIENT_SECRET: secret
-      SCOPE: secret
-      REGION : standard
+      ENVIRONMENT_VARIABLE_1: standard
+      ENVIRONMENT_VARIABLE_2: secret
+      ENVIRONMENT_VARIABLE_3: standard
     postDeployScript: /app3/postDeploy.js
 ```
 
@@ -129,5 +121,5 @@ deployAs:
 - `name` - Identifier of the application deployment. Deployment output url, topic & schedule can be fetched based on this reference
 - `applicationType` - Type of deployment . Can be one of `service`, `event` or `job`
 - `appPath` - Folder for the application in the monorepo
-- `configurationType` - Definiton of all environment variables key needs to be used by the application, customer will be responsible provide value to these environment variables when choose to deploy. Definition includes defining the type of variable if it needs to be secured or not . `standard` for customer provided values to be saved as plain text , `secret` for customer provided values to be secured and stored in encrypted format
+- `configurationType` - Definiton of all environment variables needed by the application, customer will be responsible to provide value for these variables when choosen to deploy. Definition includes defining the type of variable if it needs to be secured or not . `standard` for customer provided values to be saved as plain text , `secret` for customer provided values to be secured and stored in encrypted format
 - `postDeployScript` - Path to script performing commercetools configuration post deployment including custom types creation/updation, extension & subscription creation/updation
