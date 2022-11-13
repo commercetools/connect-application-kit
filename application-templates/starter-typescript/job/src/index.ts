@@ -1,9 +1,7 @@
-/* eslint-disable import/first */
-import * as dotenv from 'dotenv';
-
-dotenv.config();
 import { getProject } from './client/create.client';
+import { envVarsError } from './errors/handling.errors';
 import { allOrdersWithLimit } from './orders/fetch';
+import { readConfiguration } from './utils/config.utils';
 
 /**
  * Job executer. This function will be called everytime a job executes.
@@ -12,6 +10,9 @@ import { allOrdersWithLimit } from './orders/fetch';
  */
 const exectuteJob = async (jobName: string) => {
   try {
+    // Validate our env vars
+    envVarsError(readConfiguration());
+
     // Get project infos
     const project = await getProject();
 
