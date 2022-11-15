@@ -1,7 +1,3 @@
-import * as dotenv from 'dotenv';
-
-dotenv.config();
-
 /**
  * Read the configuration env vars
  * (Add yours accordingly)
@@ -9,7 +5,7 @@ dotenv.config();
  * @returns The configuration with the correct env vars
  */
 export const readConfiguration = () => {
-  return {
+  const env = {
     clientId: process.env.CLIENT_ID || '',
     clientSecret: process.env.CLIENT_SECRET || '',
     projectKey: process.env.PROJECT_KEY || '',
@@ -17,4 +13,6 @@ export const readConfiguration = () => {
     region: process.env.REGION || '',
     port: process.env.PORT || '',
   };
+  //@todo: validate env
+  return env;
 };
