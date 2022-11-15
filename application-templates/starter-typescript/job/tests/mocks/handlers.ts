@@ -1,7 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-nocheck
 import { rest } from 'msw';
 import ordersData from './ordersData';
 
-const log = (...args: any[]) => {
+const log = (...args: unknown[]) => {
   if (process.env.LOG_MSW) {
     console.log(...args);
   }
@@ -26,10 +28,8 @@ export const handlers = [
   rest.get('*', (req, res, ctx) => {
     log('GET:', req.url.pathname);
     if (req.url.pathname === `/${PROJECT_KEY}/orders`) {
-      //@ts-ignore
       log('query:', JSON.stringify([...req.url.searchParams.entries()]));
       const data =
-        //@ts-ignore
         ordersData[JSON.stringify([...req.url.searchParams.entries()])];
       if (!data) {
         log('not found, error');

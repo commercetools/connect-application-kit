@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 //@tip: for large amount of records this would be better as a stream
 function getAll(getFunction) {
@@ -7,9 +8,7 @@ function getAll(getFunction) {
       lastResults: object | undefined = undefined,
       results = []
     ) {
-      //@ts-ignore
       const id = lastResults?.results?.slice(-1)[0]?.id;
-      //@ts-ignore
       const { total, count } = lastResults || {};
       if (lastResults && total === count) {
         return {

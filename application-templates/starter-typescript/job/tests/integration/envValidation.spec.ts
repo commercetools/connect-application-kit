@@ -12,7 +12,6 @@ const env = {
 
 describe('Testing create integration', () => {
   it('response statusCode 400 / created', async () => {
-    const str21 = '123456789012345678901';
     const str201 = [...new Array(201)].map(() => 'a').join('');
     const str5001 = [...new Array(5001)].map(() => 'a').join('');
     return Promise.all(

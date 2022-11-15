@@ -16,7 +16,9 @@ export const readConfiguration = () => {
     region: process.env.REGION as string,
     port: process.env.PORT,
   };
-  const messages = getValidateMessages(envValidators, env);
+  //@todo: remove one line below, fails tslint
+  envValidators && getValidateMessages;
+  // const messages = getValidateMessages(envValidators, env);
   //@todo: throw custom error when messages is set
   //   throw new CustomError('InvalidEnv', 'Invalid environment', messages)
   return env;

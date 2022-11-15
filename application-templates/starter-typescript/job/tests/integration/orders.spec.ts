@@ -3,7 +3,6 @@ import { describe, expect } from '@jest/globals';
 import { server } from '../mocks/server';
 import { SDKError } from '../../src/types';
 const USE_MSW = process.env.USE_MSW;
-const MAX_ITEMS = USE_MSW ? 500 : 3;
 
 beforeAll(() => {
   if (USE_MSW) {
@@ -43,7 +42,7 @@ describe('Testing Job Template', () => {
   });
   it('error handling', async () => {
     try {
-      const response = await job('error job', {
+      await job('error job', {
         where: USE_MSW
           ? 'error'
           : `lastModifiedAt <= "2020-07-24T09:11:13.369Z" and lastModifiedAt > "2020-07-24T09:11:13.049Z"`,
