@@ -28,3 +28,6 @@ application-templates/**/yarn.lock
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+application-templates/starter-typescript/job/.env
+application-templates/starter-typescript/job/.env.*
+!application-templates/starter-typescript/job/.env.example
