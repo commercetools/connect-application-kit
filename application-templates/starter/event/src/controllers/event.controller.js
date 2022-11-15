@@ -14,6 +14,7 @@ const post = async (request, response) => {
 
   // Check request body
   if (!request.body) {
+    logger.error('Missing request body.');
     response.status(400).json({
       error: 'Bad request: No Pub/Sub message was received',
     });
@@ -59,7 +60,7 @@ const post = async (request, response) => {
       .execute();
 
     // Execute the tasks in need
-    // logger.log(customer);
+    logger.info(customer);
   } catch (error) {
     response.status(400).json({
       error: `Bad request: ${error}`,
