@@ -13,6 +13,9 @@ dotenv.config();
 // Import routes
 // eslint-disable-next-line import/first
 import ServiceRoutes from './routes/service.route';
+// Import logger
+// eslint-disable-next-line import/first
+import { logger } from './utils/logger';
 
 const PORT = process.env.PORT;
 
@@ -45,7 +48,7 @@ app.use('/service', ServiceRoutes);
 
 // Listen the application
 const server = app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+  logger.info(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
 
 export default server;

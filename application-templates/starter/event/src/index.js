@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const logger = require('./utils/logger');
 
 require('dotenv').config();
 
@@ -30,7 +31,7 @@ app.use('/event', EventRoutes);
 
 // Listen the application
 const server = app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+  logger.info(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
 
 module.exports = server;

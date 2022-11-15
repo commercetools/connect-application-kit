@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import { getProject } from './client/create.client';
 import { allOrdersWithLimit } from './orders/fetch';
+import { logger } from './utils/logger';
 
 /**
  * Job executer. This function will be called everytime a job executes.
@@ -19,7 +20,7 @@ const exectuteJob = async (jobName: string) => {
     const limitedOrdersObject = await allOrdersWithLimit();
 
     // Simple log. Do what you want with the info
-    console.log(
+    logger.info(
       `There are ${limitedOrdersObject.body.total} orders in the ${project.body.name} project`
     );
   } catch (error) {
@@ -31,4 +32,4 @@ const exectuteJob = async (jobName: string) => {
   }
 };
 
-exectuteJob('Fetch all orders');
+exectuteJob('Fetch all orders').catch(({ message }) => logger.error(message));

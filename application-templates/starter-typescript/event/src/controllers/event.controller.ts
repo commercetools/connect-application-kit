@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { apiRoot } from '../client/create.client';
+import { logger } from '../utils/logger';
 
 /**
  * Exposed event POST endpoint.
@@ -14,6 +15,7 @@ export const post = async (request: Request, response: Response) => {
 
   // Check request body
   if (!request.body) {
+    logger.error('Missing request body.');
     response.status(400).send({
       error: 'Bad request: No Pub/Sub message was received',
     });
@@ -59,7 +61,7 @@ export const post = async (request: Request, response: Response) => {
       .execute();
 
     // Execute the tasks in need
-    // console.log(customer);
+    logger.info(customer);
   } catch (error) {
     response.status(400).send({
       error: `Bad request: ${error}`,
