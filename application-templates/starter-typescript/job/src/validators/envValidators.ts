@@ -38,7 +38,7 @@ const envValidators = [
       message: 'Scope should be at least 2 characters long.',
       referencedBy: 'environmentVariables',
     },
-    { min: 2, max: null }
+    { min: 2, max: undefined }
   ),
   region(['region'], {
     code: 'InvalidRegion',

@@ -47,9 +47,12 @@ export const standardKey = (path, message) => [
   path,
   [
     [
-      (value) =>
-        validator.isLength(String(value), { min: 2, max: 20 }) &&
-        /^[a-zA-Z0-9-_]+$/.test(value),
+      required(
+        (value) =>
+          validator.isLength(String(value), { min: 2 }) &&
+          /^[a-zA-Z0-9-_]+$/.test(value)
+      ),
+
       message,
     ],
   ],
@@ -122,14 +125,15 @@ export const region: ValidatorCreator = (path, message) => [
   path,
   [
     [
-      (value) =>
+      required((value) =>
         validator.isIn(value, [
           'us-central1.gcp',
           'us-east-2.aws',
           'europe-west1.gcp',
           'eu-central-1.aws',
           'australia-southeast1.gcp',
-        ]),
+        ])
+      ),
       message,
     ],
   ],
