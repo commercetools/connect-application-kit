@@ -17,7 +17,6 @@ export const readConfiguration = () => {
     port: process.env.PORT,
   };
   const messages = getValidateMessages(envValidators, env);
-  //@todo: test getValidateMessages(envValidators, object) for all validations
   //@todo: throw custom error when messages is set
   //   throw new CustomError('InvalidEnv', 'Invalid environment', messages)
   return env;
