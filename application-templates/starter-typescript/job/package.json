@@ -20,7 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "@commercetools/platform-sdk": "^4.1.0",
-    "@commercetools/sdk-client-v2": "^2.0.2"
+    "@commercetools/sdk-client-v2": "^2.0.2",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.14",
