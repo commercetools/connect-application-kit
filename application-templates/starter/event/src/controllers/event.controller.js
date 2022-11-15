@@ -1,4 +1,5 @@
 const { apiRoot } = require('../client/create.client');
+const logger = require('../utils/logger');
 
 /**
  * Exposed event POST endpoint.
@@ -58,7 +59,7 @@ const post = async (request, response) => {
       .execute();
 
     // Execute the tasks in need
-    // console.log(customer);
+    // logger.log(customer);
   } catch (error) {
     response.status(400).json({
       error: `Bad request: ${error}`,
