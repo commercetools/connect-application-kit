@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { apiRoot } from '../client/create.client';
+import { logger } from '../utils/logger';
 
 /**
  * Exposed event POST endpoint.
@@ -59,7 +60,7 @@ export const post = async (request: Request, response: Response) => {
       .execute();
 
     // Execute the tasks in need
-    // console.log(customer);
+    // logger.log(customer);
   } catch (error) {
     response.status(400).send({
       error: `Bad request: ${error}`,

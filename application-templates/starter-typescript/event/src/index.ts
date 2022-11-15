@@ -8,11 +8,12 @@ import express, {
 } from 'express';
 import bodyParser from 'body-parser';
 
-dotenv.config();
-
 // Import routes
 // eslint-disable-next-line import/first
 import EventRoutes from './routes/event.route';
+import { logger } from './utils/logger';
+
+dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
@@ -45,7 +46,7 @@ app.use('/event', EventRoutes);
 
 // Listen the application
 const server = app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+  logger.info(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
 
 export default server;
