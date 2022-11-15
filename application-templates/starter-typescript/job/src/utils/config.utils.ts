@@ -1,3 +1,4 @@
+import CustomError from '../interfaces/CustomError';
 import envValidators from '../validators/envValidators';
 import { getValidateMessages } from '../validators/helpers';
 
@@ -16,10 +17,13 @@ export const readConfiguration = () => {
     region: process.env.REGION as string,
     port: process.env.PORT,
   };
-  //@todo: remove one line below, fails tslint
-  envValidators && getValidateMessages;
-  // const messages = getValidateMessages(envValidators, env);
-  //@todo: throw custom error when messages is set
-  //   throw new CustomError('InvalidEnv', 'Invalid environment', messages)
+  const validationErrors = getValidateMessages(envValidators, env);
+  if (validationErrors.length) {
+    throw new CustomError(
+      'InvalidEnv',
+      'Invalid environment',
+      validationErrors
+    );
+  }
   return env;
 };

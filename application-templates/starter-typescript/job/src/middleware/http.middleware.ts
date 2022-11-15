@@ -1,9 +1,9 @@
 import { type HttpMiddlewareOptions } from '@commercetools/sdk-client-v2'; // Required for sending HTTP requests
-import { readConfiguration } from '../utils/config.utils';
 
+type HttpCreate = (region: string) => HttpMiddlewareOptions;
 /**
  * Configure Middleware. Example only. Adapt on your own
  */
-export const httpMiddlewareOptions: HttpMiddlewareOptions = {
-  host: `https://api.${readConfiguration().region}.commercetools.com`,
-};
+export const createHttpMiddlewareOptions: HttpCreate = (region) => ({
+  host: `https://api.${region}.commercetools.com`,
+});

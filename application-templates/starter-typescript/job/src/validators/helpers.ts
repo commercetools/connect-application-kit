@@ -39,7 +39,9 @@ export const standardNaturalNumber = (path, message) => [
   path,
   [
     [
-      (value) => validator.isNumeric(String(value), { no_symbols: true }),
+      required((value) =>
+        validator.isNumeric(String(value), { no_symbols: true })
+      ),
       message,
     ],
   ],
@@ -126,14 +128,16 @@ export const region: ValidatorCreator = (path, message) => [
   path,
   [
     [
-      required((value) =>
-        validator.isIn(value, [
-          'us-central1.gcp',
-          'us-east-2.aws',
-          'europe-west1.gcp',
-          'eu-central-1.aws',
-          'australia-southeast1.gcp',
-        ])
+      required(
+        required((value) =>
+          validator.isIn(value, [
+            'us-central1.gcp',
+            'us-east-2.aws',
+            'europe-west1.gcp',
+            'eu-central-1.aws',
+            'australia-southeast1.gcp',
+          ])
+        )
       ),
       message,
     ],

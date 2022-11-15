@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-nocheck
+//@todo: recomended rule warns on unused and does nothing on not defined
 import { rest } from 'msw';
 import ordersData from './ordersData';
 

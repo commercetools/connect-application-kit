@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-nocheck
 import job from '../../src/index';
 import { describe, expect } from '@jest/globals';
 import { server } from '../mocks/server';
@@ -30,7 +32,7 @@ describe('Testing Job Template', () => {
         ? 'where'
         : `lastModifiedAt <= "2020-07-24T09:11:13.369Z" and lastModifiedAt > "2020-07-24T09:11:13.049Z"`,
       sort: USE_MSW ? ['sort'] : ['lastModifiedAt desc'],
-    });
+    }).catch((error) => console.log('got error:', error));
     const { results, ...rest } = response;
     expect(rest).toEqual({
       offset: 0,
