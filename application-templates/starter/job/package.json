@@ -14,6 +14,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@commercetools-backend/loggers": "^21.19.0",
     "@commercetools/platform-sdk": "^4.1.0",
     "@commercetools/sdk-client-v2": "^2.0.2",
     "dotenv": "^16.0.3"

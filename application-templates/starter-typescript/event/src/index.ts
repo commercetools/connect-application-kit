@@ -9,6 +9,7 @@ import bodyParser from 'body-parser';
 
 // Import routes
 import EventRoutes from './routes/event.route';
+import { logger } from './utils/logger';
 
 import { readConfiguration } from './utils/config.utils';
 import { envVarsError } from './errors/handling.errors';
@@ -47,7 +48,7 @@ app.use('/event', EventRoutes);
 
 // Listen the application
 const server = app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+  logger.info(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
 
 export default server;

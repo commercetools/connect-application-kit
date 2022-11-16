@@ -1,5 +1,6 @@
 const { apiError } = require('../api/error.api');
 const { apiRoot } = require('../client/create.client');
+const logger = require('../utils/logger');
 
 /**
  * Exposed event POST endpoint.
@@ -14,7 +15,10 @@ const post = async (request, response) => {
 
   // Check request body
   if (!request.body) {
-    apiError(400, 'Bad request: No Pub/Sub message was received', response);
+    logger.error('Missing request body.');
+    response.status(400).json({
+      error: 'Bad request: No Pub/Sub message was received',
+    });
     return;
   }
 
@@ -57,7 +61,7 @@ const post = async (request, response) => {
       .execute();
 
     // Execute the tasks in need
-    // console.log(customer);
+    logger.info(customer);
   } catch (error) {
     apiError(400, `Bad request: ${error}`, response);
 

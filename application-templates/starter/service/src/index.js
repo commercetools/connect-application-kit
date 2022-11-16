@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const logger = require('./utils/logger');
 
 // Import routes
 const ServiceRoutes = require('./routes/service.routes');
@@ -33,7 +34,7 @@ app.use('/service', ServiceRoutes);
 
 // Listen the application
 const server = app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+  logger.info(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
 
 module.exports = server;

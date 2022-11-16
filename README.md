@@ -50,7 +50,7 @@ $ yarn build:watch
 
 In order to deploy your connect application on commercetools provided infrastructure, it needs to reviewed by certification team. This can be requested by creating a listing using <a href="https://docs.commercetools.com">connect APIs </a> 
 
-A default starter pack has a directory structure as shown below
+A default starter pack has a directory structure as shown below, repository should be a mono repo setup where you can choose to have more than one application in a single connector if needed
 
 ```
 ├── <docs>
@@ -58,6 +58,7 @@ A default starter pack has a directory structure as shown below
 ├── <app1>
 │   ├── src
 │   ├── tests
+│   ├── postDeploy.js
 │   └── package.json
 ├── <app2>
 │   ├── src
@@ -81,21 +82,44 @@ Connect supports 3 types of application which needs to set as `applicationType` 
 3. `job` - Task which needs to be performed at regular basis with defined intervals, these tasks can be scheduled using <a href="https://en.wikipedia.org/wiki/Cron">cron</a> expression
 
 
-A sample deployment config looks like this
+A sample deployment config looks like this, refer below for more detailed information on each property
 
 ```
 deployAs:
   - name: app1
     applicationType: service
+    appPath: /app1
+    configurationType:
+      ENVIRONMENT_VARIABLE_1: standard
+      ENVIRONMENT_VARIABLE_2: secret
+      ENVIRONMENT_VARIABLE_3: secret
+    postDeployScript: /app1/postDeploy.js
   - name: app2
     applicationType: job
+    appPath: /app2
     properties:
       schedule: "*/5 * * * *"
+    configurationType:
+      ENVIRONMENT_VARIABLE_1: standard
+      ENVIRONMENT_VARIABLE_2: standard
+    postDeployScript: /app2/postDeploy.js
   - name: app3
     applicationType: event
-
+    appPath: /app3
+    configurationType:
+      ENVIRONMENT_VARIABLE_1: standard
+      ENVIRONMENT_VARIABLE_2: secret
+      ENVIRONMENT_VARIABLE_3: standard
+    postDeployScript: /app3/postDeploy.js
 ```
 
 - Multiple applications of same type can be setup
 - A schedule property is additional mandatory information needed to be able to schedule the job
 - Event type of application needs to be defined together with a service type of application with mandatory subscriber information to process the received event
+
+## Property definition
+- `name` - Identifier of the application deployment. Deployment output url, topic & schedule can be fetched based on this reference
+- `applicationType` - Type of deployment . Can be one of `service`, `event` or `job`
+- `appPath` - Folder for the application in the monorepo
+- `configurationType` - Definiton of all environment variables needed by the application, customer will be responsible to provide value for these variables when choosen to deploy. Definition includes defining the type of variable if it needs to be secured or not . `standard` for customer provided values to be saved as plain text , `secret` for customer provided values to be secured and stored in encrypted format
+- `postDeployScript` - Path to script performing commercetools configuration post deployment including custom types creation/updation, extension & subscription creation/updation
