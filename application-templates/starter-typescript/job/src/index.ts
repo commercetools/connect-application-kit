@@ -11,6 +11,7 @@ const executeJob = async (jobName: string, queryArgs: QueryArgs) => {
   // Get the orders
   const limitedOrdersObject = await allOrders(queryArgs);
   logger.info(`There are ${limitedOrdersObject.total} orders!`);
+
   return limitedOrdersObject;
 };
 
