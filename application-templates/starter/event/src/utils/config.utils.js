@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+//@todo: replace with dotenv-run-script
 /**
  * Read the configuration env vars
  * (Add yours accordingly)
