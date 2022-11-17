@@ -1,4 +1,5 @@
 //@todo: replace with dotenv-run-script
+//@todo: use custom error (see typescript job)
 require('dotenv').config();
 
 /**
