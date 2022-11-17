@@ -1,5 +1,6 @@
 require('dotenv').config();
-
+//@todo: replace with dotenv-run-script
+//@todo: validate env here as with typescript job
 /**
  * Read the configuration env vars
  * (Add yours accordingly)
