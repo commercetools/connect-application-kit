@@ -2,12 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('./utils/logger');
 
-require('dotenv').config();
-
-const PORT = process.env.PORT;
-
 // Import routes
 const ServiceRoutes = require('./routes/service.routes');
+const { readConfiguration } = require('./utils/config.utils');
+const { envVarsError } = require('./errors/handling.errors');
+
+// Validate our env vars
+envVarsError(readConfiguration());
+
+const PORT = readConfiguration().port;
 
 // Create the express app
 const app = express();

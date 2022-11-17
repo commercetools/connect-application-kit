@@ -1,14 +1,16 @@
+const { readConfiguration } = require('../utils/config.utils');
+
 /**
  * Configure Middleware. Example only. Adapt on your own
  */
 const authMiddlewareOptions = {
-  host: `https://auth.${process.env.REGION}.commercetools.com`,
-  projectKey: process.env.PROJECT_KEY,
+  host: `https://auth.${readConfiguration().region}.commercetools.com`,
+  projectKey: readConfiguration().projectKey,
   credentials: {
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
+    clientId: readConfiguration().clientId,
+    clientSecret: readConfiguration().clientSecret,
   },
-  scopes: [process.env.SCOPE],
+  scopes: [readConfiguration().scope ? readConfiguration().scope : 'default'],
 };
 
 module.exports = authMiddlewareOptions;

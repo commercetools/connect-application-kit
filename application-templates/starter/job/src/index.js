@@ -1,6 +1,7 @@
-require('dotenv').config();
 const { getProject } = require('./client/create.client');
+const { envVarsError } = require('./errors/handling.errors');
 const { allOrdersWithLimit } = require('./orders/fetch');
+const { readConfiguration } = require('./utils/config.utils');
 const logger = require('./utils/logger');
 
 /**
@@ -10,6 +11,9 @@ const logger = require('./utils/logger');
  */
 const exectuteJob = async (jobName) => {
   try {
+    // Validate our env vars
+    envVarsError(readConfiguration());
+
     // Get project infos
     const project = await getProject();
 

@@ -41,10 +41,13 @@ const create = async (resource) => {
 
     return { statusCode: 200, actions: updateActions };
   } catch (error) {
+    //@todo: throw the error the sdk gave, it has better information
+    //  and standard structure (status,message,errors)
+    //@todo: use logger to log the error
     // Retry or handle the error
     // Create an error object
 
-    throw new Error(JSON.stringify(error));
+    throw new Error(`Internal server error on CartController: ${error.stack}`);
   }
 };
 
@@ -67,7 +70,9 @@ const cartController = async (action, resource) => {
     case 'Update':
       break;
     default:
-      break;
+      throw new Error(
+        `Internal Server Error - Resource not recognized. Allowed values are 'Create' or 'Update'.`
+      );
   }
 };
 
