@@ -44,6 +44,7 @@ const create = async (resource: Resourse) => {
 
     return { statusCode: 200, actions: updateActions };
   } catch (error) {
+    //@todo: rethrow the sdk error, it has (code,message,errors)
     // Retry or handle the error
     // Create an error object
     if (error instanceof Error) {
