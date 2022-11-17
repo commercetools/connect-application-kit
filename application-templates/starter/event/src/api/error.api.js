@@ -1,3 +1,5 @@
+//@todo: suggest using custom error constructor with (code, message, errors)
+//  as in typescript job
 /**
  * Send an API error to the client
  *
