@@ -1,5 +1,5 @@
 import { Response } from 'express';
-
+//@todo: standard message (status,message,errors)
 /**
  * Send an API error to the client
  *
