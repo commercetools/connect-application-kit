@@ -22,7 +22,8 @@ export const post = async (request: Request, response: Response) => {
     });
     return;
   }
-
+  //@todo: you can use the validator as in typescript job and get
+  //  standard error (code,message,errors)
   // Check if the body comes in a
   if (!request.body.message) {
     apiError(400, 'Bad request: Wrong No Pub/Sub message format', response);
