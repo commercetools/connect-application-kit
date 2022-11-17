@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "local-env": "dotenv-run-script .env.local --",
+    "example-env": "dotenv-run-script .env.example --",
     "prod-env": "dotenv-run-script .env.production --",
     "dev-env": "dotenv-run-script .env.develop --",
     "test-env": "dotenv-run-script .env.test --",
@@ -13,7 +14,8 @@
     "build": "rimraf ./build && tsc",
     "lint": "eslint . --ext .ts",
     "prettier": "prettier --write '**/*.{js,ts}'",
-    "test": "jest --config jest.config.js",
+    "test": "npm run example-env t1",
+    "t1": "jest --config jest.config.cjs",
     "test:watch": "jest --watch"
   },
   "author": "",
