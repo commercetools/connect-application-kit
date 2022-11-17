@@ -1,5 +1,6 @@
 import { Response } from 'express';
-
+//@todo: add error as documented here
+//  https://docs.commercetools.com/api/projects/api-extensions
 /**
  * Send an API error to the client
  *
