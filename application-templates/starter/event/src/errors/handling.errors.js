@@ -1,3 +1,4 @@
+//@todo suggest validator (see typescript job)
 /**
  * Helper to verify environment variables and check if they exist.
  * Throw an error if not
