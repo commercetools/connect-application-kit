@@ -1,3 +1,4 @@
+//@todo: validate env as in typescript job
 /**
  * Helper to verify environment variables and check if they exist.
  * Throw an error if not
