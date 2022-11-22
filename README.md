@@ -84,7 +84,7 @@ Connect supports 3 types of application which needs to set as `applicationType` 
 
 A sample deployment config looks like this, refer below for more detailed information on each property
 
-```
+```yaml
 deployAs:
   - name: app1
     applicationType: service
