@@ -21,12 +21,7 @@ const create = async (resource) => {
 
     // Fetch the product with the ID
     if (productId) {
-      // eslint-disable-next-line
-      const product = await apiRoot
-        .products()
-        .withId({ ID: productId })
-        .get()
-        .execute();
+      await apiRoot.products().withId({ ID: productId }).get().execute();
 
       // Work with the product
     }
@@ -52,8 +47,7 @@ const create = async (resource) => {
 };
 
 // Controller for update actions
-// eslint-disable-next-line no-unused-vars
-const update = (resource) => {};
+// const update = (resource) => {};
 
 /**
  * Handle the cart controller according to the action
@@ -64,9 +58,10 @@ const update = (resource) => {};
  */
 const cartController = async (action, resource) => {
   switch (action) {
-    case 'Create':
+    case 'Create': {
       const data = create(resource);
       return data;
+    }
     case 'Update':
       break;
     default:

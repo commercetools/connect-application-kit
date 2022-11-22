@@ -10,7 +10,6 @@ import bodyParser from 'body-parser';
 // Import routes
 import ServiceRoutes from './routes/service.route';
 // Import logger
-// eslint-disable-next-line import/first
 import { logger } from './utils/logger';
 
 import { readConfiguration } from './utils/config.utils';

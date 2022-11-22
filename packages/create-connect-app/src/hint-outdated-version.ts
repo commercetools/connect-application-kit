@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import semver from 'semver';
 import execa from 'execa';
 

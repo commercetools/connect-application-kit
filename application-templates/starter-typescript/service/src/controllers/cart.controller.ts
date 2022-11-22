@@ -1,7 +1,7 @@
 import { UpdateAction } from '@commercetools/sdk-client-v2';
 
 import { apiRoot } from '../client/create.client';
-import { Resourse } from '../interfaces/resource.interface';
+import { Resource } from '../interfaces/resource.interface';
 
 /**
  * Handle the create action
@@ -9,11 +9,11 @@ import { Resourse } from '../interfaces/resource.interface';
  * @param {Resource} resource The resource from the request body
  * @returns {object}
  */
-const create = async (resource: Resourse) => {
+const create = async (resource: Resource) => {
   let productId = undefined;
 
   try {
-    let updateActions: Array<UpdateAction> = [];
+    const updateActions: Array<UpdateAction> = [];
 
     // Deserialize the resource to a CartDraft
     const cartDraft = JSON.parse(JSON.stringify(resource));
@@ -24,12 +24,7 @@ const create = async (resource: Resourse) => {
 
     // Fetch the product with the ID
     if (productId) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const product = await apiRoot
-        .products()
-        .withId({ ID: productId })
-        .get()
-        .execute();
+      await apiRoot.products().withId({ ID: productId }).get().execute();
 
       // Work with the product
     }
@@ -56,8 +51,7 @@ const create = async (resource: Resourse) => {
 };
 
 // Controller for update actions
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const update = (resource: Resourse) => {};
+// const update = (resource: Resourse) => {};
 
 /**
  * Handle the cart controller according to the action
@@ -66,12 +60,12 @@ const update = (resource: Resourse) => {};
  * @param {Resource} resource The resource from the request body
  * @returns {Promise<object>} The data from the method that handles the action
  */
-export const cartController = async (action: string, resource: Resourse) => {
+export const cartController = async (action: string, resource: Resource) => {
   switch (action) {
-    case 'Create':
+    case 'Create': {
       const data = create(resource);
       return data;
-
+    }
     case 'Update':
       break;
 

@@ -7,16 +7,13 @@
   "scripts": {
     "start": "./packages/create-connect-app/bin/cli.js",
     "build": "rimraf ./packages/create-connect-app/build && tsc",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint .",
     "prettier": "prettier --write '**/*.{js,ts}'",
     "test": "jest --config jest.config.js",
     "prepare": "husky install"
   },
   "workspaces": {
-    "packages": [
-      "packages/*",
-      "application-templates/*/*"
-    ]
+    "packages": ["packages/*", "application-templates/*/*"]
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { cac } from 'cac';
 import { Listr, type ListrTask } from 'listr2';
 import * as tasks from './tasks';

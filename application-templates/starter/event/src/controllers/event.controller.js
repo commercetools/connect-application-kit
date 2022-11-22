@@ -53,7 +53,6 @@ const post = async (request, response) => {
   }
 
   try {
-    // eslint-disable-next-line no-unused-vars
     const customer = await apiRoot
       .customers()
       .withId({ ID: Buffer.from(customerId).toString() })

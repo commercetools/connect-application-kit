@@ -15,7 +15,7 @@ export const apiSuccess = (
   updateActions: Array<UpdateAction>,
   response: Response
 ) => {
-  let responseBody = {} as ResponseInterfaceSuccess;
+  const responseBody = {} as ResponseInterfaceSuccess;
 
   if (updateActions) {
     responseBody.actions = updateActions;

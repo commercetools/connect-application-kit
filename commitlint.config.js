@@ -4,7 +4,7 @@ module.exports = {
     parserOpts: {
       // Allow to write a "scope" with slashes
       // E.g. `refactor(app/my-component): something`
-      headerPattern: /^(\w*)(?:\(([\w\$\.\/\-\* ]*)\))?\: (.*)$/,
+      headerPattern: /^(\w*)(?:\(([\w$./\-* ]*)\))?: (.*)$/,
     },
   },
   rules: {

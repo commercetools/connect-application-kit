@@ -6,7 +6,8 @@ import ordersData from './ordersData';
 
 const log = (...args: unknown[]) => {
   if (process.env.LOG_MSW) {
-    console.log(...args);
+    // console.log(...args);
+    args;
   }
 };
 const PROJECT_KEY = process.env.PROJECT_KEY;

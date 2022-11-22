@@ -56,7 +56,6 @@ export const post = async (request: Request, response: Response) => {
   }
 
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const customer = await apiRoot
       .customers()
       .withId({ ID: Buffer.from(customerId).toString() })

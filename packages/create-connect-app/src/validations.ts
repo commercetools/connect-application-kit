@@ -16,11 +16,12 @@ const throwIfTemplateIsNotSupported = (
     case availableTemplates.starter:
     case availableTemplates['starter-typescript']:
       break;
-    default:
+    default: {
       const templateNamesList = Object.keys(availableTemplates).toString();
       throw new Error(
         `The provided template name "${templateName}" does not exist. Available templates are "${templateNamesList}". Make sure you are also using the latest version of "@commercetools-frontend/create-mc-app".`
       );
+    }
   }
 };
 
