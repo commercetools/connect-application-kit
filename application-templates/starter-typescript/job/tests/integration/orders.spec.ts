@@ -23,7 +23,7 @@ afterAll(async () => {
 });
 
 describe('Testing Job Template', () => {
-  xit('get all orders', async () => {
+  it('get all orders', async () => {
     //should use getAll withing a time period or records could be added
     //  or modified while fetching all, when fetching next batch in the
     //  next task use last data and last id
@@ -42,7 +42,7 @@ describe('Testing Job Template', () => {
     });
     expect(results.map(({ id }) => id)).toEqual(['5', '4', '3', '2', '1']);
   });
-  xit('error handling', async () => {
+  it('error handling', async () => {
     try {
       await job('error job', {
         where: USE_MSW
@@ -69,7 +69,7 @@ describe('Testing Job Template', () => {
       });
     }
   });
-  xit('empty record set', async () => {
+  it('empty record set', async () => {
     const response = await job('empty result', {
       where: USE_MSW
         ? 'empty'
