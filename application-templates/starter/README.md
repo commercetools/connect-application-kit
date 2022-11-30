@@ -22,3 +22,5 @@ Create repository from this template repository to build the integration applica
 * Connectors should be point to point in nature, no persistence capabilities should be added
 * Connector solution should use open source technologies, although it can be private
 * Webhooks/ endpoints exposed should only be utilized by either commercetools or 3rd party system, these should not be exposed publicly to avoid misuse
+* Code should not contain console.log statements, use [the included logger](https://github.com/commercetools/merchant-center-application-kit/tree/main/packages-backend/loggers#readme) instead.
+

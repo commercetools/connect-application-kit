@@ -1,3 +1,4 @@
 node_modules
 packages/create-connect-app/build
+application-templates/starter-typescript/job/build
 .nvmrc

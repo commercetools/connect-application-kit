@@ -1,15 +1,17 @@
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  extends: ['eslint:recommended'],
+  parserOptions: {
+    ecmaVersion: 2020,
+  },
   rules: {
-    '@typescript-eslint/no-unused-vars': 'error',
+    'no-unused-vars': 'error',
     'no-undef': 'error',
     'no-console': 'error',
     'no-const-assign': 'error',
   },
   env: {
+    es6: true,
     jest: true,
     node: true, //adds things like process to global
   },
