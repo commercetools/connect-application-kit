@@ -7,9 +7,6 @@ import {
 import { isSemVer } from './utils';
 import type { TCliCommandOptions, TCliTaskOptions } from './types';
 
-// const question = (rl: Interface, value: string) =>
-//   new Promise<string>((resolve) => rl.question(value, resolve));
-
 async function processOptions(
   projectDirectoryName: string,
   options: TCliCommandOptions

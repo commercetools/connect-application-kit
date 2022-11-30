@@ -4,16 +4,9 @@
 import { rest } from 'msw';
 import ordersData from './ordersData';
 
-const log = (...args: unknown[]) => {
-  if (process.env.LOG_MSW) {
-    // console.log(...args);
-    args;
-  }
-};
 const PROJECT_KEY = process.env.PROJECT_KEY;
 export const handlers = [
   rest.post('*', (req, res, ctx) => {
-    log('POST', req.url.pathname);
     if (req.url.pathname === '/oauth/token') {
       return res(
         ctx.status(200),
@@ -28,14 +21,9 @@ export const handlers = [
     return req.passthrough();
   }),
   rest.get('*', (req, res, ctx) => {
-    log('GET:', req.url.pathname);
     if (req.url.pathname === `/${PROJECT_KEY}/orders`) {
-      log('query:', JSON.stringify([...req.url.searchParams.entries()]));
       const data =
         ordersData[JSON.stringify([...req.url.searchParams.entries()])];
-      if (!data) {
-        log('not found, error');
-      }
       return data
         ? res(ctx.status(200), ctx.json(data))
         : res(
@@ -52,7 +40,6 @@ export const handlers = [
             })
           );
     }
-    log('   passthrough');
     return req.passthrough();
   }),
 ];
