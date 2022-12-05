@@ -9,7 +9,6 @@ deployAs:
       CLIENT_SECRET: secret
       SCOPE: secret
       REGION : standard
-    postDeployScript: /service/postDeploy.ts
   - name: job
     applicationType: job
     appPath: /job
@@ -21,7 +20,6 @@ deployAs:
       CLIENT_SECRET: secret
       SCOPE: secret
       REGION : standard
-    postDeployScript: /job/postDeploy.ts
   - name: event
     applicationType: event
     appPath: /event
@@ -31,4 +29,3 @@ deployAs:
       CLIENT_SECRET: secret
       SCOPE: secret
       REGION : standard
-    postDeployScript: /event/postDeploy.ts

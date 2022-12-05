@@ -93,7 +93,6 @@ deployAs:
       ENVIRONMENT_VARIABLE_1: standard
       ENVIRONMENT_VARIABLE_2: secret
       ENVIRONMENT_VARIABLE_3: secret
-    postDeployScript: /app1/postDeploy.js
   - name: app2
     applicationType: job
     appPath: /app2
@@ -102,7 +101,6 @@ deployAs:
     configurationType:
       ENVIRONMENT_VARIABLE_1: standard
       ENVIRONMENT_VARIABLE_2: standard
-    postDeployScript: /app2/postDeploy.js
   - name: app3
     applicationType: event
     appPath: /app3
@@ -110,7 +108,6 @@ deployAs:
       ENVIRONMENT_VARIABLE_1: standard
       ENVIRONMENT_VARIABLE_2: secret
       ENVIRONMENT_VARIABLE_3: standard
-    postDeployScript: /app3/postDeploy.js
 ```
 
 - Multiple applications of same type can be setup
@@ -123,4 +120,3 @@ deployAs:
 - `appPath` - Folder for the application in the monorepo
 - `configurationType` - Definiton of all environment variables needed by the application, customer will be responsible to provide value for these variables when choosen to deploy. Definition includes defining the type of variable if it needs to be secured or not . `standard` for customer provided values to be saved as plain text , `secret` for customer provided values to be secured and stored in encrypted format
 - `schedule` - Schedule expression for job applications, it need to be input of type <a href="https://en.wikipedia.org/wiki/Cron">cron</a> expression
-- `postDeployScript` - Path to script performing commercetools configuration post deployment including custom types creation/updation, extension & subscription creation/updation
