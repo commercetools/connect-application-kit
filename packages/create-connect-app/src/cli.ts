@@ -42,8 +42,6 @@ const run = () => {
         return;
       }
 
-      console.log('Project directory: ' + projectDirectory);
-
       console.log('');
       console.log(`Documentation available at https://docs.commercetools.com/`);
       console.log('');
