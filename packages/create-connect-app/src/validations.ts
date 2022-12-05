@@ -1,8 +1,6 @@
 import fs from 'fs';
-import path from 'path';
 import semver from 'semver';
 import type { TCliCommandOptions } from './types';
-import { isSemVer } from './utils';
 
 const availableTemplates = {
   starter: 'starter',
@@ -33,33 +31,6 @@ const throwIfProjectDirectoryExists = (dirName: string, dirPath: string) => {
   }
 };
 
-const throwIfTemplateVersionDoesNotExist = (
-  templateName: string,
-  templateFolderPath: string,
-  versionToCheck: string
-) => {
-  if (!fs.existsSync(templateFolderPath)) {
-    throw new Error(
-      `The downloaded template "${templateName}" does not exist for the given version "${versionToCheck}". Check the releases page if you are looking for a specific version: https://github.com/commercetools/merchant-center-application-kit/releases`
-    );
-  }
-  // In case the version is semver (usually release tags) we check that
-  // the cloned repository contains the template matching the given version
-  if (isSemVer(versionToCheck)) {
-    const templatePackageJson = JSON.parse(
-      fs.readFileSync(path.join(templateFolderPath, 'package.json'), {
-        encoding: 'utf8',
-      })
-    );
-    const versionAsNumber = versionToCheck.replace('v', '');
-    if (templatePackageJson.version !== versionAsNumber) {
-      throw new Error(
-        `The downloaded template "${templateName}" does not match the version "${versionAsNumber}", instead got "${templatePackageJson.version}". Check the releases page if you want to provide a specific version: https://github.com/commercetools/merchant-center-application-kit/releases`
-      );
-    }
-  }
-};
-
 const throwIfNodeVersionIsNotSupported = (
   currentNodeVersion: string,
   expectedVersionRange: string
@@ -79,6 +50,5 @@ const throwIfNodeVersionIsNotSupported = (
 export {
   throwIfTemplateIsNotSupported,
   throwIfProjectDirectoryExists,
-  throwIfTemplateVersionDoesNotExist,
   throwIfNodeVersionIsNotSupported,
 };
