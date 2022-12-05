@@ -4,7 +4,6 @@ import { Listr, type ListrTask } from 'listr2';
 import * as tasks from './tasks';
 import { throwIfNodeVersionIsNotSupported } from './validations';
 import { shouldUseYarn } from './utils';
-import hintOutdatedVersion from './hint-outdated-version';
 import processOptions from './process-options';
 import type { TCliCommandOptions } from './types';
 import pkgJson from '../package.json';
@@ -30,17 +29,7 @@ const run = () => {
     .option(
       '--template <name>',
       '(optional) The name of the template to install.',
-      { default: 'starter' }
-    )
-    .option(
-      '--template-version <version>',
-      '(optional) The version of the template to install (either a git tag or a git branch of the "commercetools/connect-application-kit" repository).',
-      { default: 'main' }
-    )
-    .option(
-      '--skip-install',
-      '(optional) Skip installing the dependencies after cloning the template.',
-      { default: false }
+      { default: 'starter-typescript' }
     )
     .option(
       '--yes',
@@ -53,7 +42,7 @@ const run = () => {
         return;
       }
 
-      await hintOutdatedVersion(pkgJson.version);
+      console.log('Project directory: ' + projectDirectory);
 
       console.log('');
       console.log(`Documentation available at https://docs.commercetools.com/`);
@@ -61,12 +50,9 @@ const run = () => {
 
       const taskOptions = await processOptions(projectDirectory, options);
 
+      // Only task is to download the templates
       const taskList = new Listr(
-        [
-          tasks.downloadTemplate(taskOptions),
-          //tasks.updatePackageJson(taskOptions),
-          !options.skipInstall && tasks.installDependencies(taskOptions),
-        ].filter(Boolean) as ListrTask[]
+        [tasks.downloadTemplate(taskOptions)].filter(Boolean) as ListrTask[]
       );
 
       await taskList.run();
@@ -79,10 +65,16 @@ const run = () => {
       console.log('');
       console.log(`To get started:`);
       console.log(`$ cd ${taskOptions.projectDirectoryName}`);
-      if (options.skipInstall) {
-        console.log(`$ ${useYarn ? 'yarn' : 'npm'} install`);
-      }
-      console.log(`$ ${useYarn ? 'yarn' : 'npm'} start`);
+      console.log('');
+      console.log(`In this directory you'll find all three templates`);
+      console.log(`cd ['event', 'job', 'service']`);
+      console.log('');
+      console.log(
+        `$ ${useYarn ? 'yarn' : 'npm'} install && ${
+          useYarn ? 'yarn' : 'npm'
+        } start:dev`
+      );
+
       console.log('');
       console.log(
         `Visit https://docs.commercetools.com/connect for more info about developing Connect Applications. Enjoy 🚀`

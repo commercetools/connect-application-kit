@@ -1,8 +1,8 @@
+/* eslint-disable no-console */
 import os from 'os';
 import path from 'path';
 import execa from 'execa';
 import { Listr, type ListrTask } from 'listr2';
-import { throwIfTemplateVersionDoesNotExist } from '../validations';
 import type { TCliTaskOptions } from '../types';
 
 const filesToBeRemoved = ['CHANGELOG.md'];
@@ -12,6 +12,7 @@ function downloadTemplate(options: TCliTaskOptions): ListrTask {
     title: 'Downloading template',
     task: () => {
       const tmpDir = os.tmpdir();
+
       const tmpFolderNameForClonedRepository = [
         'connect-application-kit',
         '--',
@@ -19,15 +20,18 @@ function downloadTemplate(options: TCliTaskOptions): ListrTask {
         '--',
         Date.now().toString(),
       ].join('');
+
       const clonedRepositoryPath = path.join(
         tmpDir,
         tmpFolderNameForClonedRepository
       );
+
       const templateFolderPath = path.join(
         clonedRepositoryPath,
         'application-templates',
         options.templateName
       );
+
       return new Listr([
         {
           title: `Cloning repository using branch ${options.tagOrBranchVersion}`,
@@ -51,12 +55,6 @@ function downloadTemplate(options: TCliTaskOptions): ListrTask {
             if (result.failed) {
               throw new Error(result.stderr);
             }
-
-            throwIfTemplateVersionDoesNotExist(
-              options.templateName,
-              clonedRepositoryPath,
-              options.tagOrBranchVersion
-            );
 
             return result.stdout;
           },
