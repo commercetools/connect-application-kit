@@ -1,1 +1,1 @@
-.
+All changes are documented in [GitHub Releases](https://github.com/commercetools/connect-application-kit/releases)

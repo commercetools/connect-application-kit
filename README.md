@@ -8,6 +8,15 @@
   <i>✨ Monorepository with tools and components for developing connect applications 🛠</i>
 </p>
 
+## Template Features
+- **Typescript & Javascript**: languages supported
+- **Express**: Web server framework
+- **commercetools sdk**: Embedded sdk library for commercetools specific implementation
+- **Buildpack support**: Tooling to build production-ready container images from source code without a Dockerfile
+- **Local development utilities**: Basic yarn tools to build, start , test, lint & prettify code
+- **Structured logging library**: JSON formatted logger with log levels 
+- **Tests**: Basic tests setup for application
+
 ## Getting started
 
 If you are developing a connect application, you can start by installing one of our [templates](./application-templates) using the `create-connect-app` CLI.
@@ -46,9 +55,18 @@ $ yarn build
 $ yarn build:watch
 ```
 
-# Certification
+Run the application locally
 
-In order to deploy your connect application on commercetools provided infrastructure, it needs to reviewed by certification team. This can be requested by creating a listing using <a href="https://docs.commercetools.com">connect APIs </a> 
+```bash
+$ yarn start
+
+# or
+$ yarn start:dev
+```
+
+# Connect Certification
+
+In order to deploy your connect application on commercetools provided infrastructure, it needs to reviewed by certification team. This can be requested by creating a listing using <a href="https://docs.commercetools.com">connect APIs </a> <em>(not yet released)</em>
 
 A default starter pack has a directory structure as shown below, repository should be a mono repo setup where you can choose to have more than one application in a single connector if needed
 
@@ -68,11 +86,11 @@ A default starter pack has a directory structure as shown below, repository shou
 
 ```
 
-You can choose to remove/ add applications based on needs with similar repository structure.
+You can choose to remove/add applications based on needs with similar repository structure.
 
 Connect deployment details needs to be specified in `connect.yaml` which is required information needed for certificaiton of the application
 
-
+Buildpack is used to build artifacts to deploy , use `npm start` or `Procfile` to define the <a href="https://github.com/GoogleCloudPlatform/buildpacks#default-entrypoint-behavior">default entry point</a>
 
 # Deployment config
 
@@ -93,7 +111,6 @@ deployAs:
       ENVIRONMENT_VARIABLE_1: standard
       ENVIRONMENT_VARIABLE_2: secret
       ENVIRONMENT_VARIABLE_3: secret
-    postDeployScript: /app1/postDeploy.js
   - name: app2
     applicationType: job
     appPath: /app2
@@ -102,7 +119,6 @@ deployAs:
     configurationType:
       ENVIRONMENT_VARIABLE_1: standard
       ENVIRONMENT_VARIABLE_2: standard
-    postDeployScript: /app2/postDeploy.js
   - name: app3
     applicationType: event
     appPath: /app3
@@ -110,7 +126,6 @@ deployAs:
       ENVIRONMENT_VARIABLE_1: standard
       ENVIRONMENT_VARIABLE_2: secret
       ENVIRONMENT_VARIABLE_3: standard
-    postDeployScript: /app3/postDeploy.js
 ```
 
 - Multiple applications of same type can be setup
@@ -123,4 +138,3 @@ deployAs:
 - `appPath` - Folder for the application in the monorepo
 - `configurationType` - Definiton of all environment variables needed by the application, customer will be responsible to provide value for these variables when choosen to deploy. Definition includes defining the type of variable if it needs to be secured or not . `standard` for customer provided values to be saved as plain text , `secret` for customer provided values to be secured and stored in encrypted format
 - `schedule` - Schedule expression for job applications, it need to be input of type <a href="https://en.wikipedia.org/wiki/Cron">cron</a> expression
-- `postDeployScript` - Path to script performing commercetools configuration post deployment including custom types creation/updation, extension & subscription creation/updation
