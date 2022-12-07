@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { apiError } from '../api/error.api';
 import { apiSuccess } from '../api/success.api';
+import CustomError from '../errors/custom.error';
 import { cartController } from './cart.controller';
 
 /**
@@ -13,11 +13,11 @@ import { cartController } from './cart.controller';
  * @returns
  */
 export const post = async (request: Request, response: Response) => {
-  // Deserialize the action and resouce from the body
+  // Deserialize the action and resource from the body
   const { action, resource } = request.body;
 
   if (!action || !resource) {
-    apiError(400, 'Bad request - Missing body parameters.', response);
+    throw new CustomError(400, 'Bad request - Missing body parameters.');
   }
 
   // Identify the type of resource in order to redirect
@@ -32,11 +32,13 @@ export const post = async (request: Request, response: Response) => {
           return;
         }
 
-        apiError(data?.statusCode as number, JSON.stringify(data), response);
-        return;
+        throw new CustomError(
+          data ? data.statusCode : 400,
+          JSON.stringify(data)
+        );
       } catch (error) {
         if (error instanceof Error) {
-          apiError(500, error.message, response);
+          throw new CustomError(500, error.message);
         }
       }
 
@@ -48,10 +50,9 @@ export const post = async (request: Request, response: Response) => {
       break;
 
     default:
-      apiError(
+      throw new CustomError(
         500,
-        `Internal Server Error - Resource not recognized. Allowed values are 'cart', 'payments' or 'orders'.`,
-        response
+        `Internal Server Error - Resource not recognized. Allowed values are 'cart', 'payments' or 'orders'.`
       );
   }
 };

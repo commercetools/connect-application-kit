@@ -1,9 +1,9 @@
 import { allOrders } from './orders/fetch';
 import { QueryArgs } from './types';
-import { logger } from './utils/logger';
+import { logger } from './utils/logger.utils';
 
 /**
- * Job executer. This function will be called everytime a job executes.
+ * Job executer. This function will be called every time a job executes.
  *
  * @param jobName The name of the job for logging purposes
  */

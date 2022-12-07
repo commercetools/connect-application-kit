@@ -1,6 +1,7 @@
 import { UpdateAction } from '@commercetools/sdk-client-v2';
 
 import { apiRoot } from '../client/create.client';
+import CustomError from '../errors/custom.error';
 import { Resource } from '../interfaces/resource.interface';
 
 /**
@@ -39,11 +40,11 @@ const create = async (resource: Resource) => {
 
     return { statusCode: 200, actions: updateActions };
   } catch (error) {
-    //@todo: rethrow the sdk error, it has (code,message,errors)
     // Retry or handle the error
     // Create an error object
     if (error instanceof Error) {
-      throw new Error(
+      throw new CustomError(
+        400,
         `Internal server error on CartController: ${error.stack}`
       );
     }
@@ -51,7 +52,7 @@ const create = async (resource: Resource) => {
 };
 
 // Controller for update actions
-// const update = (resource: Resourse) => {};
+// const update = (resource: Resource) => {};
 
 /**
  * Handle the cart controller according to the action
@@ -70,7 +71,8 @@ export const cartController = async (action: string, resource: Resource) => {
       break;
 
     default:
-      throw new Error(
+      throw new CustomError(
+        500,
         `Internal Server Error - Resource not recognized. Allowed values are 'Create' or 'Update'.`
       );
   }

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import { apiError } from '../api/error.api';
 import { apiRoot } from '../client/create.client';
-import { logger } from '../utils/logger';
+import CustomError from '../errors/custom.error';
+import { logger } from '../utils/logger.utils';
 
 /**
  * Exposed event POST endpoint.
@@ -17,18 +17,13 @@ export const post = async (request: Request, response: Response) => {
   // Check request body
   if (!request.body) {
     logger.error('Missing request body.');
-    response.status(400).send({
-      error: 'Bad request: No Pub/Sub message was received',
-    });
-    return;
+    throw new CustomError(400, 'Bad request: No Pub/Sub message was received');
   }
-  //@todo: you can use the validator as in typescript job and get
-  //  standard error (code,message,errors)
-  // Check if the body comes in a
-  if (!request.body.message) {
-    apiError(400, 'Bad request: Wrong No Pub/Sub message format', response);
 
-    return;
+  // Check if the body comes in a message
+  if (!request.body.message) {
+    logger.error('Missing body message');
+    throw new CustomError(400, 'Bad request: Wrong No Pub/Sub message format');
   }
 
   // Receive the Pub/Sub message
@@ -47,12 +42,10 @@ export const post = async (request: Request, response: Response) => {
   }
 
   if (!customerId) {
-    apiError(
+    throw new CustomError(
       400,
-      'Bad request: No customer id in the Pub/Sub message',
-      response
+      'Bad request: No customer id in the Pub/Sub message'
     );
-    return;
   }
 
   try {
@@ -65,8 +58,7 @@ export const post = async (request: Request, response: Response) => {
     // Execute the tasks in need
     logger.info(customer);
   } catch (error) {
-    apiError(400, `Bad request: ${error}`, response);
-    return;
+    throw new CustomError(400, `Bad request: ${error}`);
   }
 
   // Return the response for the client

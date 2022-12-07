@@ -1,18 +1,13 @@
-import express, {
-  Express,
-  Request,
-  Response,
-  NextFunction,
-  ErrorRequestHandler,
-} from 'express';
+import express, { Express } from 'express';
 import bodyParser from 'body-parser';
 
 // Import routes
 import EventRoutes from './routes/event.route';
-import { logger } from './utils/logger';
+import { logger } from './utils/logger.utils';
 
 import { readConfiguration } from './utils/config.utils';
 import { envVarsError } from './errors/handling.errors';
+import { errorMiddleware } from './middleware/error.middleware';
 
 // Validate our env vars
 envVarsError(readConfiguration());
@@ -26,25 +21,11 @@ const app: Express = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Global error handler
-app.use(
-  (
-    error: ErrorRequestHandler,
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
-    // response to user with 403 error and details
-    if (error) {
-      next(error);
-    } else {
-      next();
-    }
-  }
-);
-
 // Define routes
 app.use('/event', EventRoutes);
+
+// Global error handler
+app.use(errorMiddleware);
 
 // Listen the application
 const server = app.listen(PORT, () => {
