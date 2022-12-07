@@ -7,9 +7,10 @@ import { readConfiguration } from '../utils/config.utils';
  * Create a new client builder.
  * This code creates a new Client that can be used to make API calls
  */
-export const ctpClient = new ClientBuilder()
-  .withProjectKey(readConfiguration().projectKey)
-  .withClientCredentialsFlow(authMiddlewareOptions)
-  .withHttpMiddleware(httpMiddlewareOptions)
-  .withLoggerMiddleware() // Include middleware for logging
-  .build();
+export const createClient = () =>
+  new ClientBuilder()
+    .withProjectKey(readConfiguration().projectKey)
+    .withClientCredentialsFlow(authMiddlewareOptions)
+    .withHttpMiddleware(httpMiddlewareOptions)
+    .withLoggerMiddleware() // Include middleware for logging
+    .build();

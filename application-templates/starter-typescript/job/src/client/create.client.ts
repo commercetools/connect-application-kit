@@ -12,9 +12,11 @@ export const createApiRoot = ((root?: ByProjectKeyRequestBuilder) => () => {
   if (root) {
     return root;
   }
+
   root = createApiBuilderFromCtpClient(createClient()).withProjectKey({
     projectKey: readConfiguration().projectKey,
   });
+
   return root;
 })();
 
