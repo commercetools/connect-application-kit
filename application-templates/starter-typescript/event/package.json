@@ -4,6 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "local": "dotenv-run-script .env.local --",
+    "example": "dotenv-run-script .env.example --",
+    "prod": "dotenv-run-script .env.production --",
+    "dev": "dotenv-run-script .env.develop --",
     "start": "node build/index.js",
     "start:dev": "concurrently -k \"tsc --watch\" \"nodemon -q build/index.js\"",
     "build": "rimraf ./build && tsc",
@@ -16,7 +20,11 @@
     "@types/express": "^4.17.14",
     "@types/jest": "^29.2.0",
     "@types/node": "^18.11.4",
+    "@types/validator": "^13.7.10",
+    "@typescript-eslint/eslint-plugin": "^5.45.1",
+    "@typescript-eslint/parser": "^5.45.1",
     "concurrently": "^7.5.0",
+    "dotenv-run-script": "^0.2.0",
     "eslint": "^8.26.0",
     "jest": "^29.2.1",
     "nodemon": "^2.0.20",
@@ -30,7 +38,7 @@
     "@commercetools/platform-sdk": "^4.1.0",
     "@commercetools/sdk-client-v2": "^2.0.1",
     "body-parser": "^1.20.1",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "validator": "^13.7.0"
   }
 }

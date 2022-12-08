@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { apiRoot } from '../client/create.client';
+import { createApiRoot } from '../client/create.client';
 import CustomError from '../errors/custom.error';
 import { logger } from '../utils/logger.utils';
 
@@ -49,7 +49,7 @@ export const post = async (request: Request, response: Response) => {
   }
 
   try {
-    const customer = await apiRoot
+    const customer = await createApiRoot()
       .customers()
       .withId({ ID: Buffer.from(customerId).toString() })
       .get()

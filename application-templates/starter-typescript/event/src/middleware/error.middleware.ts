@@ -17,12 +17,14 @@ export const errorMiddleware = (
   next: NextFunction
 ) => {
   if (error instanceof CustomError) {
-    res.status(error.statusCode).json({
-      message: error.message,
-      errors: error.errors,
-    });
+    if (typeof error.statusCode === 'number') {
+      res.status(error.statusCode).json({
+        message: error.message,
+        errors: error.errors,
+      });
 
-    return;
+      return;
+    }
   }
 
   res.status(500).send('Internal server error');
