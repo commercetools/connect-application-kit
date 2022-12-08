@@ -1,20 +1,26 @@
 type ErrorItem = {
-  code: string;
+  statusCode: number | string;
   message: string;
   referencedBy?: string;
 };
 
 class CustomError extends Error {
-  status: string;
+  statusCode: number | string;
   message: string;
   errors?: ErrorItem[];
-  constructor(status: string, message: string, errors?: ErrorItem[]) {
+
+  constructor(
+    statusCode: number | string,
+    message: string,
+    errors?: ErrorItem[]
+  ) {
     super(message);
-    this.status = status;
+    this.statusCode = statusCode;
     this.message = message;
     if (errors) {
       this.errors = errors;
     }
   }
 }
+
 export default CustomError;

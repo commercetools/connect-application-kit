@@ -1,22 +1,18 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-nocheck
+// @ts-nocheck
+
 import validator from 'validator';
-type Message = {
-  code: string;
-  message: string;
-  referencedBy: string;
-};
-type ValidatorCreator = (
-  path: string[],
-  message: Message,
-  overrideConfig?: object
-) => [string[], [[(o: object) => boolean, string, [object]]]];
-type ValidatorFunction = (o: object) => boolean;
-type Wrapper = (validator: ValidatorFunction) => (value: object) => boolean;
+import { ValidatorCreator, Wrapper } from '../types/index.types';
+
+/**
+ * File used to create helpers to validate the fields
+ */
+
 const required: Wrapper =
   (fn) =>
   (value, ...args) =>
     !(value === undefined || value === null) && fn(...[String(value), ...args]);
+
 export const standardString: ValidatorCreator = (
   path,
   message,
@@ -31,10 +27,12 @@ export const standardString: ValidatorCreator = (
     ],
   ],
 ];
+
 export const standardEmail: ValidatorCreator = (path, message) => [
   path,
   [[required(validator.isEmail), message]],
 ];
+
 export const standardNaturalNumber = (path, message) => [
   path,
   [
@@ -46,6 +44,7 @@ export const standardNaturalNumber = (path, message) => [
     ],
   ],
 ];
+
 export const standardKey = (path, message) => [
   path,
   [
@@ -60,6 +59,7 @@ export const standardKey = (path, message) => [
     ],
   ],
 ];
+
 export const standardUrl = (path, message, overrideOptions = {}) => [
   path,
   [
@@ -83,6 +83,7 @@ export const standardUrl = (path, message, overrideOptions = {}) => [
     ],
   ],
 ];
+
 export const getValidateMessages = (validatorConfigs, item) =>
   validatorConfigs.flatMap(([path, validators]) => {
     return validators.reduce((acc, [validatorFn, message, args = []]) => {
@@ -95,6 +96,7 @@ export const getValidateMessages = (validatorConfigs, item) =>
       return acc;
     }, []);
   });
+
 export const optional =
   (fn) =>
   (...args) => {
@@ -109,6 +111,7 @@ export const optional =
       ]),
     ];
   };
+
 export const array =
   (fn) =>
   (...args) => {
@@ -124,6 +127,7 @@ export const array =
       ]),
     ];
   };
+
 export const region: ValidatorCreator = (path, message) => [
   path,
   [

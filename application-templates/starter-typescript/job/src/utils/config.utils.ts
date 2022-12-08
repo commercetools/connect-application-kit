@@ -1,6 +1,6 @@
-import CustomError from '../interfaces/CustomError';
-import envValidators from '../validators/envValidators';
-import { getValidateMessages } from '../validators/helpers';
+import CustomError from '../errors/custom.error';
+import envValidators from '../validators/env.validators';
+import { getValidateMessages } from '../validators/helpers.validators';
 
 /**
  * Read the configuration env vars
@@ -8,8 +8,9 @@ import { getValidateMessages } from '../validators/helpers';
  *
  * @returns The configuration with the correct env vars
  */
+
 export const readConfiguration = () => {
-  const env = {
+  const envVars = {
     clientId: process.env.CLIENT_ID as string,
     clientSecret: process.env.CLIENT_SECRET as string,
     projectKey: process.env.PROJECT_KEY as string,
@@ -17,13 +18,16 @@ export const readConfiguration = () => {
     region: process.env.REGION as string,
     port: process.env.PORT,
   };
-  const validationErrors = getValidateMessages(envValidators, env);
+
+  const validationErrors = getValidateMessages(envValidators, envVars);
+
   if (validationErrors.length) {
     throw new CustomError(
-      'InvalidEnv',
-      'Invalid environment',
+      'InvalidEnvironmentVariablesError',
+      'Invalid Environment Variables please check your .env file',
       validationErrors
     );
   }
-  return env;
+
+  return envVars;
 };

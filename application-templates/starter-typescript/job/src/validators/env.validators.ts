@@ -4,8 +4,11 @@ import {
   standardString,
   standardKey,
   region,
-} from './helpers';
+} from './helpers.validators';
 
+/**
+ * Create here your own validators
+ */
 const envValidators = [
   standardString(
     ['clientId'],
@@ -16,6 +19,7 @@ const envValidators = [
     },
     { min: 24, max: 24 }
   ),
+
   standardString(
     ['clientSecret'],
     {
@@ -25,12 +29,13 @@ const envValidators = [
     },
     { min: 32, max: 32 }
   ),
+
   standardKey(['projectKey'], {
     code: 'InvalidProjectKey',
     message: 'Project key should be a valid string.',
     referencedBy: 'environmentVariables',
   }),
-  //@todo: can do better validation for this
+
   optional(standardString)(
     ['scope'],
     {
@@ -40,15 +45,18 @@ const envValidators = [
     },
     { min: 2, max: undefined }
   ),
+
   region(['region'], {
     code: 'InvalidRegion',
     message: 'Not a valid region.',
     referencedBy: 'environmentVariables',
   }),
+
   optional(standardNaturalNumber)(['port'], {
     code: 'InvalidPort',
     message: 'Port is optional but should should be a number when provided.',
     referencedBy: 'environmentVariables',
   }),
 ];
+
 export default envValidators;

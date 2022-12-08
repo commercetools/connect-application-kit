@@ -1,5 +1,5 @@
-import { allOrders } from './orders/fetch';
-import { QueryArgs } from './types';
+import { allOrders } from './orders/fetch.orders';
+import { QueryArgs } from './types/index.types';
 import { logger } from './utils/logger.utils';
 
 /**

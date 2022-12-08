@@ -23,16 +23,20 @@ export type QueryArgs = {
   where?: string | string[];
   [key: string]: QueryParam;
 };
+
 export type GetFunction<ResponseType> = (
   queryArgs: QueryArgs
 ) => Promise<ResponseType>;
+
 export type GetAllFunction<ResponseType> = (
   getFunction: GetFunction<ResponseType>
 ) => GetFunction<ResponseType>;
+
 type SDKErrorItem = {
   code: string;
   message: string;
 };
+
 export type SDKError = {
   code: number;
   statusCode: number;
@@ -50,3 +54,21 @@ export type SDKError = {
   body: { statusCode: number; message: string; errors: SDKErrorItem[] };
   name: string;
 };
+
+export type Message = {
+  code: string;
+  message: string;
+  referencedBy: string;
+};
+
+export type ValidatorCreator = (
+  path: string[],
+  message: Message,
+  overrideConfig?: object
+) => [string[], [[(o: object) => boolean, string, [object]]]];
+
+export type ValidatorFunction = (o: object) => boolean;
+
+export type Wrapper = (
+  validator: ValidatorFunction
+) => (value: object) => boolean;
