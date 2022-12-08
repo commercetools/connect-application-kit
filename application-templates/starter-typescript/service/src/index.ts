@@ -7,13 +7,9 @@ import ServiceRoutes from './routes/service.route';
 import { logger } from './utils/logger.utils';
 
 import { readConfiguration } from './utils/config.utils';
-import { envVarsError } from './errors/handling.errors';
 import { errorMiddleware } from './middleware/error.middleware';
 
-// Validate our env vars
-envVarsError(readConfiguration());
-
-const PORT = readConfiguration().port;
+const PORT = readConfiguration().port || 3000;
 
 // Create the express app
 const app: Express = express();

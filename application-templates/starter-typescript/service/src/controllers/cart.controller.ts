@@ -1,6 +1,6 @@
 import { UpdateAction } from '@commercetools/sdk-client-v2';
 
-import { apiRoot } from '../client/create.client';
+import { createApiRoot } from '../client/create.client';
 import CustomError from '../errors/custom.error';
 import { Resource } from '../interfaces/resource.interface';
 
@@ -25,7 +25,11 @@ const create = async (resource: Resource) => {
 
     // Fetch the product with the ID
     if (productId) {
-      await apiRoot.products().withId({ ID: productId }).get().execute();
+      await createApiRoot()
+        .products()
+        .withId({ ID: productId })
+        .get()
+        .execute();
 
       // Work with the product
     }
