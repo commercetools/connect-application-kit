@@ -1,16 +1,12 @@
-const { createClient } = require('./build.client');
-
-const {
-  createApiBuilderFromCtpClient,
-} = require('@commercetools/platform-sdk');
-
-const { readConfiguration } = require('../utils/config.utils');
+import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
+import { createClient } from './build.client.js';
+import { readConfiguration } from '../utils/config.utils.js';
 
 /**
  * Create client with apiRoot
  * apiRoot can now be used to build requests to de Composable Commerce API
  */
-const createApiRoot = ((root) => () => {
+export const createApiRoot = ((root) => () => {
   if (root) {
     return root;
   }
@@ -29,11 +25,6 @@ const createApiRoot = ((root) => () => {
  *
  * @returns {Promise<ClientResponse<Project>>} apiRoot
  */
-const getProject = async () => {
+export const getProject = async () => {
   return await createApiRoot().get().execute();
-};
-
-module.exports = {
-  createApiRoot,
-  getProject,
 };

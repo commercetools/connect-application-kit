@@ -38,4 +38,4 @@ function getAll(getFunction) {
   };
 }
 
-module.exports = { getAll };
+export { getAll };

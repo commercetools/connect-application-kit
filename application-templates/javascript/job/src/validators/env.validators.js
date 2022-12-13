@@ -1,10 +1,10 @@
-const {
+import {
   optional,
   standardNaturalNumber,
   standardString,
   standardKey,
   region,
-} = require('./helpers.validators');
+} from './helpers.validators.js';
 
 /**
  * Create here your own validators
@@ -59,4 +59,4 @@ const envValidators = [
   }),
 ];
 
-module.exports = { envValidators };
+export default envValidators;

@@ -1,6 +1,6 @@
-const { CustomError } = require('../errors/custom.errors');
-const { envValidators } = require('../validators/env.validators');
-const { getValidateMessages } = require('../validators/helpers.validators');
+import { getValidateMessages } from '../validators/helpers.validators.js';
+import CustomError from '../errors/custom.error.js';
+import envValidators from '../validators/env.validators.js';
 
 /**
  * Read the configuration env vars
@@ -8,7 +8,8 @@ const { getValidateMessages } = require('../validators/helpers.validators');
  *
  * @returns The configuration with the correct env vars
  */
-const readConfiguration = () => {
+
+export const readConfiguration = () => {
   const envVars = {
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
@@ -30,5 +31,3 @@ const readConfiguration = () => {
 
   return envVars;
 };
-
-module.exports = { readConfiguration };

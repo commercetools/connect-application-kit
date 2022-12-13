@@ -1,6 +1,5 @@
-const { createApiRoot } = require('../client/create.client');
-
-const { getAll } = require('./modifier.orders');
+import { createApiRoot } from '../client/create.client.js';
+import { getAll } from './modifier.order.js';
 
 const getOrderSet = async (queryArgs) => {
   // Return all the orders
@@ -8,6 +7,4 @@ const getOrderSet = async (queryArgs) => {
   return body;
 };
 
-const allOrders = getAll(getOrderSet);
-
-module.exports = { allOrders };
+export const allOrders = getAll(getOrderSet);

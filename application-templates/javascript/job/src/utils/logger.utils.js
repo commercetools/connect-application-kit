@@ -1,5 +1,3 @@
-const { createApplicationLogger } = require('@commercetools-backend/loggers');
+import { createApplicationLogger } from '@commercetools-backend/loggers';
 
-const logger = createApplicationLogger();
-
-module.exports = logger;
+export const logger = createApplicationLogger();

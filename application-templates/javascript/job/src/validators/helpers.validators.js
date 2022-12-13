@@ -1,4 +1,4 @@
-const validator = require('validator');
+import validator from 'validator';
 
 /**
  * File used to create helpers to validate the fields
@@ -9,7 +9,7 @@ const required =
   (value, ...args) =>
     !(value === undefined || value === null) && fn(...[String(value), ...args]);
 
-const standardString = (path, message, overrideConfig = {}) => [
+export const standardString = (path, message, overrideConfig = {}) => [
   path,
   [
     [
@@ -20,12 +20,12 @@ const standardString = (path, message, overrideConfig = {}) => [
   ],
 ];
 
-const standardEmail = (path, message) => [
+export const standardEmail = (path, message) => [
   path,
   [[required(validator.isEmail), message]],
 ];
 
-const standardNaturalNumber = (path, message) => [
+export const standardNaturalNumber = (path, message) => [
   path,
   [
     [
@@ -37,7 +37,7 @@ const standardNaturalNumber = (path, message) => [
   ],
 ];
 
-const standardKey = (path, message) => [
+export const standardKey = (path, message) => [
   path,
   [
     [
@@ -52,7 +52,7 @@ const standardKey = (path, message) => [
   ],
 ];
 
-const standardUrl = (path, message, overrideOptions = {}) => [
+export const standardUrl = (path, message, overrideOptions = {}) => [
   path,
   [
     [
@@ -76,7 +76,7 @@ const standardUrl = (path, message, overrideOptions = {}) => [
   ],
 ];
 
-const getValidateMessages = (validatorConfigs, item) =>
+export const getValidateMessages = (validatorConfigs, item) =>
   validatorConfigs.flatMap(([path, validators]) => {
     return validators.reduce((acc, [validatorFn, message, args = []]) => {
       const valueToValidate = path.reduce((val, property) => {
@@ -89,7 +89,7 @@ const getValidateMessages = (validatorConfigs, item) =>
     }, []);
   });
 
-const optional =
+export const optional =
   (fn) =>
   (...args) => {
     const [path, validators] = fn(...args);
@@ -104,7 +104,7 @@ const optional =
     ];
   };
 
-const array =
+export const array =
   (fn) =>
   (...args) => {
     const [path, validators] = fn(...args);
@@ -120,7 +120,7 @@ const array =
     ];
   };
 
-const region = (path, message) => [
+export const region = (path, message) => [
   path,
   [
     [
@@ -139,15 +139,3 @@ const region = (path, message) => [
     ],
   ],
 ];
-
-module.exports = {
-  standardKey,
-  standardString,
-  standardEmail,
-  standardNaturalNumber,
-  standardUrl,
-  getValidateMessages,
-  array,
-  region,
-  optional,
-};

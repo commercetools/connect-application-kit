@@ -1,8 +1,7 @@
-require('dotenv').config();
-
-const { allOrders } = require('./orders/fetch.orders');
-const { readConfiguration } = require('./utils/config.utils');
-const logger = require('./utils/logger.utils');
+import 'dotenv/config';
+import { allOrders } from './orders/fetch.orders.js';
+import { readConfiguration } from './utils/config.utils.js';
+import { logger } from './utils/logger.utils.js';
 
 /**
  * Job executer. This function will be called every time a job executes.
@@ -24,4 +23,4 @@ executeJob({
   sort: ['lastModifiedAt'],
 });
 
-module.exports = executeJob;
+export default executeJob;
