@@ -1,16 +1,19 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const logger = require('./utils/logger');
+import 'dotenv/config';
+import express from 'express';
+import bodyParser from 'body-parser';
 
 // Import routes
-const ServiceRoutes = require('./routes/service.routes');
-const { readConfiguration } = require('./utils/config.utils');
-const { envVarsError } = require('./errors/handling.errors');
+import ServiceRoutes from './routes/service.route.js';
+// Import logger
+import { logger } from './utils/logger.utils.js';
 
-// Validate our env vars
-envVarsError(readConfiguration());
+import { readConfiguration } from './utils/config.utils.js';
+import { errorMiddleware } from './middleware/error.middleware.js';
 
-const PORT = readConfiguration().port;
+// Read env variables
+readConfiguration();
+
+const PORT = readConfiguration().port || 3000;
 
 // Create the express app
 const app = express();
@@ -19,22 +22,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Global error handler
-app.use((error, req, res, next) => {
-  // response to user with 403 error and details
-  if (error) {
-    next(error);
-  } else {
-    next();
-  }
-});
-
 // Define routes
 app.use('/service', ServiceRoutes);
+
+// Global error handler
+app.use(errorMiddleware);
 
 // Listen the application
 const server = app.listen(PORT, () => {
   logger.info(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
 
-module.exports = server;
+export default server;

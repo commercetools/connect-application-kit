@@ -1,9 +1,9 @@
-const { readConfiguration } = require('../utils/config.utils');
+import { readConfiguration } from '../utils/config.utils.js';
 
 /**
  * Configure Middleware. Example only. Adapt on your own
  */
-const authMiddlewareOptions = {
+export const authMiddlewareOptions = {
   host: `https://auth.${readConfiguration().region}.commercetools.com`,
   projectKey: readConfiguration().projectKey,
   credentials: {
@@ -12,5 +12,3 @@ const authMiddlewareOptions = {
   },
   scopes: [readConfiguration().scope ? readConfiguration().scope : 'default'],
 };
-
-module.exports = authMiddlewareOptions;

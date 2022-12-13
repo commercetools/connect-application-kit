@@ -1,13 +1,16 @@
 /**
  * Send a success response to the client
  *
+ * @typedef {import("@commercetools/sdk-client-v2").UpdateAction} UpdateAction
+ * @typedef {import("express").Response} Response
+ *
  * @param {Response} response Express response
  * @param {number} statusCode The status code of the operation
  * @param {Array<UpdateAction>} updateActions The update actions that were made in the process
  * @returns Success response with 200 status code and the update actions array
  */
-const apiSuccess = (statusCode, updateActions, response) => {
-  let responseBody = {};
+export const apiSuccess = (statusCode, updateActions, response) => {
+  const responseBody = {};
 
   if (updateActions) {
     responseBody.actions = updateActions;
@@ -17,5 +20,3 @@ const apiSuccess = (statusCode, updateActions, response) => {
     ...responseBody,
   });
 };
-
-module.exports = { apiSuccess };
