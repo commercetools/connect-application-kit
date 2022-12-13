@@ -1,31 +1,31 @@
-const { apiError } = require('../api/error.api');
-const { apiRoot } = require('../client/create.client');
-const logger = require('../utils/logger');
+import { createApiRoot } from '../client/create.client.js';
+import CustomError from '../errors/custom.error.js';
+import { logger } from '../utils/logger.utils.js';
 
 /**
  * Exposed event POST endpoint.
  * Receives the Pub/Sub message and works with it
  *
- * @param request The express request
- * @param response The express response
+ * @typedef {import("express").Response} Response
+ * @typedef {import("express").Request} Request
+ *
+ * @param {Request} request The express request
+ * @param {Response} response The express response
  * @returns
  */
-const post = async (request, response) => {
+export const post = async (request, response) => {
   let customerId = undefined;
 
   // Check request body
   if (!request.body) {
     logger.error('Missing request body.');
-    response.status(400).json({
-      error: 'Bad request: No Pub/Sub message was received',
-    });
-    return;
+    throw new CustomError(400, 'Bad request: No Pub/Sub message was received');
   }
 
-  // Check if the body comes in a
+  // Check if the body comes in a message
   if (!request.body.message) {
-    apiError(400, 'Bad request: Wrong No Pub/Sub message format', response);
-    return;
+    logger.error('Missing body message');
+    throw new CustomError(400, 'Bad request: Wrong No Pub/Sub message format');
   }
 
   // Receive the Pub/Sub message
@@ -44,16 +44,14 @@ const post = async (request, response) => {
   }
 
   if (!customerId) {
-    apiError(
+    throw new CustomError(
       400,
-      'Bad request: No customer id in the Pub/Sub message',
-      response
+      'Bad request: No customer id in the Pub/Sub message'
     );
-    return;
   }
 
   try {
-    const customer = await apiRoot
+    const customer = await createApiRoot()
       .customers()
       .withId({ ID: Buffer.from(customerId).toString() })
       .get()
@@ -62,13 +60,9 @@ const post = async (request, response) => {
     // Execute the tasks in need
     logger.info(customer);
   } catch (error) {
-    apiError(400, `Bad request: ${error}`, response);
-
-    return;
+    throw new CustomError(400, `Bad request: ${error}`);
   }
 
   // Return the response for the client
   response.status(204).send();
 };
-
-module.exports = { post };

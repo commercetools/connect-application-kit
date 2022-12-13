@@ -1,10 +1,8 @@
-const { readConfiguration } = require('../utils/config.utils');
+import { readConfiguration } from '../utils/config.utils.js';
 
 /**
  * Configure Middleware. Example only. Adapt on your own
  */
-const httpMiddlewareOptions = {
+export const httpMiddlewareOptions = {
   host: `https://api.${readConfiguration().region}.commercetools.com`,
 };
-
-module.exports = httpMiddlewareOptions;

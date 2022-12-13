@@ -3,9 +3,10 @@ module.exports = {
   extends: ['eslint:recommended'],
   parserOptions: {
     ecmaVersion: 2020,
+    sourceType: 'module',
   },
   rules: {
-    'no-unused-vars': 'error',
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'no-undef': 'error',
     'no-console': 'error',
     'no-const-assign': 'error',
