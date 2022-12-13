@@ -1,36 +1,27 @@
-const { getProject } = require('./client/create.client');
-const { envVarsError } = require('./errors/handling.errors');
-const { allOrdersWithLimit } = require('./orders/fetch');
+require('dotenv').config();
+
+const { allOrders } = require('./orders/fetch.orders');
 const { readConfiguration } = require('./utils/config.utils');
-const logger = require('./utils/logger');
+const logger = require('./utils/logger.utils');
 
 /**
- * Job executer. This function will be called everytime a job executes.
+ * Job executer. This function will be called every time a job executes.
  *
- * @param jobName The name of the job for logging purposes
+ * @param queryArgs Query arguments for commercetools sdk
  */
-const exectuteJob = async (jobName) => {
-  try {
-    // Validate our env vars
-    envVarsError(readConfiguration());
+const executeJob = async (queryArgs) => {
+  readConfiguration();
 
-    // Get project infos
-    const project = await getProject();
+  // Get the orders
+  const limitedOrdersObject = await allOrders(queryArgs);
+  logger.info(`There are ${limitedOrdersObject.total} orders!`);
 
-    // Get the orders
-    const limitedOrdersObject = await allOrdersWithLimit();
-
-    // Simple log. Do what you want with the info
-    logger.info(
-      `There are ${limitedOrdersObject.body.total} orders in the ${project.body.name} project`
-    );
-  } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(
-        `There was an unexpected error on job ${jobName}: ` + error.message
-      );
-    }
-  }
+  return limitedOrdersObject;
 };
 
-exectuteJob('Fetch all orders').catch(({ message }) => logger.error(message));
+executeJob({
+  //where: `lastModifiedAt <= "2020-07-24T09:11:13.369Z" and lastModifiedAt > "2020-07-24T09:11:13.049Z"`,
+  sort: ['lastModifiedAt'],
+});
+
+module.exports = executeJob;

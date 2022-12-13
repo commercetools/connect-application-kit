@@ -1,4 +1,4 @@
-const { ctpClient } = require('./build.client');
+const { createClient } = require('./build.client');
 
 const {
   createApiBuilderFromCtpClient,
@@ -10,9 +10,17 @@ const { readConfiguration } = require('../utils/config.utils');
  * Create client with apiRoot
  * apiRoot can now be used to build requests to de Composable Commerce API
  */
-const apiRoot = createApiBuilderFromCtpClient(ctpClient).withProjectKey({
-  projectKey: readConfiguration().projectKey,
-});
+const createApiRoot = ((root) => () => {
+  if (root) {
+    return root;
+  }
+
+  root = createApiBuilderFromCtpClient(createClient()).withProjectKey({
+    projectKey: readConfiguration().projectKey,
+  });
+
+  return root;
+})();
 
 /**
  * Example code to get the Project details
@@ -22,10 +30,10 @@ const apiRoot = createApiBuilderFromCtpClient(ctpClient).withProjectKey({
  * @returns {Promise<ClientResponse<Project>>} apiRoot
  */
 const getProject = async () => {
-  return await apiRoot.get().execute();
+  return await createApiRoot().get().execute();
 };
 
 module.exports = {
-  apiRoot,
+  createApiRoot,
   getProject,
 };
