@@ -2,7 +2,7 @@
   <a href="https://commercetools.com/">
     <img alt="commercetools logo" src="https://unpkg.com/@commercetools-frontend/assets/logos/commercetools_primary-logo_horizontal_RGB.png">
   </a></br>
-  <h2 align="center">commercetools Connect Application Kit </h2>
+  <h2 align="center">commercetools Connect Application Kit [BETA]</h2>
 </p>
 <p align="center">
   <i>✨ Monorepository with tools and components for developing connect applications 🛠</i>
