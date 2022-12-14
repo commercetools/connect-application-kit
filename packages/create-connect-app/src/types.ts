@@ -3,7 +3,7 @@ export type TCliGlobalOptions = {
 };
 
 export type TCliCommandOptions = {
-  template: 'starter' | 'starter-typescript';
+  template: 'javascript' | 'typescript';
   templateVersion: string;
   skipInstall: boolean;
   yes: boolean;

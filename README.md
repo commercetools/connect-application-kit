@@ -23,11 +23,11 @@ If you are developing a connect application, you can start by installing one of 
 
 ```bash
 $ npm install --global @commercetools-connect/create-connect-app
-$ create-connect-app first-connect-application --template starter
+$ create-connect-app first-connect-application --template [typescript | javascript]
 
 # or
 
-$ npx @commercetools-connect/create-connect-app@latest first-connect-application --template starter
+$ npx @commercetools-connect/create-connect-app@latest first-connect-application --template [typescript | javascript]
 ```
 
 # Developing connect applications
