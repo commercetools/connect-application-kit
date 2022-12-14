@@ -29,7 +29,7 @@ const run = () => {
     .option(
       '--template <name>',
       '(optional) The name of the template to install.',
-      { default: 'starter-typescript' }
+      { default: 'typescript' }
     )
     .option(
       '--yes',

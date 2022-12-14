@@ -3,16 +3,16 @@ import semver from 'semver';
 import type { TCliCommandOptions } from './types';
 
 const availableTemplates = {
-  starter: 'starter',
-  'starter-typescript': 'starter-typescript',
+  javascript: 'javascript',
+  typescript: 'typescript',
 } as const;
 
 const throwIfTemplateIsNotSupported = (
   templateName: TCliCommandOptions['template']
 ) => {
   switch (templateName) {
-    case availableTemplates.starter:
-    case availableTemplates['starter-typescript']:
+    case availableTemplates.javascript:
+    case availableTemplates.typescript:
       break;
     default: {
       const templateNamesList = Object.keys(availableTemplates).toString();
