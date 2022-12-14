@@ -8,6 +8,10 @@
   <i>✨ Monorepository with tools and components for developing connect applications 🛠</i>
 </p>
 
+> Connect starter kit and tools are marked as beta and subject to change. Use with caution.
+
+
+
 ## Template Features
 - **Typescript & Javascript**: languages supported
 - **Express**: Web server framework
