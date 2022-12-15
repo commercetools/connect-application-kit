@@ -4,11 +4,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 // Import routes
-import EventRoutes from './routes/event.route';
-import { logger } from './utils/logger.utils';
+import EventRoutes from './routes/event.route.js';
+import { logger } from './utils/logger.utils.js';
 
-import { readConfiguration } from './utils/config.utils';
-import { errorMiddleware } from './middleware/error.middleware';
+import { readConfiguration } from './utils/config.utils.js';
+import { errorMiddleware } from './middleware/error.middleware.js';
 
 // Read env variables
 readConfiguration();
