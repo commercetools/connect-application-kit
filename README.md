@@ -110,14 +110,14 @@ A sample deployment config looks like this, refer below for more detailed inform
 deployAs:
   - name: app1
     applicationType: service
-    appPath: /app1
+    endpoint: /app1
     configurationType:
       ENVIRONMENT_VARIABLE_1: standard
       ENVIRONMENT_VARIABLE_2: secret
       ENVIRONMENT_VARIABLE_3: secret
   - name: app2
     applicationType: job
-    appPath: /app2
+    endpoint: /app2
     properties:
       schedule: */5 * * * *
     configurationType:
@@ -125,7 +125,7 @@ deployAs:
       ENVIRONMENT_VARIABLE_2: standard
   - name: app3
     applicationType: event
-    appPath: /app3
+    endpoint: /app3
     configurationType:
       ENVIRONMENT_VARIABLE_1: standard
       ENVIRONMENT_VARIABLE_2: secret
@@ -137,8 +137,8 @@ deployAs:
 - Event type of application needs to be defined together with a service type of application with mandatory subscriber information to process the received event
 
 ## Property definition
-- `name` - Identifier of the application deployment. Deployment output url, topic & schedule can be fetched based on this reference
+- `name` - Folder name of respective application component from the root of monorepo which will be used as identifier of the application. Deployment output url, topic & schedule can be fetched based on this reference
 - `applicationType` - Type of deployment . Can be one of `service`, `event` or `job`
-- `appPath` - Folder for the application in the monorepo
+- `endpoint` - Point of entry for respective application component
 - `configurationType` - Definiton of all environment variables needed by the application, customer will be responsible to provide value for these variables when choosen to deploy. Definition includes defining the type of variable if it needs to be secured or not . `standard` for customer provided values to be saved as plain text , `secret` for customer provided values to be secured and stored in encrypted format
 - `schedule` - Schedule expression for job applications, it need to be input of type <a href="https://en.wikipedia.org/wiki/Cron">cron</a> expression
