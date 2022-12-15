@@ -1,26 +1,34 @@
-import 'dotenv/config';
-import { allOrders } from './orders/fetch.orders.js';
-import { readConfiguration } from './utils/config.utils.js';
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+import express from 'express';
+
+// Import routes
+import JobRoutes from './routes/job.route.js';
+
+// Import logger
 import { logger } from './utils/logger.utils.js';
 
-/**
- * Job executer. This function will be called every time a job executes.
- *
- * @param queryArgs Query arguments for commercetools sdk
- */
-const executeJob = async (queryArgs) => {
-  readConfiguration();
+import { readConfiguration } from './utils/config.utils.js';
+import { errorMiddleware } from './middleware/error.middleware.js';
 
-  // Get the orders
-  const limitedOrdersObject = await allOrders(queryArgs);
-  logger.info(`There are ${limitedOrdersObject.total} orders!`);
+// Read env variables
+readConfiguration();
 
-  return limitedOrdersObject;
-};
+const PORT = readConfiguration().port || 3000;
 
-executeJob({
-  //where: `lastModifiedAt <= "2020-07-24T09:11:13.369Z" and lastModifiedAt > "2020-07-24T09:11:13.049Z"`,
-  sort: ['lastModifiedAt'],
+// Create the express app
+const app = express();
+
+// Define routes
+app.use('/job', JobRoutes);
+
+// Global error handler
+app.use(errorMiddleware);
+
+// Listen the application
+const server = app.listen(PORT, () => {
+  logger.info(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
 
-export default executeJob;
+export default server;
