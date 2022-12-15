@@ -1,7 +1,7 @@
 deployAs:
   - name: service
     applicationType: service
-    appPath: /service
+    endpoint: /service
     configurationType:
       PORT: standard
       PROJECT_KEY: secret
@@ -11,7 +11,7 @@ deployAs:
       REGION : standard
   - name: job
     applicationType: job
-    appPath: /job
+    endpoint: /job
     properties:
       schedule: "*/5 * * * *"
     configurationType:
@@ -22,7 +22,7 @@ deployAs:
       REGION : standard
   - name: event
     applicationType: event
-    appPath: /event
+    endpoint: /event
     configurationType:
       PROJECT_KEY: secret
       CLIENT_ID: secret
