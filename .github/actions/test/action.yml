@@ -1,0 +1,10 @@
+name: test
+
+description: Shared action with basic setup for building and testing the package
+
+runs:
+  using: composite
+
+  steps:
+    - name: Test
+      uses: yarn test
