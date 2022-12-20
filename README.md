@@ -119,7 +119,7 @@ deployAs:
     applicationType: job
     endpoint: /app2
     properties:
-      schedule: */5 * * * *
+      schedule: "*/5 * * * *"
     configurationType:
       ENVIRONMENT_VARIABLE_1: standard
       ENVIRONMENT_VARIABLE_2: standard
