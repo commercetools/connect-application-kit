@@ -7,4 +7,5 @@ runs:
 
   steps:
     - name: Test
-      uses: yarn test
+      run: yarn install
+      shell: bash
