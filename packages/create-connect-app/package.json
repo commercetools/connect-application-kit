@@ -9,12 +9,7 @@
     "directory": "packages/create-connect-app"
   },
   "homepage": "https://docs.commercetools.com/custom-applications",
-  "keywords": [
-    "javascript",
-    "connect",
-    "template",
-    "toolkit"
-  ],
+  "keywords": ["javascript", "connect", "template", "toolkit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
