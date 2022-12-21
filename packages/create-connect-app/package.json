@@ -8,7 +8,7 @@
     "url": "https://github.com/commercetools/connect-application-kit.git",
     "directory": "packages/create-connect-app"
   },
-  "homepage": "https://docs.commercetools.com/custom-applications",
+  "homepage": "https://docs.commercetools.com/",
   "keywords": ["javascript", "connect", "template", "toolkit"],
   "license": "MIT",
   "publishConfig": {
