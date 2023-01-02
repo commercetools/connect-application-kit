@@ -36,7 +36,6 @@
   },
   "packageManager": "yarn@3.2.3",
   "devDependencies": {
-    "@commercetools-frontend/eslint-config-mc-app": "^21.14.0",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@tsconfig/node16": "^1.0.3",
