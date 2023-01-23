@@ -9,7 +9,7 @@
     "start:dev": "nodemon -q src/index.js",
     "lint": "eslint . --ext .js",
     "prettier": "prettier --write '**/*.{js,ts}'",
-    "test": "jest --config jest.config.js",
+    "test": "jest --config jest.config.cjs",
     "test:watch": "jest --watch"
   },
   "author": "",
