@@ -8,6 +8,7 @@
     "start": "node build/index.js",
     "start:dev": "concurrently -k \"tsc --watch\" \"nodemon -q build/index.js\"",
     "build": "rimraf ./build && tsc",
+    "config": "node build/post-build/cli.js",
     "lint": "eslint . --ext .ts",
     "prettier": "prettier --write '**/*.{js,ts}'",
     "test": "jest --config jest.config.cjs",
