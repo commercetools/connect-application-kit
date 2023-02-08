@@ -1,10 +1,8 @@
-import { postbuildTasks } from './tasks/build.tasks';
-
-const run = async () => {
-  await postbuildTasks().run();
-
-  // eslint-disable-next-line no-console
-  process.on('exit', (code) => console.log('Exited with code ', code));
+/* eslint-disable no-console */
+const runPostBuild = async () => {
+  console.log(
+    `Do all commercetools or other tool configurations here with the URL= ${process.env.CT_DEPLOYMENT_URL}.`
+  );
 };
 
-run();
+runPostBuild();
