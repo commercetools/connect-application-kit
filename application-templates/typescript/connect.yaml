@@ -4,28 +4,28 @@ deployAs:
     endpoint: /service
     configurationType:
       PORT: standard
-      PROJECT_KEY: secret
-      CLIENT_ID: secret
-      CLIENT_SECRET: secret
-      SCOPE: secret
-      REGION : standard
+      CTP_PROJECT_KEY: secret
+      CTP_CLIENT_ID: secret
+      CTP_CLIENT_SECRET: secret
+      CTP_SCOPE: secret
+      CTP_REGION : standard
   - name: job
     applicationType: job
     endpoint: /job
     properties:
       schedule: "*/5 * * * *"
     configurationType:
-      PROJECT_KEY: secret
-      CLIENT_ID: secret
-      CLIENT_SECRET: secret
-      SCOPE: secret
-      REGION : standard
+      CTP_PROJECT_KEY: secret
+      CTP_CLIENT_ID: secret
+      CTP_CLIENT_SECRET: secret
+      CTP_SCOPE: secret
+      CTP_REGION : standard
   - name: event
     applicationType: event
     endpoint: /event
     configurationType:
-      PROJECT_KEY: secret
-      CLIENT_ID: secret
-      CLIENT_SECRET: secret
-      SCOPE: secret
-      REGION : standard
+      CTP_PROJECT_KEY: secret
+      CTP_CLIENT_ID: secret
+      CTP_CLIENT_SECRET: secret
+      CTP_SCOPE: secret
+      CTP_REGION : standard

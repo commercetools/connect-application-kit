@@ -11,11 +11,11 @@ import { getValidateMessages } from '../validators/helpers.validators.js';
 
 export const readConfiguration = () => {
   const envVars = {
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    projectKey: process.env.PROJECT_KEY,
-    scope: process.env.SCOPE,
-    region: process.env.REGION,
+    clientId: process.env.CTP_CLIENT_ID,
+    clientSecret: process.env.CTP_CLIENT_SECRET,
+    projectKey: process.env.CTP_PROJECT_KEY,
+    scope: process.env.CTP_SCOPE,
+    region: process.env.CTP_REGION,
     port: process.env.PORT,
   };
 
