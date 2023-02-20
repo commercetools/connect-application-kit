@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node src/index.js",
     "start:dev": "nodemon -q src/index.js",
-    "postdeploy": "node post-build/cli.js",
+    "postdeploy": "node post-deploy/cli.js",
     "lint": "eslint . --ext .js",
     "prettier": "prettier --write '**/*.{js,ts}'",
     "test": "jest --config jest.config.cjs",
