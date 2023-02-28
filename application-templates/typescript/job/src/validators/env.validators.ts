@@ -1,6 +1,5 @@
 import {
   optional,
-  standardNaturalNumber,
   standardString,
   standardKey,
   region,
@@ -49,12 +48,6 @@ const envValidators = [
   region(['region'], {
     code: 'InvalidRegion',
     message: 'Not a valid region.',
-    referencedBy: 'environmentVariables',
-  }),
-
-  optional(standardNaturalNumber)(['port'], {
-    code: 'InvalidPort',
-    message: 'Port is optional but should should be a number when provided.',
     referencedBy: 'environmentVariables',
   }),
 ];

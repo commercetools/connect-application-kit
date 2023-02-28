@@ -3,7 +3,6 @@ deployAs:
     applicationType: service
     endpoint: /service
     configurationType:
-      PORT: standard
       CTP_PROJECT_KEY: secret
       CTP_CLIENT_ID: secret
       CTP_CLIENT_SECRET: secret
