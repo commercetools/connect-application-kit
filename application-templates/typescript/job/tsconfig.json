@@ -4,6 +4,7 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "outDir": "./build",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "inlineSourceMap": true
   }
 }

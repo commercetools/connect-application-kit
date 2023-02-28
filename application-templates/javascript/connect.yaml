@@ -2,6 +2,9 @@ deployAs:
   - name: service
     applicationType: service
     endpoint: /service
+    scripts:
+      postDeploy: npm install && npm run connector:post-deploy
+      preUndeploy: npm install && npm run connector:pre-undeploy
     configurationType:
       CTP_PROJECT_KEY: secret
       CTP_CLIENT_ID: secret
@@ -22,6 +25,9 @@ deployAs:
   - name: event
     applicationType: event
     endpoint: /event
+    scripts:
+      postDeploy: npm install && npm run connector:post-deploy
+      preUndeploy: npm install && npm run connector:pre-undeploy
     configurationType:
       CTP_PROJECT_KEY: secret
       CTP_CLIENT_ID: secret

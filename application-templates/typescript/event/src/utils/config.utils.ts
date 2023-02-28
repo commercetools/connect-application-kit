@@ -8,7 +8,6 @@ import { getValidateMessages } from '../validators/helpers.validators';
  *
  * @returns The configuration with the correct env vars
  */
-
 export const readConfiguration = () => {
   const envVars = {
     clientId: process.env.CTP_CLIENT_ID as string,

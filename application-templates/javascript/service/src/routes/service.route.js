@@ -1,16 +1,12 @@
 import { Router } from 'express';
-import { post } from '../controllers/service.controller.js';
+import { logger } from '../utils/logger.utils.js';
 
-// Create the router for our app
 const serviceRouter = Router();
 
-serviceRouter.post('/', async (req, res, next) => {
-  try {
-    await post(req, res);
-    next();
-  } catch (error) {
-    next(error);
-  }
+serviceRouter.post('/', async (req, res) => {
+  logger.info('Cart update extension executed');
+  res.status(200);
+  res.send();
 });
 
 export default serviceRouter;

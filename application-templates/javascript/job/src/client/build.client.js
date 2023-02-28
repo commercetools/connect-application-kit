@@ -12,5 +12,4 @@ export const createClient = () =>
     .withProjectKey(readConfiguration().projectKey)
     .withClientCredentialsFlow(createAuthMiddlewareOptions())
     .withHttpMiddleware(createHttpMiddlewareOptions(readConfiguration().region))
-    // .withLoggerMiddleware() // Activate this option to get logging on operations
     .build();

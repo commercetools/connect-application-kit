@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 
 // Import routes
 import ServiceRoutes from './routes/service.route.js';
+
 // Import logger
 import { logger } from './utils/logger.utils.js';
 
