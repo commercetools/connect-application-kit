@@ -1,6 +1,10 @@
+# Project
+.env
+
 # Dependency directories
 node_modules/
 .dccache
+
 # Build
 dist
 dist-tarballs

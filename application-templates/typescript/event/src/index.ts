@@ -14,7 +14,7 @@ import { errorMiddleware } from './middleware/error.middleware';
 // Read env variables
 readConfiguration();
 
-const PORT = readConfiguration().port || 3000;
+const PORT = 8080;
 
 // Create the express app
 const app: Express = express();
@@ -31,7 +31,7 @@ app.use(errorMiddleware);
 
 // Listen the application
 const server = app.listen(PORT, () => {
-  logger.info(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+  logger.info(`⚡️ Event application listening on port ${PORT}`);
 });
 
 export default server;
