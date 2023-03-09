@@ -12,5 +12,4 @@ export const createClient = () =>
     .withProjectKey(readConfiguration().projectKey)
     .withClientCredentialsFlow(authMiddlewareOptions)
     .withHttpMiddleware(httpMiddlewareOptions)
-    .withLoggerMiddleware() // Include middleware for logging
     .build();

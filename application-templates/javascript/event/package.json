@@ -10,7 +10,9 @@
     "lint": "eslint . --ext .js",
     "prettier": "prettier --write '**/*.{js,ts}'",
     "test": "jest --config jest.config.cjs",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "connector:post-deploy": "node src/connector/post-deploy.js",
+    "connector:pre-undeploy": "node src/connector/pre-undeploy.js"
   },
   "author": "",
   "license": "MIT",

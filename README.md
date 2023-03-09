@@ -80,7 +80,6 @@ A default starter pack has a directory structure as shown below, repository shou
 ├── <app1>
 │   ├── src
 │   ├── tests
-│   ├── postDeploy.js
 │   └── package.json
 ├── <app2>
 │   ├── src
@@ -111,6 +110,9 @@ deployAs:
   - name: app1
     applicationType: service
     endpoint: /app1
+    scripts:
+      postDeploy: npm install && npm run build && npm run connector:post-deploy
+      preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
     configurationType:
       ENVIRONMENT_VARIABLE_1: standard
       ENVIRONMENT_VARIABLE_2: secret
@@ -140,5 +142,7 @@ deployAs:
 - `name` - Folder name of respective application component from the root of monorepo which will be used as identifier of the application. Deployment output url, topic & schedule can be fetched based on this reference
 - `applicationType` - Type of deployment . Can be one of `service`, `event` or `job`
 - `endpoint` - Point of entry for respective application component
+- `scripts.postDeploy` - Post-deploy script to execute after the connector deployment process
+- `scripts.preUndeploy` - Pre-undeploy script to execute before the connector undeployment process
 - `configurationType` - Definiton of all environment variables needed by the application, customer will be responsible to provide value for these variables when choosen to deploy. Definition includes defining the type of variable if it needs to be secured or not . `standard` for customer provided values to be saved as plain text , `secret` for customer provided values to be secured and stored in encrypted format
 - `schedule` - Schedule expression for job applications, it need to be input of type <a href="https://en.wikipedia.org/wiki/Cron">cron</a> expression
