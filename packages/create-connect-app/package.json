@@ -9,12 +9,7 @@
     "directory": "packages/create-connect-app"
   },
   "homepage": "https://docs.commercetools.com/",
-  "keywords": [
-    "javascript",
-    "connect",
-    "template",
-    "toolkit"
-  ],
+  "keywords": ["javascript", "connect", "template", "toolkit"],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -29,7 +24,9 @@
     "semver": "7.3.7"
   },
   "engines": {
-    "node": "14.x || 16.x || 17.x"
+    "node": ">=14",
+    "npm": ">=6",
+    "yarn": ">=1.10"
   },
   "devDependencies": {
     "@types/semver": "^7.3.12"
