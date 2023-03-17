@@ -1,5 +1,11 @@
 # @commercetools-connect/create-connect-app
 
+## 0.2.0
+
+### Minor Changes
+
+- [#47](https://github.com/commercetools/connect-application-kit/pull/47) [`e2f52a9`](https://github.com/commercetools/connect-application-kit/commit/e2f52a905b1f163fca0596d018820f2ca5cb554c) Thanks [@ruidias-commercetools](https://github.com/ruidias-commercetools)! - Added support for Node 18 in create-connect-app
+
 ## 0.1.0
 
 ### Minor Changes
