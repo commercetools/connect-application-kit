@@ -1,5 +1,22 @@
 # @commercetools-connect/create-connect-app
 
+## 0.3.0
+
+### Minor Changes
+
+- [#48](https://github.com/commercetools/connect-application-kit/pull/48) [`e81e9cf`](https://github.com/commercetools/connect-application-kit/commit/e81e9cfa243aaee59a8bf7b4ff600678e557cc9f) Thanks [@ruidias-commercetools](https://github.com/ruidias-commercetools)! - - Removed unused dependencies:
+
+  - prettier
+  - rcfile
+  - ts-node
+  - nodemon
+
+  - Upgraded dependencies:
+    - jest -> @latest
+    - ts-jest -> @latest
+
+  With this upgrade it's expected to solve the secured vulnerability on Prototype Pollution in JSON5 via Parse Method.
+
 ## 0.2.0
 
 ### Minor Changes
