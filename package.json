@@ -34,7 +34,7 @@
     "npm": ">=6",
     "yarn": ">=1.10"
   },
-  "packageManager": "yarn@3.2.3",
+  "packageManager": "yarn@1.22.19",
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
