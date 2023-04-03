@@ -1,7 +1,8 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-import express, { Express } from 'express';
+import { Express } from 'express';
+import * as express from 'express';
 
 // Import routes
 import JobRoutes from './routes/job.route';
