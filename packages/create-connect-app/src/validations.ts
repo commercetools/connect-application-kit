@@ -17,7 +17,7 @@ const throwIfTemplateIsNotSupported = (
     default: {
       const templateNamesList = Object.keys(availableTemplates).toString();
       throw new Error(
-        `The provided template name "${templateName}" does not exist. Available templates are "${templateNamesList}". Make sure you are also using the latest version of "@commercetools-frontend/create-mc-app".`
+        `The provided template name "${templateName}" does not exist. Available templates are "${templateNamesList}". Make sure you are also using the latest version of "@commercetools-frontend/create-connect-app".`
       );
     }
   }
@@ -42,7 +42,7 @@ const throwIfNodeVersionIsNotSupported = (
 
   if (!hasValidNodeVersion) {
     throw new Error(
-      `You are running Node ${currentNodeVersion} but create-mc-app requires Node ${expectedVersionRange}. Please update your version of Node.`
+      `You are running Node ${currentNodeVersion} but create-connect-app requires Node ${expectedVersionRange}. Please update your version of Node.`
     );
   }
 };
