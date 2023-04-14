@@ -35,13 +35,18 @@ $ npx @commercetools-connect/create-connect-app@latest first-connect-application
 ```
 
 # Developing connect applications
-Install the dependencies (uses yarn workspaces):
+
+Before starting the development, we advise the developers to create a `.env` file in order to help them in local development.
+
+For that, we also have a template file `.env.example` with the required environement variables for the project to run successfuly. To make it work, rename the file from `.env.example` to `.env`. Remember to fill the variables with your values.
+
+### Install the dependencies (uses yarn workspaces):
 
 ```bash
 $ yarn
 ```
 
-To run the tests:
+### To run the tests:
 
 ```bash
 $ yarn test
@@ -50,7 +55,7 @@ $ yarn test
 $ yarn test:watch
 ```
 
-Build the application
+### Build the application
 
 ```bash
 $ yarn build
@@ -59,7 +64,7 @@ $ yarn build
 $ yarn build:watch
 ```
 
-Run the application locally
+### Run the application locally
 
 ```bash
 $ yarn start
