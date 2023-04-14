@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { createApiRoot } from '../client/create.client.js';
 import { assertError } from '../utils/assert.utils.js';
 import { deleteCustomerCreateSubscription } from './actions.js';
