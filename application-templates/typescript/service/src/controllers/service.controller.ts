@@ -43,10 +43,10 @@ export const post = async (request: Request, response: Response) => {
       }
 
       break;
-    case 'payments':
+    case 'payment':
       break;
 
-    case 'orders':
+    case 'order':
       break;
 
     default:
