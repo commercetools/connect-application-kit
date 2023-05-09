@@ -1,3 +1,5 @@
+import { expect } from '@jest/globals';
+
 //@todo: test this with msw (see typescipt job)
 //  make msw a shared package
 describe('Testing Event Controller', () => {
