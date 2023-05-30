@@ -5,32 +5,53 @@ deployAs:
     scripts:
       postDeploy: npm install && npm run build && npm run connector:post-deploy
       preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
-    configurationType:
-      CTP_PROJECT_KEY: secret
-      CTP_CLIENT_ID: secret
-      CTP_CLIENT_SECRET: secret
-      CTP_SCOPE: secret
-      CTP_REGION : standard
+    configuration:
+      standardConfiguration:
+        - key: CTP_REGION
+          description: commercetools Composable Commerce API region
+      securedConfiguration:
+        - key: CTP_PROJECT_KEY
+          description: commercetools Composable Commerce project key
+        - key: CTP_CLIENT_ID
+          description: commercetools Composable Commerce client ID
+        - key: CTP_CLIENT_SECRET
+          description: commercetools Composable Commerce client secret
+        - key: CTP_SCOPE
+          description: commercetools Composable Commerce client scope
   - name: job
     applicationType: job
     endpoint: /job
     properties:
       schedule: "*/5 * * * *"
-    configurationType:
-      CTP_PROJECT_KEY: secret
-      CTP_CLIENT_ID: secret
-      CTP_CLIENT_SECRET: secret
-      CTP_SCOPE: secret
-      CTP_REGION : standard
+    configuration:
+      standardConfiguration:
+        - key: CTP_REGION
+          description: commercetools Composable Commerce API region
+      securedConfiguration:
+        - key: CTP_PROJECT_KEY
+          description: commercetools Composable Commerce project key
+        - key: CTP_CLIENT_ID
+          description: commercetools Composable Commerce client ID
+        - key: CTP_CLIENT_SECRET
+          description: commercetools Composable Commerce client secret
+        - key: CTP_SCOPE
+          description: commercetools Composable Commerce client scope
   - name: event
     applicationType: event
     endpoint: /event
     scripts:
       postDeploy: npm install && npm run build && npm run connector:post-deploy
       preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
-    configurationType:
-      CTP_PROJECT_KEY: secret
-      CTP_CLIENT_ID: secret
-      CTP_CLIENT_SECRET: secret
-      CTP_SCOPE: secret
-      CTP_REGION : standard
+    configuration:
+      standardConfiguration:
+        - key: CTP_REGION
+          description: commercetools Composable Commerce API region
+      securedConfiguration:
+        - key: CTP_PROJECT_KEY
+          description: commercetools Composable Commerce project key
+        - key: CTP_CLIENT_ID
+          description: commercetools Composable Commerce client ID
+        - key: CTP_CLIENT_SECRET
+          description: commercetools Composable Commerce client secret
+        - key: CTP_SCOPE
+          description: commercetools Composable Commerce client scope
