@@ -15,7 +15,7 @@ async function postDeploy(properties) {
   assertString(topicName, CONNECT_GCP_TOPIC_NAME_KEY);
   assertString(projectId, CONNECT_GCP_PROJECT_ID_KEY);
 
-  const apiRoot = await createApiRoot();
+  const apiRoot = createApiRoot();
   await createCustomerCreateSubscription(apiRoot, topicName, projectId);
 }
 
