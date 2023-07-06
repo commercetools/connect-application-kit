@@ -15,7 +15,7 @@ async function postDeploy(properties: Map<string, unknown>): Promise<void> {
 
   assertString(applicationUrl, CONNECT_APPLICATION_URL_KEY);
 
-  const apiRoot = await createApiRoot();
+  const apiRoot = createApiRoot();
   await createCartUpdateExtension(apiRoot, applicationUrl);
   await createCustomCartDiscountType(apiRoot);
 }

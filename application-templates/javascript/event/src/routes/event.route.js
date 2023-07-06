@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { logger } from '../utils/logger.utils';
+import { logger } from '../utils/logger.utils.js';
 
 const eventRouter = Router();
 

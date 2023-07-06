@@ -6,7 +6,7 @@ import { assertError } from '../utils/assert.utils.js';
 import { deleteCustomerCreateSubscription } from './actions.js';
 
 async function preUndeploy() {
-  const apiRoot = await createApiRoot();
+  const apiRoot = createApiRoot();
   await deleteCustomerCreateSubscription(apiRoot);
 }
 

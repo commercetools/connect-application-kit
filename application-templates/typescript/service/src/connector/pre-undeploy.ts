@@ -6,7 +6,7 @@ import { assertError } from '../utils/assert.utils';
 import { deleteCartUpdateExtension } from './actions';
 
 async function preUndeploy(): Promise<void> {
-  const apiRoot = await createApiRoot();
+  const apiRoot = createApiRoot();
   await deleteCartUpdateExtension(apiRoot);
 }
 
