@@ -34,7 +34,7 @@
     "npm": ">=6",
     "yarn": ">=1.10"
   },
-  "packageManager": "yarn@3.2.3",
+  "packageManager": "yarn@1.22.19",
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
@@ -42,12 +42,12 @@
     "@types/node": "^18.7.16",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
-    "eslint": "^8.23.0",
-    "husky": "^8.0.0",
-    "jest": "^29.0.1",
-    "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.8.3"
+    "eslint": "^8.46.0",
+    "husky": "^8.0.3",
+    "jest": "^29.6.2",
+    "prettier": "^3.0.1",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
     "@changesets/changelog-github": "^0.4.8",
