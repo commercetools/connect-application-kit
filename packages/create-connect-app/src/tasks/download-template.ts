@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import os from 'os';
 import path from 'path';
-import execa from 'execa';
+import { execa } from 'execa';
 import { Listr, type ListrTask } from 'listr2';
 import type { TCliTaskOptions } from '../types';
 

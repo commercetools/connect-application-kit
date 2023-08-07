@@ -5,7 +5,9 @@ const isSemVer = (version: string) => /^(v?)([0-9].[0-9].[0-9])+/.test(version);
 
 const shouldUseYarn = () => {
   try {
-    const result = execa.commandSync('yarn --version', { stdio: 'ignore' });
+    const result = execa.execaCommandSync('yarn --version', {
+      stdio: 'ignore',
+    });
     return !result.failed;
   } catch (error) {
     return false;
