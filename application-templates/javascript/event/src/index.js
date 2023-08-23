@@ -17,6 +17,7 @@ const PORT = 8080;
 
 // Create the express app
 const app = express();
+app.disable('x-powered-by');
 
 // Define configurations
 app.use(bodyParser.json());
