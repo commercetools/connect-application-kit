@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/node16/tsconfig.json",
+  "extends": "@tsconfig/recommended/tsconfig.json",
   "exclude": ["node_modules", "**/*.spec.ts"],
   "compilerOptions": {
     "resolveJsonModule": true,
