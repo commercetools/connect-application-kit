@@ -1,6 +1,6 @@
 {
   "name": "@commercetools-connect/create-connect-app",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Create Connect applications to quickly get up and running",
   "bugs": "https://github.com/commercetools/connect-application-kit/issues",
   "repository": {
