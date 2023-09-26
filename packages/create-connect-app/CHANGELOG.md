@@ -1,5 +1,11 @@
 # @commercetools-connect/create-connect-app
 
+## 0.4.0
+
+### Minor Changes
+
+- [#66](https://github.com/commercetools/connect-application-kit/pull/66) [`e79c8a8`](https://github.com/commercetools/connect-application-kit/commit/e79c8a8a470b5b9024d08e7cac059c2b0432583c) Thanks [@ruidias-commercetools](https://github.com/ruidias-commercetools)! - Changes made on tsconfig.json to comply with the recommended tsconfig rules.
+
 ## 0.3.0
 
 ### Minor Changes
