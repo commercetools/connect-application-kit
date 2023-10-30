@@ -57,7 +57,7 @@ deployAs:
           description: commercetools Composable Commerce client scope
   - name: mc-app
     applicationType: mc-app
-    endpoint: /mc-app
+    endpoint: /
     configuration:
       standardConfiguration:
         - key: APPLICATION_ID
