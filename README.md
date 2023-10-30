@@ -118,25 +118,49 @@ deployAs:
     scripts:
       postDeploy: npm install && npm run build && npm run connector:post-deploy
       preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
-    configurationType:
-      ENVIRONMENT_VARIABLE_1: standard
-      ENVIRONMENT_VARIABLE_2: secret
-      ENVIRONMENT_VARIABLE_3: secret
+    configuration:
+      standardConfiguration:
+        - key: ENVIRONMENT_VARIABLE_1
+          description: description variable 1
+      securedConfiguration:
+        - key: ENVIRONMENT_VARIABLE_2
+          description: description variable 2
+        - key: ENVIRONMENT_VARIABLE_3
+          description: description variable 3
   - name: app2
     applicationType: job
     endpoint: /app2
     properties:
       schedule: "*/5 * * * *"
-    configurationType:
-      ENVIRONMENT_VARIABLE_1: standard
-      ENVIRONMENT_VARIABLE_2: standard
+    configuration:
+      standardConfiguration:
+        - key: ENVIRONMENT_VARIABLE_1
+          description: description variable 1
+        - key: ENVIRONMENT_VARIABLE_2
+          description: description variable 2
   - name: app3
     applicationType: event
     endpoint: /app3
-    configurationType:
-      ENVIRONMENT_VARIABLE_1: standard
-      ENVIRONMENT_VARIABLE_2: secret
-      ENVIRONMENT_VARIABLE_3: standard
+    configuration:
+      securedConfiguration:
+        - key: ENVIRONMENT_VARIABLE_1
+          description: description variable 1
+        - key: ENVIRONMENT_VARIABLE_2
+          description: description variable 2
+        - key: ENVIRONMENT_VARIABLE_3
+          description: description variable 3
+  - name: app4
+    applicationType: mc-app
+    endpoint: /app4
+    configuration:
+      standardConfiguration:
+        - key: ENVIRONMENT_VARIABLE_1
+          description: description variable 1
+      securedConfiguration:
+        - key: ENVIRONMENT_VARIABLE_2
+          description: description variable 2
+        - key: ENVIRONMENT_VARIABLE_3
+          description: description variable 3
 ```
 
 - Multiple applications of same type can be setup
@@ -145,9 +169,9 @@ deployAs:
 
 ## Property definition
 - `name` - Folder name of respective application component from the root of monorepo which will be used as identifier of the application. Deployment output url, topic & schedule can be fetched based on this reference
-- `applicationType` - Type of deployment . Can be one of `service`, `event` or `job`
+- `applicationType` - Type of deployment . Can be one of `service`, `event`, `job` and `mc-app`
 - `endpoint` - Point of entry for respective application component
 - `scripts.postDeploy` - Post-deploy script to execute after the connector deployment process
 - `scripts.preUndeploy` - Pre-undeploy script to execute before the connector undeployment process
-- `configurationType` - Definiton of all environment variables needed by the application, customer will be responsible to provide value for these variables when choosen to deploy. Definition includes defining the type of variable if it needs to be secured or not . `standard` for customer provided values to be saved as plain text , `secret` for customer provided values to be secured and stored in encrypted format
+- `configuration` - Definiton of all environment variables needed by the application, customer will be responsible to provide value for these variables when choosen to deploy. You need to choose between `standardConfiguration` and `securedConfiguration`. `standardConfiguration` for customer provided values to be saved as plain text , `securedConfiguration` for customer provided values to be secured and stored in encrypted format
 - `schedule` - Schedule expression for job applications, it need to be input of type <a href="https://en.wikipedia.org/wiki/Cron">cron</a> expression

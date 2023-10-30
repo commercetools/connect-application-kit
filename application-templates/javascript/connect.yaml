@@ -55,3 +55,14 @@ deployAs:
           description: commercetools Composable Commerce client secret
         - key: CTP_SCOPE
           description: commercetools Composable Commerce client scope
+  - name: mc-app
+    applicationType: mc-app
+    endpoint: /mc-app
+    configuration:
+      standardConfiguration:
+        - key: APPLICATION_ID
+          description: commercetools Composable Commerce application ID
+          required: true
+        - key: CLOUD_IDENTIFIER
+          description: commercetools Composable Commerce cloud identifier
+          required: true
