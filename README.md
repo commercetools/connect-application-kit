@@ -150,7 +150,7 @@ deployAs:
         - key: ENVIRONMENT_VARIABLE_3
           description: description variable 3
   - name: app4
-    applicationType: mc-app
+    applicationType: merchant-center-custom-application
     endpoint: /app4
     configuration:
       standardConfiguration:
@@ -169,7 +169,7 @@ deployAs:
 
 ## Property definition
 - `name` - Folder name of respective application component from the root of monorepo which will be used as identifier of the application. Deployment output url, topic & schedule can be fetched based on this reference
-- `applicationType` - Type of deployment . Can be one of `service`, `event`, `job` and `mc-app`
+- `applicationType` - Type of deployment . Can be one of `service`, `event`, `job` and `merchant-center-custom-application`
 - `endpoint` - Point of entry for respective application component
 - `scripts.postDeploy` - Post-deploy script to execute after the connector deployment process
 - `scripts.preUndeploy` - Pre-undeploy script to execute before the connector undeployment process
