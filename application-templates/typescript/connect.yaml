@@ -55,8 +55,8 @@ deployAs:
           description: commercetools Composable Commerce client secret
         - key: CTP_SCOPE
           description: commercetools Composable Commerce client scope
-  # - name: mc-app
-  #   applicationType: mc-app
+  # - name: merchant-center-custom-application
+  #   applicationType: merchant-center-custom-application
   #   endpoint: /
   #   configuration:
   #     standardConfiguration:
