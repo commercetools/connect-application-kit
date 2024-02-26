@@ -9,15 +9,21 @@ deployAs:
       standardConfiguration:
         - key: CTP_REGION
           description: commercetools Composable Commerce API region
+          required: true
+          default: "europe-west1.gcp"
       securedConfiguration:
         - key: CTP_PROJECT_KEY
           description: commercetools Composable Commerce project key
+          required: true
         - key: CTP_CLIENT_ID
           description: commercetools Composable Commerce client ID
+          required: true
         - key: CTP_CLIENT_SECRET
           description: commercetools Composable Commerce client secret
+          required: true
         - key: CTP_SCOPE
           description: commercetools Composable Commerce client scope
+          required: true
   - name: job
     applicationType: job
     endpoint: /job
@@ -27,15 +33,21 @@ deployAs:
       standardConfiguration:
         - key: CTP_REGION
           description: commercetools Composable Commerce API region
+          required: true
+          default: "europe-west1.gcp"
       securedConfiguration:
         - key: CTP_PROJECT_KEY
           description: commercetools Composable Commerce project key
+          required: true
         - key: CTP_CLIENT_ID
           description: commercetools Composable Commerce client ID
+          required: true
         - key: CTP_CLIENT_SECRET
           description: commercetools Composable Commerce client secret
+          required: true
         - key: CTP_SCOPE
           description: commercetools Composable Commerce client scope
+          required: true
   - name: event
     applicationType: event
     endpoint: /event
@@ -46,15 +58,21 @@ deployAs:
       standardConfiguration:
         - key: CTP_REGION
           description: commercetools Composable Commerce API region
+          required: true
+          default: "europe-west1.gcp"
       securedConfiguration:
         - key: CTP_PROJECT_KEY
           description: commercetools Composable Commerce project key
+          required: true
         - key: CTP_CLIENT_ID
           description: commercetools Composable Commerce client ID
+          required: true
         - key: CTP_CLIENT_SECRET
           description: commercetools Composable Commerce client secret
+          required: true
         - key: CTP_SCOPE
           description: commercetools Composable Commerce client scope
+          required: true
   # - name: merchant-center-custom-application
   #   applicationType: merchant-center-custom-application
   #   endpoint: /
