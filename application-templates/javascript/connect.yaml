@@ -75,7 +75,6 @@ deployAs:
           required: true
   # - name: merchant-center-custom-application
   #   applicationType: merchant-center-custom-application
-  #   endpoint: /
   #   configuration:
   #     standardConfiguration:
   #       - key: APPLICATION_ID
