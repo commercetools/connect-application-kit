@@ -75,12 +75,14 @@ deployAs:
           required: true
   # - name: merchant-center-custom-application
   #   applicationType: merchant-center-custom-application
-  #   endpoint: /
   #   configuration:
   #     standardConfiguration:
-  #       - key: APPLICATION_ID
+  #       - key: CUSTOM_APPLICATION_ID
   #         description: The Custom Application ID is provided when you add a Custom Application in the Merchant Center
   #         required: true
   #       - key: CLOUD_IDENTIFIER
   #         description: The identifier of the cloud Region that the Custom Application uses to connect to Composable Commerce. The values map to the actual Merchant Center API URL for that Region
+  #         default: 'gcp-eu'
+  #       - key: ENTRY_POINT_URI_PATH
+  #         description: The Application entry point URI path identified during registration of Custom Application
   #         required: true
