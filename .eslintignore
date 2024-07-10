@@ -2,4 +2,5 @@ node_modules
 packages/create-connect-app/build
 application-templates/typescript/*/build
 application-templates/typescript/*/public
+application-templates/javascript/*/public
 .nvmrc
