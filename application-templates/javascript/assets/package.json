@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite --port 3000",
     "start": "serve public -l 8080 --cors",
-    "test": "jest --detectOpenHandles",
     "build": "vite build",
     "preview": "vite preview",
     "serve": "npm run build && serve public -l 3000 --cors",

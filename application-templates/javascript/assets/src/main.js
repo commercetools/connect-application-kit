@@ -1,4 +1,5 @@
 import commercetoolsLogo from '../static/commercetools.svg';
+import './index.css';
 
 export const alertMessage = () => {
   alert('Hello! You are now using the Connect Asset Application template!');
