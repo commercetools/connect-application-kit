@@ -8,7 +8,7 @@ const jobRouter = Router();
 jobRouter.post('/', async (req, res, next) => {
   try {
     await post(req, res);
-    next();
+    res.status(200).send();
   } catch (error) {
     next(error);
   }
