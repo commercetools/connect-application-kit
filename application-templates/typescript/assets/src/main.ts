@@ -1,21 +1,18 @@
-import commercetoolsLogo from '../static/commercetools.svg';
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import './index.css';
+import commercetoolsLogo from './commercetools.svg';
 
 export const alertMessage = () => {
   alert('Hello! You are now using the Connect Asset Application template!');
 };
 
-// Get the anchor tag and set the image source
-document.addEventListener('DOMContentLoaded', () => {
-  const imgElement = document.createElement('img');
-  imgElement.src = commercetoolsLogo;
-  imgElement.className = 'logo';
-  imgElement.alt = 'CT logo';
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+  <div>
+    <h2>Connect Asset Application Template</h2>
+    <a href="https://docs.commercetools.com/connect/" target="_blank">
+      <img src="${commercetoolsLogo}" class="logo commercetools" alt="Commercetools logo" />
+    </a>
+  </div>
+`;
 
-  const linkElement = document.querySelector('a');
-  if (linkElement) {
-    linkElement.appendChild(imgElement);
-  }
-});
-
-setTimeout(alertMessage, 1000);
+setTimeout(alertMessage, 2500);
