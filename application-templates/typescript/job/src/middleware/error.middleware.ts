@@ -4,17 +4,19 @@ import CustomError from '../errors/custom.error';
 export const errorMiddleware: ErrorRequestHandler = (
   error: Error,
   _: Request,
-  res: Response,
+  res: Response
 ) => {
+const isDevelopment = process.env.NODE_ENV === 'development';
+
   if (error instanceof CustomError) {
     res.status(error.statusCode as number).json({
       message: error.message,
       errors: error.errors,
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined,
+      stack: isDevelopment ? error.stack : undefined,
     });
 
     return;
   }
 
-  res.status(500).send('Internal server error: ' + process.env.NODE_ENV === 'development' ? error.stack : undefined);
+  res.status(500).send(isDevelopment ? error : 'Internal server error');
 };
