@@ -6,7 +6,7 @@ export const errorMiddleware: ErrorRequestHandler = (
   _: Request,
   res: Response
 ) => {
-const isDevelopment = process.env.NODE_ENV === 'development';
+  const isDevelopment = process.env.NODE_ENV === 'development';
 
   if (error instanceof CustomError) {
     res.status(error.statusCode as number).json({
