@@ -16,5 +16,6 @@ module.exports = {
     es6: true,
     jest: true,
     node: true, //adds things like process to global
+    browser: true
   },
 };
