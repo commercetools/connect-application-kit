@@ -5,10 +5,9 @@ import { post } from '../controllers/job.controller';
 // Create the router for our app
 const jobRouter: Router = Router();
 
-jobRouter.post('/', async (req, res, next) => {
+jobRouter.post('/', (req, res, next) => {
   try {
-    await post(req, res);
-    res.status(200).send();
+    post(req, res);
   } catch (error) {
     next(error);
   }

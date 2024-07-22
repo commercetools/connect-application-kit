@@ -4,12 +4,11 @@ import { post } from '../controllers/service.controller';
 
 const serviceRouter = Router();
 
-serviceRouter.post('/', async (req, res, next) => {
+serviceRouter.post('/', (req, res, next) => {
   logger.info('Service post message received');
 
   try {
-    await post(req, res);
-    res.status(200).send();
+    post(req, res);
   } catch (error) {
     next(error); 
   }
