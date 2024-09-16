@@ -1,31 +1,11 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-import express from 'express';
-
-// Import routes
-import JobRoutes from './routes/job.route.js';
-
 // Import logger
 import { logger } from './utils/logger.utils.js';
-
-import { readConfiguration } from './utils/config.utils.js';
-import { errorMiddleware } from './middleware/error.middleware.js';
-
-// Read env variables
-readConfiguration();
+import app from './app.js';
 
 const PORT = 8080;
-
-// Create the express app
-const app = express();
-app.disable('x-powered-by');
-
-// Define routes
-app.use('/job', JobRoutes);
-
-// Global error handler
-app.use(errorMiddleware);
 
 // Listen the application
 const server = app.listen(PORT, () => {

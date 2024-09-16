@@ -1,9 +1,51 @@
 import { expect } from '@jest/globals';
+import request from 'supertest';
+import app from '../../src/app';
+import * as eventController from '../../src/controllers/event.controller';
 
-//@todo: test this with msw (see typescipt job)
-//  make msw a shared package
-describe('Testing Event Controller', () => {
-  test('POST `/event` route', async () => {
-    expect(1).toBe(1);
+describe('Testing router', () => {
+  test('Post to non existing route', async () => {
+    const response = await request(app).post('/none');
+    expect(response.status).toBe(404);
+    expect(response.body).toEqual({
+      message: 'Path not found.',
+    });
+  });
+  test('Post invalid body', async () => {
+    const response = await request(app).post('/event').send({
+      message: 'hello world',
+    });
+    expect(response.status).toBe(400);
+    expect(response.body).toEqual({
+      message: 'Bad request: No customer id in the Pub/Sub message',
+    });
+  });
+  test('Post empty body', async () => {
+    const response = await request(app).post('/event');
+    expect(response.status).toBe(400);
+    expect(response.body).toEqual({
+      message: 'Bad request: Wrong No Pub/Sub message format',
+    });
+  });
+});
+describe('unexpected error', () => {
+  let postMock;
+
+  beforeEach(() => {
+    // Mock the post method to throw an error
+    postMock = jest.spyOn(eventController, 'post').mockImplementation(() => {
+      throw new Error('Test error');
+    });
+  });
+
+  afterEach(() => {
+    // Restore the original implementation
+    postMock.mockRestore();
+  });
+  test('should handle errors thrown by post method', async () => {
+    // Call the route handler
+    const response = await request(app).post('/event');
+    expect(response.status).toBe(500);
+    expect(response.body).toEqual({ message: 'Internal server error' });
   });
 });

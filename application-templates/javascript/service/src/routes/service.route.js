@@ -4,11 +4,11 @@ import { post } from '../controllers/service.controller.js';
 
 const serviceRouter = Router();
 
-serviceRouter.post('/', (req, res, next) => {
+serviceRouter.post('/', async (req, res, next) => {
   logger.info('Cart update extension executed');
 
   try {
-    post(req, res);
+    await post(req, res);
   } catch (error) {
     next(error);
   }

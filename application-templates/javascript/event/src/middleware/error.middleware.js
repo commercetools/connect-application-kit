@@ -1,6 +1,6 @@
 import CustomError from '../errors/custom.error.js';
 
-export const errorMiddleware = (error, _req, res) => {
+export const errorMiddleware = (error, _req, res, _next) => {
   const isDevelopment = process.env.NODE_ENV === 'development';
 
   if (error instanceof CustomError) {
@@ -13,5 +13,11 @@ export const errorMiddleware = (error, _req, res) => {
     return;
   }
 
-  res.status(500).send(isDevelopment ? error : 'Internal server error');
+  res
+    .status(500)
+    .send(
+      isDevelopment
+        ? { messge: error.message }
+        : { message: 'Internal server error' }
+    );
 };

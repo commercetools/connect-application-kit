@@ -1,10 +1,11 @@
-import { ErrorRequestHandler, Request, Response } from 'express';
+import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 import CustomError from '../errors/custom.error';
 
 export const errorMiddleware: ErrorRequestHandler = (
   error: Error,
   _: Request,
-  res: Response
+  res: Response,
+  _next: NextFunction
 ) => {
   const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -18,5 +19,11 @@ export const errorMiddleware: ErrorRequestHandler = (
     return;
   }
 
-  res.status(500).send(isDevelopment ? error : 'Internal server error');
+  res
+    .status(500)
+    .send(
+      isDevelopment
+        ? { messge: error.message }
+        : { message: 'Internal server error' }
+    );
 };
