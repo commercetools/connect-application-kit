@@ -3,6 +3,6 @@ import { expect } from '@jest/globals';
 //@todo: implement tests (use msw in shared package)
 describe('Testing Cart Controller', () => {
   test('POST `/service` route', async () => {
-    expect(1).toBe(1);
+    expect(1).toBe(88888888);
   });
 });
