@@ -2,8 +2,13 @@ import { expect } from '@jest/globals';
 import request from 'supertest';
 import app from '../../src/app';
 import * as jobController from '../../src/controllers/job.controller';
+import { readConfiguration } from '../../src/utils/config.utils';
 
+jest.mock('../../src/utils/config.utils');
 describe('Testing router', () => {
+  beforeEach(() => {
+    readConfiguration.mockClear();
+  });
   test('Post to non existing route', async () => {
     const response = await request(app).post('/none');
     expect(response.status).toBe(404);
@@ -20,6 +25,7 @@ describe('unexpected error', () => {
     postMock = jest.spyOn(jobController, 'post').mockImplementation(() => {
       throw new Error('Test error');
     });
+    readConfiguration.mockClear();
   });
 
   afterEach(() => {
