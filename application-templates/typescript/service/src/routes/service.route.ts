@@ -10,7 +10,7 @@ serviceRouter.post('/', (req, res, next) => {
   try {
     post(req, res);
   } catch (error) {
-    next(error); 
+    next(error);
   }
 });
 
