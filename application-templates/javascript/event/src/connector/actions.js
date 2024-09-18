@@ -25,10 +25,7 @@ export async function createAzureServiceBusCustomerCreateSubscription(
   await createSubscription(apiRoot, destination);
 }
 
-async function createSubscription(
-  apiRoot,
-  destination
-) {
+async function createSubscription(apiRoot, destination) {
   await deleteCustomerCreateSubscription(apiRoot);
   await apiRoot
     .subscriptions()
@@ -46,7 +43,6 @@ async function createSubscription(
     })
     .execute();
 }
-
 
 export async function deleteCustomerCreateSubscription(apiRoot) {
   const {

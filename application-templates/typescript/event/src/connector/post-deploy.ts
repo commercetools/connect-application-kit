@@ -24,7 +24,6 @@ async function postDeploy(properties: Map<string, unknown>): Promise<void> {
         CONNECT_AZURE_CONNECTION_STRING_KEY
       );
       assertString(connectionString, CONNECT_AZURE_CONNECTION_STRING_KEY);
-
       await createAzureServiceBusCustomerCreateSubscription(
         apiRoot,
         connectionString
@@ -34,10 +33,8 @@ async function postDeploy(properties: Map<string, unknown>): Promise<void> {
     default: {
       const topicName = properties.get(CONNECT_GCP_TOPIC_NAME_KEY);
       const projectId = properties.get(CONNECT_GCP_PROJECT_ID_KEY);
-
       assertString(topicName, CONNECT_GCP_TOPIC_NAME_KEY);
       assertString(projectId, CONNECT_GCP_PROJECT_ID_KEY);
-
       await createGcpPubSubCustomerCreateSubscription(
         apiRoot,
         topicName,
