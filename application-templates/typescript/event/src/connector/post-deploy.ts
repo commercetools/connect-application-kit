@@ -14,11 +14,11 @@ const CONNECT_PROVIDER_KEY = 'CONNECT_PROVIDER';
 const CONNECT_AZURE_CONNECTION_STRING_KEY = 'CONNECT_AZURE_CONNECTION_STRING';
 
 async function postDeploy(properties: Map<string, unknown>): Promise<void> {
-  const connectprovider = properties.get(CONNECT_PROVIDER_KEY);
-  assertString(connectprovider, CONNECT_PROVIDER_KEY);
+  const connectProvider = properties.get(CONNECT_PROVIDER_KEY);
+  assertString(connectProvider, CONNECT_PROVIDER_KEY);
   const apiRoot = createApiRoot();
 
-  switch (connectprovider) {
+  switch (connectProvider) {
     case 'AZURE': {
       const connectionString = properties.get(
         CONNECT_AZURE_CONNECTION_STRING_KEY
