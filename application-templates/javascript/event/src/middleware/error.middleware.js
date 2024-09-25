@@ -17,7 +17,7 @@ export const errorMiddleware = (error, _req, res, _next) => {
     .status(500)
     .send(
       isDevelopment
-        ? { messge: error.message }
+        ? { message: error.message }
         : { message: 'Internal server error' }
     );
 };
