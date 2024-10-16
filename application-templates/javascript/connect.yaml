@@ -94,5 +94,5 @@ inheritAs:
         required: true
     standardConfiguration:
       - key: GLOBAL_STANDARD_CONFIGURATION
-        description: This standard configuration will configuration will be applied to all applications
+        description: This standard configuration will be applied to all applications
         required: true
