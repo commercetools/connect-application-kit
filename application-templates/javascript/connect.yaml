@@ -1,4 +1,6 @@
 deployAs:
+  - name: assets
+    applicationType: assets
   - name: service
     applicationType: service
     endpoint: /service
