@@ -35,3 +35,6 @@ application-templates/**/yarn.lock
 application-templates/starter-typescript/job/.env
 application-templates/starter-typescript/job/.env.*
 !application-templates/starter-typescript/job/.env.example
+
+#IDE
+.idea
