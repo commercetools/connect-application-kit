@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/recommended/tsconfig.json",
-  "exclude": ["node_modules", "**/*.spec.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/setup-tests.ts"],
   "compilerOptions": {
     "resolveJsonModule": true,
     "outDir": "./build",
