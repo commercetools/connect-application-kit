@@ -67,7 +67,7 @@ describe('Testing Event Controller', () => {
   });
 
   /*
-   * This Test really want to call the commercetools APIs. To do so,
+   * This Test really calls the commercetools APIs. To do so,
    * - remove the mocking code in line 7-12
    * - configure a "real" customerId
    * - remove the skip below
