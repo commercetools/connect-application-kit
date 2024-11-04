@@ -4,8 +4,8 @@ dotenv.config();
 import { createApiRoot } from '../client/create.client';
 import { assertError, assertString } from '../utils/assert.utils';
 import {
-  createAzureServiceBusCustomerCreateSubscription,
-  createGcpPubSubCustomerCreateSubscription,
+  createAzureServiceBusSubscription,
+  createGcpPubSubSubscription,
 } from './actions';
 
 const CONNECT_GCP_TOPIC_NAME_KEY = 'CONNECT_GCP_TOPIC_NAME';
@@ -24,10 +24,7 @@ async function postDeploy(properties: Map<string, unknown>): Promise<void> {
         CONNECT_AZURE_CONNECTION_STRING_KEY
       );
       assertString(connectionString, CONNECT_AZURE_CONNECTION_STRING_KEY);
-      await createAzureServiceBusCustomerCreateSubscription(
-        apiRoot,
-        connectionString
-      );
+      await createAzureServiceBusSubscription(apiRoot, connectionString);
       break;
     }
     default: {
@@ -35,11 +32,7 @@ async function postDeploy(properties: Map<string, unknown>): Promise<void> {
       const projectId = properties.get(CONNECT_GCP_PROJECT_ID_KEY);
       assertString(topicName, CONNECT_GCP_TOPIC_NAME_KEY);
       assertString(projectId, CONNECT_GCP_PROJECT_ID_KEY);
-      await createGcpPubSubCustomerCreateSubscription(
-        apiRoot,
-        topicName,
-        projectId
-      );
+      await createGcpPubSubSubscription(apiRoot, topicName, projectId);
     }
   }
 }
