@@ -22,14 +22,14 @@ describe('Testing router', () => {
     });
     expect(response.status).toBe(400);
     expect(response.body).toEqual({
-      message: 'Bad request - Missing body parameters.',
+      message: 'Bad request - Missing action parameter.',
     });
   });
   test('Post empty body', async () => {
     const response = await request(app).post('/service');
     expect(response.status).toBe(400);
     expect(response.body).toEqual({
-      message: 'Bad request - Missing body parameters.',
+      message: 'Bad request - Missing action parameter.',
     });
   });
 });
