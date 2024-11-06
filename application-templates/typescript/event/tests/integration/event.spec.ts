@@ -3,6 +3,7 @@ import { CustomerCreatedMessage, Customer } from '@commercetools/platform-sdk';
 import request from 'supertest';
 import app from '../../src/app';
 import { createApiRoot } from '../../src/client/create.client';
+import { readConfiguration } from '../../src/utils/config.utils';
 
 jest.mock('../../src/client/create.client', () => {
   const mockCreateApiRoot = jest.fn();
@@ -10,6 +11,7 @@ jest.mock('../../src/client/create.client', () => {
     createApiRoot: mockCreateApiRoot,
   };
 });
+jest.mock('../../src/utils/config.utils');
 
 const customerId = 'd93a8493-1bfd-4e2d-8b46-20a765dd0978';
 
@@ -37,7 +39,10 @@ const orderCreatedMessage: CustomerCreatedMessage = {
 };
 
 describe('Testing Event Controller', () => {
-  it('Customer Created (Mocked)', async () => {
+  beforeEach(() => {
+    (readConfiguration as jest.Mock).mockClear();
+  });
+  test('Customer Created (Mocked)', async () => {
     // Define a mock root to be returned
     const withId = jest.fn().mockReturnValueOnce({
       get: jest.fn().mockReturnValueOnce({
@@ -68,7 +73,7 @@ describe('Testing Event Controller', () => {
 
   /*
    * This Test really calls the commercetools APIs. To do so,
-   * - remove the mocking code in line 7-12
+   * - remove the mocking code in line 8-14
    * - configure a "real" customerId
    * - remove the skip below
    *
