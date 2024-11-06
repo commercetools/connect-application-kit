@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { createApiRoot } from '../client/create.client';
 import CustomError from '../errors/custom.error';
 import { logger } from '../utils/logger.utils';
+import { Message } from '@commercetools/platform-sdk';
 
 /**
  * Exposed event POST endpoint.
@@ -36,9 +37,13 @@ export const post = async (request: Request, response: Response) => {
     : undefined;
 
   if (decodedData) {
-    const jsonData = JSON.parse(decodedData);
+    const jsonData: Message | null = JSON.parse(decodedData);
 
-    customerId = jsonData.customer.id;
+    if (jsonData) {
+      if (jsonData.type === 'CustomerCreated') {
+        customerId = jsonData.customer.id;
+      }
+    }
   }
 
   if (!customerId) {

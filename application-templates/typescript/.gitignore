@@ -3,9 +3,12 @@ coverage
 .terraform
 *.tfstate*
 *.tfvars
-
+.yarn
 .DS_Store
 .vscode
+.idea
 build/
-.env
+!.env
+.env.local
 public/
+.connect

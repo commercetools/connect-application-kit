@@ -1,9 +1,8 @@
 import { ByProjectKeyRequestBuilder } from '@commercetools/platform-sdk/dist/declarations/src/generated/client/by-project-key-request-builder';
 
-const CART_UPDATE_EXTENSION_KEY = 'myconnector-cartUpdateExtension';
-const CART_DISCOUNT_TYPE_KEY = 'myconnector-cartDiscountType';
+const EXTENSION_KEY = 'myconnector-cartUpdateExtension';
 
-export async function createCartUpdateExtension(
+export async function createExtension(
   apiRoot: ByProjectKeyRequestBuilder,
   applicationUrl: string
 ): Promise<void> {
@@ -13,7 +12,7 @@ export async function createCartUpdateExtension(
     .extensions()
     .get({
       queryArgs: {
-        where: `key = "${CART_UPDATE_EXTENSION_KEY}"`,
+        where: `key = "${EXTENSION_KEY}"`,
       },
     })
     .execute();
@@ -23,7 +22,7 @@ export async function createCartUpdateExtension(
 
     await apiRoot
       .extensions()
-      .withKey({ key: CART_UPDATE_EXTENSION_KEY })
+      .withKey({ key: EXTENSION_KEY })
       .delete({
         queryArgs: {
           version: extension.version,
@@ -32,11 +31,14 @@ export async function createCartUpdateExtension(
       .execute();
   }
 
+  // Have a look here to figure out what kind of triggers are available:
+  // https://docs.commercetools.com/api/projects/api-extensions#ctp:api:type:ExtensionTrigger
+
   await apiRoot
     .extensions()
     .post({
       body: {
-        key: CART_UPDATE_EXTENSION_KEY,
+        key: EXTENSION_KEY,
         destination: {
           type: 'HTTP',
           url: applicationUrl,
@@ -52,7 +54,7 @@ export async function createCartUpdateExtension(
     .execute();
 }
 
-export async function deleteCartUpdateExtension(
+export async function deleteExtension(
   apiRoot: ByProjectKeyRequestBuilder
 ): Promise<void> {
   const {
@@ -61,7 +63,7 @@ export async function deleteCartUpdateExtension(
     .extensions()
     .get({
       queryArgs: {
-        where: `key = "${CART_UPDATE_EXTENSION_KEY}"`,
+        where: `key = "${EXTENSION_KEY}"`,
       },
     })
     .execute();
@@ -71,7 +73,7 @@ export async function deleteCartUpdateExtension(
 
     await apiRoot
       .extensions()
-      .withKey({ key: CART_UPDATE_EXTENSION_KEY })
+      .withKey({ key: EXTENSION_KEY })
       .delete({
         queryArgs: {
           version: extension.version,
@@ -79,58 +81,4 @@ export async function deleteCartUpdateExtension(
       })
       .execute();
   }
-}
-
-export async function createCustomCartDiscountType(
-  apiRoot: ByProjectKeyRequestBuilder
-): Promise<void> {
-  const {
-    body: { results: types },
-  } = await apiRoot
-    .types()
-    .get({
-      queryArgs: {
-        where: `key = "${CART_DISCOUNT_TYPE_KEY}"`,
-      },
-    })
-    .execute();
-
-  if (types.length > 0) {
-    const type = types[0];
-
-    await apiRoot
-      .types()
-      .withKey({ key: CART_DISCOUNT_TYPE_KEY })
-      .delete({
-        queryArgs: {
-          version: type.version,
-        },
-      })
-      .execute();
-  }
-
-  await apiRoot
-    .types()
-    .post({
-      body: {
-        key: CART_DISCOUNT_TYPE_KEY,
-        name: {
-          en: 'Custom type to store a string',
-        },
-        resourceTypeIds: ['cart-discount'],
-        fieldDefinitions: [
-          {
-            type: {
-              name: 'String',
-            },
-            name: 'customCartField',
-            label: {
-              en: 'Custom cart field',
-            },
-            required: false,
-          },
-        ],
-      },
-    })
-    .execute();
 }
