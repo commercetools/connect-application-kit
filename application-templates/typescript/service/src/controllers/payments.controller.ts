@@ -1,3 +1,0 @@
-// const get = () => {};
-
-// const post = () => {};
