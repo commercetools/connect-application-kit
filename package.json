@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/commercetools/connect-application-kit#readme",
   "engines": {
-    "node": ">=16.13.0 <=20.9.0",
+    "node": ">=16.13.0",
     "npm": ">=6",
     "yarn": ">=1.10"
   },
