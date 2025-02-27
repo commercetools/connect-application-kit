@@ -131,7 +131,7 @@ deployAs:
     applicationType: job
     endpoint: /app2
     properties:
-      schedule: "*/5 * * * *"
+      schedule: "0 0 * * *"
     configuration:
       standardConfiguration:
         - key: ENVIRONMENT_VARIABLE_1
