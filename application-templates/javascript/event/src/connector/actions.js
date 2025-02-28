@@ -1,38 +1,46 @@
 const CUSTOMER_CREATE_SUBSCRIPTION_KEY =
   'myconnector-customerCreateSubscription';
 
-export async function createGcpPubSubCustomerCreateSubscription(
+export async function createCustomerCreateSubscription(
   apiRoot,
   topicName,
   projectId
 ) {
-  const destination = {
-    type: 'GoogleCloudPubSub',
-    topic: topicName,
-    projectId,
-  };
-  await createSubscription(apiRoot, destination);
-}
+  const {
+    body: { results: subscriptions },
+  } = await apiRoot
+    .subscriptions()
+    .get({
+      queryArgs: {
+        where: `key = "${CUSTOMER_CREATE_SUBSCRIPTION_KEY}"`,
+      },
+    })
+    .execute();
 
-export async function createAzureServiceBusCustomerCreateSubscription(
-  apiRoot,
-  connectionString
-) {
-  const destination = {
-    type: 'AzureServiceBus',
-    connectionString: connectionString,
-  };
-  await createSubscription(apiRoot, destination);
-}
+  if (subscriptions.length > 0) {
+    const subscription = subscriptions[0];
 
-async function createSubscription(apiRoot, destination) {
-  await deleteCustomerCreateSubscription(apiRoot);
+    await apiRoot
+      .subscriptions()
+      .withKey({ key: CUSTOMER_CREATE_SUBSCRIPTION_KEY })
+      .delete({
+        queryArgs: {
+          version: subscription.version,
+        },
+      })
+      .execute();
+  }
+
   await apiRoot
     .subscriptions()
     .post({
       body: {
         key: CUSTOMER_CREATE_SUBSCRIPTION_KEY,
-        destination,
+        destination: {
+          type: 'GoogleCloudPubSub',
+          topic: topicName,
+          projectId,
+        },
         messages: [
           {
             resourceTypeId: 'customer',
