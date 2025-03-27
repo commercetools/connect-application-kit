@@ -37,6 +37,13 @@ export const post = async (request: Request, response: Response) => {
 
   if (decodedData) {
     const jsonData = JSON.parse(decodedData);
+    //CoCo sending message to indicate the resource was created, does not need processing
+    if ('ResourceCreated' === jsonData.notificationType) {
+      throw new CustomError(
+        202,
+        `Incoming message is about subscription resource creation. Skip handling the message.`
+      );
+    }
 
     customerId = jsonData.customer.id;
   }
