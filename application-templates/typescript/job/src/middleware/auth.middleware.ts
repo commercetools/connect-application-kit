@@ -11,9 +11,7 @@ export const createAuthMiddlewareOptions: () => AuthMiddlewareOptions = () => ({
     clientId: readConfiguration().clientId,
     clientSecret: readConfiguration().clientSecret,
   },
-  scopes: [
-    (readConfiguration().scope
-      ? readConfiguration().scope
-      : 'default') as string,
-  ],
+  scopes: readConfiguration().scope
+    ? [readConfiguration().scope as string]
+    : undefined,
 });
