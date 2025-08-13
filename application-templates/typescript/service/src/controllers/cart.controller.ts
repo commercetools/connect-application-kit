@@ -1,4 +1,4 @@
-import { UpdateAction } from '@commercetools/sdk-client-v2';
+import { CartUpdateAction } from '@commercetools/platform-sdk';
 
 import { createApiRoot } from '../client/create.client';
 import CustomError from '../errors/custom.error';
@@ -14,7 +14,7 @@ const create = async (resource: Resource) => {
   let productId = undefined;
 
   try {
-    const updateActions: Array<UpdateAction> = [];
+    const updateActions: Array<CartUpdateAction> = [];
 
     // Deserialize the resource to a CartDraft
     const cartDraft = JSON.parse(JSON.stringify(resource));
@@ -35,7 +35,7 @@ const create = async (resource: Resource) => {
     }
 
     // Create the UpdateActions Object to return it to the client
-    const updateAction: UpdateAction = {
+    const updateAction: CartUpdateAction = {
       action: 'recalculate',
       updateProductData: false,
     };

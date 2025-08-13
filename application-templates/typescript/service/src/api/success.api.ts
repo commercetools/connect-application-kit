@@ -1,4 +1,4 @@
-import { UpdateAction } from '@commercetools/sdk-client-v2';
+import { CartUpdateAction } from '@commercetools/platform-sdk';
 import { Response } from 'express';
 import { ResponseInterfaceSuccess } from '../interfaces/response.interface';
 
@@ -7,12 +7,12 @@ import { ResponseInterfaceSuccess } from '../interfaces/response.interface';
  *
  * @param {Response} response Express response
  * @param {number} statusCode The status code of the operation
- * @param {Array<UpdateAction>} updateActions The update actions that were made in the process
+ * @param {Array<CartUpdateAction>} CartUpdateAction The update actions that were made in the process
  * @returns Success response with 200 status code and the update actions array
  */
 export const apiSuccess = (
   statusCode: number,
-  updateActions: Array<UpdateAction>,
+  updateActions: Array<CartUpdateAction>,
   response: Response
 ) => {
   const responseBody = {} as ResponseInterfaceSuccess;

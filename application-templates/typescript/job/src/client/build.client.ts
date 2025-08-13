@@ -1,4 +1,4 @@
-import { ClientBuilder } from '@commercetools/sdk-client-v2';
+import { ClientBuilder } from '@commercetools/ts-client';
 import { createAuthMiddlewareOptions } from '../middleware/auth.middleware';
 import { createHttpMiddlewareOptions } from '../middleware/http.middleware';
 import { readConfiguration } from '../utils/config.utils';

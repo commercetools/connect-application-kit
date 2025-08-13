@@ -1,6 +1,6 @@
 import { readConfiguration } from '../utils/config.utils.js';
 import { httpMiddlewareOptions } from '../middleware/http.middleware.js';
-import { ClientBuilder } from '@commercetools/sdk-client-v2';
+import { ClientBuilder } from '@commercetools/ts-client';
 import { authMiddlewareOptions } from '../middleware/auth.middleware.js';
 
 /**
