@@ -1,7 +1,7 @@
-import { UpdateAction } from '@commercetools/sdk-client-v2';
+import { CartUpdateAction } from '@commercetools/platform-sdk';
 
 export interface ResponseInterfaceSuccess {
-  actions: Array<UpdateAction>;
+  actions: Array<CartUpdateAction>;
 }
 
 export interface ResponseInterfaceError {
