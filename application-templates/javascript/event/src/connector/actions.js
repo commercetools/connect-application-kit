@@ -14,17 +14,6 @@ export async function createGcpPubSubCustomerCreateSubscription(
   await createSubscription(apiRoot, destination);
 }
 
-export async function createAzureServiceBusCustomerCreateSubscription(
-  apiRoot,
-  connectionString
-) {
-  const destination = {
-    type: 'AzureServiceBus',
-    connectionString: connectionString,
-  };
-  await createSubscription(apiRoot, destination);
-}
-
 export async function createAwsSnsCustomerCreateSubscription(
   apiRoot,
   topicArn

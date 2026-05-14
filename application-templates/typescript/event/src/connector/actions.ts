@@ -1,5 +1,4 @@
 import {
-  AzureServiceBusDestination,
   Destination,
   GoogleCloudPubSubDestination,
   SnsDestination,
@@ -18,17 +17,6 @@ export async function createGcpPubSubCustomerCreateSubscription(
     type: 'GoogleCloudPubSub',
     topic: topicName,
     projectId,
-  };
-  await createSubscription(apiRoot, destination);
-}
-
-export async function createAzureServiceBusCustomerCreateSubscription(
-  apiRoot: ByProjectKeyRequestBuilder,
-  connectionString: string
-): Promise<void> {
-  const destination: AzureServiceBusDestination = {
-    type: 'AzureServiceBus',
-    connectionString: connectionString,
   };
   await createSubscription(apiRoot, destination);
 }
