@@ -1,4 +1,5 @@
 import CustomError from '../errors/custom.error';
+import { Config } from '../interfaces/config.interface';
 import envValidators from '../validators/env.validators';
 import { getValidateMessages } from '../validators/helpers.validators';
 
@@ -10,22 +11,18 @@ import { getValidateMessages } from '../validators/helpers.validators';
  */
 export const readConfiguration = () => {
   const envVars = {
-    clientId: process.env.CTP_CLIENT_ID as string,
-    clientSecret: process.env.CTP_CLIENT_SECRET as string,
-    projectKey: process.env.CTP_PROJECT_KEY as string,
-    scope: process.env.CTP_SCOPE as string,
-    region: process.env.CTP_REGION as string,
-    port: process.env.PORT as string,
-    connectSubscriptionDestination: process.env
-      .CONNECT_SUBSCRIPTION_DESTINATION as string,
-    connectGcpTopicName: process.env.CONNECT_GCP_TOPIC_NAME as
-      | string
-      | undefined,
-    connectGcpProjectId: process.env.CONNECT_GCP_PROJECT_ID as
-      | string
-      | undefined,
-    connectAwsTopicArn: process.env.CONNECT_AWS_TOPIC_ARN as string | undefined,
-  };
+    clientId: process.env.CTP_CLIENT_ID,
+    clientSecret: process.env.CTP_CLIENT_SECRET,
+    projectKey: process.env.CTP_PROJECT_KEY,
+    scope: process.env.CTP_SCOPE,
+    region: process.env.CTP_REGION,
+    port: process.env.PORT,
+    connectSubscriptionDestination:
+      process.env.CONNECT_SUBSCRIPTION_DESTINATION,
+    connectGcpTopicName: process.env.CONNECT_GCP_TOPIC_NAME,
+    connectGcpProjectId: process.env.CONNECT_GCP_PROJECT_ID,
+    connectAwsTopicArn: process.env.CONNECT_AWS_TOPIC_ARN,
+  } as Config;
 
   const validationErrors = getValidateMessages(envValidators, envVars);
 
