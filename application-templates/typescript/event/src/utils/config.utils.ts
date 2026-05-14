@@ -1,4 +1,5 @@
 import CustomError from '../errors/custom.error';
+import { Config } from '../interfaces/config.interface';
 import envValidators from '../validators/env.validators';
 import { getValidateMessages } from '../validators/helpers.validators';
 
@@ -10,12 +11,18 @@ import { getValidateMessages } from '../validators/helpers.validators';
  */
 export const readConfiguration = () => {
   const envVars = {
-    clientId: process.env.CTP_CLIENT_ID as string,
-    clientSecret: process.env.CTP_CLIENT_SECRET as string,
-    projectKey: process.env.CTP_PROJECT_KEY as string,
+    clientId: process.env.CTP_CLIENT_ID,
+    clientSecret: process.env.CTP_CLIENT_SECRET,
+    projectKey: process.env.CTP_PROJECT_KEY,
     scope: process.env.CTP_SCOPE,
-    region: process.env.CTP_REGION as string,
-  };
+    region: process.env.CTP_REGION,
+    port: process.env.PORT,
+    connectSubscriptionDestination:
+      process.env.CONNECT_SUBSCRIPTION_DESTINATION,
+    connectGcpTopicName: process.env.CONNECT_GCP_TOPIC_NAME,
+    connectGcpProjectId: process.env.CONNECT_GCP_PROJECT_ID,
+    connectAwsTopicArn: process.env.CONNECT_AWS_TOPIC_ARN,
+  } as Config;
 
   const validationErrors = getValidateMessages(envValidators, envVars);
 

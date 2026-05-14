@@ -17,3 +17,13 @@ export function assertString(
 ): asserts value is string {
   assert(typeof value === 'string', message ?? 'Invalid string value');
 }
+
+export function assertNonNullable<T>(
+  value: T,
+  message?: string
+): asserts value is NonNullable<T> {
+  assert(
+    value !== null && value !== undefined,
+    message ?? 'Value is null or undefined'
+  );
+}

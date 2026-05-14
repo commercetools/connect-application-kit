@@ -16,6 +16,12 @@ export const readConfiguration = () => {
     projectKey: process.env.CTP_PROJECT_KEY,
     scope: process.env.CTP_SCOPE,
     region: process.env.CTP_REGION,
+    port: process.env.PORT,
+    connectSubscriptionDestination:
+      process.env.CONNECT_SUBSCRIPTION_DESTINATION,
+    connectGcpTopicName: process.env.CONNECT_GCP_TOPIC_NAME,
+    connectGcpProjectId: process.env.CONNECT_GCP_PROJECT_ID,
+    connectAwsTopicArn: process.env.CONNECT_AWS_TOPIC_ARN,
   };
 
   const validationErrors = getValidateMessages(envValidators, envVars);
