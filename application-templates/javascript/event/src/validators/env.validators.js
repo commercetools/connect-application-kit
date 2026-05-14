@@ -61,7 +61,7 @@ const envValidators = [
     { min: 1, max: undefined }
   ),
 
-  standardString(
+  optional(standardString)(
     ['connectSubscriptionDestination'],
     {
       code: 'InvalidSubscriptionDestination',
