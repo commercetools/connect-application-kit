@@ -35,7 +35,7 @@ const envValidators = [
     referencedBy: 'environmentVariables',
   }),
 
-  optional(standardString)(
+  standardString(
     ['scope'],
     {
       code: 'InvalidScope',
@@ -50,6 +50,56 @@ const envValidators = [
     message: 'Not a valid region.',
     referencedBy: 'environmentVariables',
   }),
+
+  standardString(
+    ['port'],
+    {
+      code: 'InvalidPort',
+      message: 'Port should be a valid string.',
+      referencedBy: 'environmentVariables',
+    },
+    { min: 1, max: undefined }
+  ),
+
+  standardString(
+    ['connectSubscriptionDestination'],
+    {
+      code: 'InvalidSubscriptionDestination',
+      message: 'Subscription destination should be a valid string.',
+      referencedBy: 'environmentVariables',
+    },
+    { min: 2, max: undefined }
+  ),
+
+  optional(standardString)(
+    ['connectGcpTopicName'],
+    {
+      code: 'InvalidGcpTopicName',
+      message: 'GCP Topic Name should be a valid string.',
+      referencedBy: 'environmentVariables',
+    },
+    { min: 2, max: undefined }
+  ),
+
+  optional(standardString)(
+    ['connectGcpProjectId'],
+    {
+      code: 'InvalidGcpProjectId',
+      message: 'GCP Project ID should be a valid string.',
+      referencedBy: 'environmentVariables',
+    },
+    { min: 2, max: undefined }
+  ),
+
+  optional(standardString)(
+    ['connectAwsTopicArn'],
+    {
+      code: 'InvalidAwsTopicArn',
+      message: 'AWS Topic ARN should be a valid string.',
+      referencedBy: 'environmentVariables',
+    },
+    { min: 2, max: undefined }
+  ),
 ];
 
 export default envValidators;

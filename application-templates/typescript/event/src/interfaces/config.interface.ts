@@ -5,4 +5,8 @@ export interface Config {
   scope: string;
   region: string;
   port: string;
+  connectSubscriptionDestination?: string | null;
+  connectGcpTopicName?: string;
+  connectGcpProjectId?: string;
+  connectAwsTopicArn?: string;
 }
