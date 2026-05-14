@@ -2,6 +2,7 @@ import {
   AzureServiceBusDestination,
   Destination,
   GoogleCloudPubSubDestination,
+  SnsDestination,
 } from '@commercetools/platform-sdk';
 import { ByProjectKeyRequestBuilder } from '@commercetools/platform-sdk/dist/declarations/src/generated/client/by-project-key-request-builder';
 
@@ -28,6 +29,18 @@ export async function createAzureServiceBusCustomerCreateSubscription(
   const destination: AzureServiceBusDestination = {
     type: 'AzureServiceBus',
     connectionString: connectionString,
+  };
+  await createSubscription(apiRoot, destination);
+}
+
+export async function createAwsSnsCustomerCreateSubscription(
+  apiRoot: ByProjectKeyRequestBuilder,
+  topicArn: string
+): Promise<void> {
+  const destination: SnsDestination = {
+    type: 'SNS',
+    topicArn: topicArn,
+    authenticationMode: 'IAM',
   };
   await createSubscription(apiRoot, destination);
 }

@@ -5,43 +5,45 @@ import { createApiRoot } from '../client/create.client.js';
 import { assertError, assertString } from '../utils/assert.utils.js';
 import {
   createGcpPubSubCustomerCreateSubscription,
-  createAzureServiceBusCustomerCreateSubscription,
+  createAwsSnsCustomerCreateSubscription,
 } from './actions.js';
 
 const CONNECT_GCP_TOPIC_NAME_KEY = 'CONNECT_GCP_TOPIC_NAME';
 const CONNECT_GCP_PROJECT_ID_KEY = 'CONNECT_GCP_PROJECT_ID';
-const CONNECT_PROVIDER_KEY = 'CONNECT_PROVIDER';
-const CONNECT_AZURE_CONNECTION_STRING_KEY = 'CONNECT_AZURE_CONNECTION_STRING';
+const CONNECT_SUBSCRIPTION_DESTINATION_KEY = 'CONNECT_SUBSCRIPTION_DESTINATION';
+const CONNECT_AWS_TOPIC_ARN_KEY = 'CONNECT_AWS_TOPIC_ARN';
 
 async function postDeploy(properties) {
-  const connectProvider = properties.get(CONNECT_PROVIDER_KEY);
-  assertString(connectProvider, CONNECT_PROVIDER_KEY);
+  const subscriptionDestination = properties.get(
+    CONNECT_SUBSCRIPTION_DESTINATION_KEY
+  );
   const apiRoot = createApiRoot();
 
-  switch (connectProvider) {
-    case 'AZURE': {
-      const connectionString = properties.get(
-        CONNECT_AZURE_CONNECTION_STRING_KEY
-      );
-      assertString(connectionString, CONNECT_AZURE_CONNECTION_STRING_KEY);
-      await createAzureServiceBusCustomerCreateSubscription(
-        apiRoot,
-        connectionString
-      );
-      break;
-    }
-    default: {
-      const topicName = properties.get(CONNECT_GCP_TOPIC_NAME_KEY);
-      const projectId = properties.get(CONNECT_GCP_PROJECT_ID_KEY);
-      assertString(topicName, CONNECT_GCP_TOPIC_NAME_KEY);
-      assertString(projectId, CONNECT_GCP_PROJECT_ID_KEY);
-      await createGcpPubSubCustomerCreateSubscription(
-        apiRoot,
-        topicName,
-        projectId
-      );
-    }
+  // Google Cloud Pub/Sub subscription
+  if (subscriptionDestination === 'GoogleCloudPubSub') {
+    const topicName = properties.get(CONNECT_GCP_TOPIC_NAME_KEY);
+    const projectId = properties.get(CONNECT_GCP_PROJECT_ID_KEY);
+    assertString(topicName, CONNECT_GCP_TOPIC_NAME_KEY);
+    assertString(projectId, CONNECT_GCP_PROJECT_ID_KEY);
+    await createGcpPubSubCustomerCreateSubscription(
+      apiRoot,
+      topicName,
+      projectId
+    );
+    return;
   }
+
+  // AWS SNS subscription
+  if (subscriptionDestination === 'SNS') {
+    const topicArn = properties.get(CONNECT_AWS_TOPIC_ARN_KEY);
+    assertString(topicArn, CONNECT_AWS_TOPIC_ARN_KEY);
+    await createAwsSnsCustomerCreateSubscription(apiRoot, topicArn);
+    return;
+  }
+
+  throw new Error(
+    `Unknown subscription destination type: ${subscriptionDestination}`
+  );
 }
 async function run() {
   try {

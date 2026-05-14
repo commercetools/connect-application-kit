@@ -25,6 +25,18 @@ export async function createAzureServiceBusCustomerCreateSubscription(
   await createSubscription(apiRoot, destination);
 }
 
+export async function createAwsSnsCustomerCreateSubscription(
+  apiRoot,
+  topicArn
+) {
+  const destination = {
+    type: 'SNS',
+    topicArn: topicArn,
+    authenticationMode: 'IAM',
+  };
+  await createSubscription(apiRoot, destination);
+}
+
 async function createSubscription(apiRoot, destination) {
   await deleteCustomerCreateSubscription(apiRoot);
   await apiRoot
