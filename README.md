@@ -115,6 +115,11 @@ deployAs:
   - name: app1
     applicationType: service
     endpoint: /app1
+    healthCheck:
+      path: /health
+      intervalSeconds: 10
+      timeoutSeconds: 5
+      unhealthyThreshold: 3
     scripts:
       postDeploy: npm install && npm run build && npm run connector:post-deploy
       preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
@@ -171,6 +176,11 @@ deployAs:
 - `name` - Folder name of respective application component from the root of monorepo which will be used as identifier of the application. Deployment output url, topic & schedule can be fetched based on this reference
 - `applicationType` - Type of deployment . Can be one of `service`, `event`, `job` and `merchant-center-custom-application`
 - `endpoint` - Point of entry for respective application component
+- `healthCheck` - Optional HTTP health check for `service` and `event` applications. When omitted, the platform uses a default check that only verifies the container is listening on its port. When set, the application is polled over HTTP and unhealthy instances are replaced.
+  - `healthCheck.path` - HTTP path polled for the health check (for example `/health`). Required when `healthCheck` is set
+  - `healthCheck.intervalSeconds` - Optional interval between checks, between 1 and 20 seconds
+  - `healthCheck.timeoutSeconds` - Optional timeout for each check, between 1 and 20 seconds
+  - `healthCheck.unhealthyThreshold` - Optional number of consecutive failures before an instance is considered unhealthy, between 1 and 20
 - `scripts.postDeploy` - Post-deploy script to execute after the connector deployment process
 - `scripts.preUndeploy` - Pre-undeploy script to execute before the connector undeployment process
 - `configuration` - Definiton of all environment variables needed by the application, customer will be responsible to provide value for these variables when choosen to deploy. You need to choose between `standardConfiguration` and `securedConfiguration`. `standardConfiguration` for customer provided values to be saved as plain text , `securedConfiguration` for customer provided values to be secured and stored in encrypted format. configurations can be marked `required` depending on application implementation and also provided a `default` value if needed

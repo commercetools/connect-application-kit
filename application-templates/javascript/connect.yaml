@@ -4,6 +4,11 @@ deployAs:
   - name: service
     applicationType: service
     endpoint: /service
+    healthCheck:
+      path: /health
+      intervalSeconds: 10
+      timeoutSeconds: 5
+      unhealthyThreshold: 3
     scripts:
       postDeploy: npm install && npm run connector:post-deploy
       preUndeploy: npm install && npm run connector:pre-undeploy
@@ -53,6 +58,11 @@ deployAs:
   - name: event
     applicationType: event
     endpoint: /event
+    healthCheck:
+      path: /health
+      intervalSeconds: 10
+      timeoutSeconds: 5
+      unhealthyThreshold: 3
     scripts:
       postDeploy: npm install && npm run connector:post-deploy
       preUndeploy: npm install && npm run connector:pre-undeploy
