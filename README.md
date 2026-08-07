@@ -175,3 +175,12 @@ deployAs:
 - `scripts.preUndeploy` - Pre-undeploy script to execute before the connector undeployment process
 - `configuration` - Definiton of all environment variables needed by the application, customer will be responsible to provide value for these variables when choosen to deploy. You need to choose between `standardConfiguration` and `securedConfiguration`. `standardConfiguration` for customer provided values to be saved as plain text , `securedConfiguration` for customer provided values to be secured and stored in encrypted format. configurations can be marked `required` depending on application implementation and also provided a `default` value if needed
 - `schedule` - Schedule expression for job applications, it need to be input of type <a href="https://en.wikipedia.org/wiki/Cron">cron</a> expression
+- `probes` - Optional HTTP health probes for `service` and `event` applications. Not supported on `job` or `merchant-center-custom-application` types.
+  - `probes.liveness` - Periodic HTTP liveness check. Supported on **GCP Cloud Run** and **AWS App Runner**. Requires `path` (the HTTP endpoint to probe); all other fields are optional and accept integer values from 1–20:
+    - `path` - HTTP path for the liveness probe (e.g. `/health`)
+    - `intervalSeconds` - How often the probe runs (seconds)
+    - `timeoutSeconds` - Probe request timeout (seconds)
+    - `unhealthyThreshold` - Consecutive failures before the instance is considered unhealthy
+    - `healthyThreshold` - Consecutive successes to return to healthy; ignored on GCP Cloud Run (AWS App Runner only)
+  - `probes.startup` - One-shot startup gate checked once before the first liveness probe. Supported on **GCP Cloud Run only**; silently ignored on AWS App Runner deployments. Requires `path`; accepts the same optional numeric fields as `liveness` except `healthyThreshold` (not applicable to a one-shot gate).
+  - At least one of `liveness` or `startup` must be defined when `probes` is present.
