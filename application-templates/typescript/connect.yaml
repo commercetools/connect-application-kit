@@ -7,6 +7,22 @@ deployAs:
     scripts:
       postDeploy: npm install && npm run build && npm run connector:post-deploy
       preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
+    # Optional: HTTP health probes for service and event applications.
+    # probes.liveness — periodic HTTP check on GCP Cloud Run and AWS App Runner.
+    # probes.startup  — one-shot startup gate on GCP Cloud Run only; silently
+    #                   ignored on AWS App Runner (which has no startup concept).
+    # All numeric fields are optional and range from 1–20.
+    # probes:
+    #   liveness:
+    #     path: /health          # required if liveness is declared
+    #     intervalSeconds: 10
+    #     timeoutSeconds: 5
+    #     unhealthyThreshold: 3
+    #     healthyThreshold: 1    # AWS App Runner only; ignored on GCP
+    #   startup:
+    #     path: /ready           # required if startup is declared
+    #     intervalSeconds: 10
+    #     unhealthyThreshold: 12
     configuration:
       standardConfiguration:
         - key: CTP_REGION
@@ -56,6 +72,10 @@ deployAs:
     scripts:
       postDeploy: npm install && npm run build && npm run connector:post-deploy
       preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
+    # Optional: same probes structure as service; see service section above.
+    # probes:
+    #   liveness:
+    #     path: /health
     configuration:
       standardConfiguration:
         - key: CTP_REGION
