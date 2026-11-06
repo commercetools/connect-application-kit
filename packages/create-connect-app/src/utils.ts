@@ -9,7 +9,7 @@ const shouldUseYarn = () => {
       stdio: 'ignore',
     });
     return !result.failed;
-  } catch (error) {
+  } catch {
     return false;
   }
 };

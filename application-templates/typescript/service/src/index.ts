@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ quiet: true });
 
 // Import logger
 import { logger } from './utils/logger.utils';

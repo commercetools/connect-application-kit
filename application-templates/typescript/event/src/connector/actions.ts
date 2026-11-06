@@ -1,4 +1,4 @@
-import { ByProjectKeyRequestBuilder } from '@commercetools/platform-sdk/dist/declarations/src/generated/client/by-project-key-request-builder';
+import { ByProjectKeyRequestBuilder } from '@commercetools/platform-sdk';
 import { assertNonNullable } from '../utils/assert.utils';
 import { Config } from '../interfaces/config.interface';
 

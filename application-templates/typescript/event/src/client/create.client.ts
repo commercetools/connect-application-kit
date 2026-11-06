@@ -1,8 +1,10 @@
 import { createClient } from './build.client';
 
-import { createApiBuilderFromCtpClient } from '@commercetools/platform-sdk';
+import {
+  ByProjectKeyRequestBuilder,
+  createApiBuilderFromCtpClient,
+} from '@commercetools/platform-sdk';
 import { readConfiguration } from '../utils/config.utils';
-import { ByProjectKeyRequestBuilder } from '@commercetools/platform-sdk/dist/declarations/src/generated/client/by-project-key-request-builder';
 
 /**
  * Create client with apiRoot
@@ -13,9 +15,14 @@ export const createApiRoot = ((root?: ByProjectKeyRequestBuilder) => () => {
     return root;
   }
 
-  root = createApiBuilderFromCtpClient(createClient()).withProjectKey({
-    projectKey: readConfiguration().projectKey,
-  });
+  const { projectKey, region } = readConfiguration();
+
+  // Pass baseUri explicitly: the SDK defaults it to europe-west1.gcp, which
+  // would otherwise show up in request objects and logs for other regions.
+  root = createApiBuilderFromCtpClient(
+    createClient(),
+    `https://api.${region}.commercetools.com`
+  ).withProjectKey({ projectKey });
 
   return root;
 })();

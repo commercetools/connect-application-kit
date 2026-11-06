@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ quiet: true });
 
 import express, { Express } from 'express';
 
@@ -19,7 +19,7 @@ app.disable('x-powered-by');
 
 // Define routes
 app.use('/job', JobRoutes);
-app.use('*', () => {
+app.use(() => {
   throw new CustomError(404, 'Path not found.');
 });
 

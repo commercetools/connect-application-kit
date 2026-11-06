@@ -11,9 +11,14 @@ export const createApiRoot = ((root) => () => {
     return root;
   }
 
-  root = createApiBuilderFromCtpClient(createClient()).withProjectKey({
-    projectKey: readConfiguration().projectKey,
-  });
+  const { projectKey, region } = readConfiguration();
+
+  // Pass baseUri explicitly: the SDK defaults it to europe-west1.gcp, which
+  // would otherwise show up in request objects and logs for other regions.
+  root = createApiBuilderFromCtpClient(
+    createClient(),
+    `https://api.${region}.commercetools.com`
+  ).withProjectKey({ projectKey });
 
   return root;
 })();
