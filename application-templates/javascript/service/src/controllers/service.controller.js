@@ -9,7 +9,7 @@ import { apiSuccess } from '../api/success.api.js';
  */
 export const post = async (request, response) => {
   // Deserialize the action and resource from the body
-  const { action, resource } = request.body;
+  const { action, resource } = request.body ?? {};
 
   if (!action || !resource) {
     throw new CustomError(400, 'Bad request - Missing body parameters.');

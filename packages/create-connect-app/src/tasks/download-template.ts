@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import os from 'os';
 import path from 'path';
 import execa from 'execa';

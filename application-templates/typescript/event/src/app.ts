@@ -1,8 +1,7 @@
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ quiet: true });
 
 import express, { Express } from 'express';
-import bodyParser from 'body-parser';
 
 // Import routes
 import EventRoutes from './routes/event.route';
@@ -19,12 +18,12 @@ const app: Express = express();
 app.disable('x-powered-by');
 
 // Define configurations
-app.use(bodyParser.json({ limit: '5mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '5mb' }));
+app.use(express.json({ limit: '5mb' }));
+app.use(express.urlencoded({ extended: true, limit: '5mb' }));
 
 // Define routes
 app.use('/event', EventRoutes);
-app.use('*', () => {
+app.use(() => {
   throw new CustomError(404, 'Path not found.');
 });
 

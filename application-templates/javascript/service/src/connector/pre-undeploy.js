@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ quiet: true });
 
 import { createApiRoot } from '../client/create.client.js';
 import { assertError } from '../utils/assert.utils.js';

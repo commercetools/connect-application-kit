@@ -19,7 +19,7 @@ export const post = async (_request, response) => {
     logger.info(`There are ${limitedOrdersObject.total} orders!`);
 
     response.status(200).send();
-  } catch (error) {
+  } catch {
     throw new CustomError(
       500,
       `Internal Server Error - Error retrieving all orders from the commercetools SDK`

@@ -5,6 +5,7 @@
     "resolveJsonModule": true,
     "outDir": "./build",
     "rootDir": "./src",
-    "inlineSourceMap": true
+    "inlineSourceMap": true,
+    "types": ["node", "jest"]
   }
 }

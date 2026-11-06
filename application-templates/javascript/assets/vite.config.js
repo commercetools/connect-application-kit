@@ -1,7 +1,7 @@
-import { resolve, dirname } from 'path';
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
-const __dirname = dirname(__filename);
+const __dirname = import.meta.dirname;
 
 export default defineConfig({
   build: {

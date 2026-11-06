@@ -1,8 +1,7 @@
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ quiet: true });
 
 import express, { Express } from 'express';
-import bodyParser from 'body-parser';
 
 // Import routes
 import ServiceRoutes from './routes/service.route';
@@ -19,12 +18,12 @@ const app: Express = express();
 app.disable('x-powered-by');
 
 // Define configurations
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Define routes
 app.use('/service', ServiceRoutes);
-app.use('*', () => {
+app.use(() => {
   throw new CustomError(404, 'Path not found.');
 });
 // Global error handler

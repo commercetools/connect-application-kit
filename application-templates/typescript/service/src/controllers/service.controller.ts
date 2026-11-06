@@ -14,7 +14,7 @@ import { cartController } from './cart.controller';
  */
 export const post = async (request: Request, response: Response) => {
   // Deserialize the action and resource from the body
-  const { action, resource } = request.body;
+  const { action, resource } = request.body ?? {};
 
   if (!action || !resource) {
     throw new CustomError(400, 'Bad request - Missing body parameters.');
